@@ -34,6 +34,7 @@ const [formData, setFormData] = useState({
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
                 body: JSON.stringify(formData),
             });
 

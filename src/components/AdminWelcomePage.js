@@ -74,6 +74,8 @@ console.log('piUrl--Backend produccion', apiUrl)
 
                method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                     body: JSON.stringify({ estado: "revisión" })
                 });
     
@@ -89,6 +91,8 @@ console.log('piUrl--Backend produccion', apiUrl)
 
                      method: 'POST',
                      headers: { 'Content-Type': 'application/json' },
+                     mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                      body: JSON.stringify({ email: userEmail, estado: "revisión" })
                  });
  
@@ -147,6 +151,8 @@ console.log('piUrl--Backend produccion', apiUrl)
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                 body: JSON.stringify({ email: userEmail, estado: "verificado" })
             });
 
@@ -203,6 +209,8 @@ const generarCerti = async (solicitudId) => {
 
                 method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                     body: JSON.stringify({ estado: "aprobada" })
                 });
                 
@@ -233,6 +241,8 @@ const generarCerti = async (solicitudId) => {
 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                     body: JSON.stringify({ 
                         email: userEmail, 
                         estado: "aprobado",
@@ -276,6 +286,8 @@ const generarCerti = async (solicitudId) => {
 
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
+                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                     body: JSON.stringify({ estado: "rechazada" })
                 });
     
@@ -298,6 +310,8 @@ const generarCerti = async (solicitudId) => {
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
+                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                 body: JSON.stringify({ email: userEmail, estado: "rechazada" })
             });
 

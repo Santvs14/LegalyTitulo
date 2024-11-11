@@ -125,6 +125,8 @@ console.log('piUrl--Backend produccion', apiUrl)
                 const response = await fetch(`${apiUrl}/api/solicitud`, {
 
                 method: 'POST',
+                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                 body: formDataToSend, // Enviar FormData
             });
     
