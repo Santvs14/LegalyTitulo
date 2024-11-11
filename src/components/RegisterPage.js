@@ -5,6 +5,9 @@ import { FaArrowLeft } from 'react-icons/fa'; // Icono moderno para regresar
 import mesy from '../image/mesy.png'; // Asegúrate de colocar la ruta correcta de la imagen
 
 const RegisterPage = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    console.log('piUrl--Backend produccion', apiUrl)
+    
     const navigate = useNavigate(); // Inicializar useNavigate
     const [formData, setFormData] = useState({
         nombre: '',
@@ -29,7 +32,9 @@ const RegisterPage = () => {
         console.log("Datos del formulario:", formData);
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/register', {
+            //const response = await fetch('http://localhost:5000/api/users/register', {
+                const response = await fetch(`${apiUrl}/api/users/register`, {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

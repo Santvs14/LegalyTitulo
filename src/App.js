@@ -1,50 +1,106 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Route, Link, Routes, useNavigate } from 'react-router-dom';
-import { UserContext } from './context/UserContext'; // Asegúrate de tener este contexto configurado
+//Aplicación React se conecta con las rutas del backend.
 
-// Importar las páginas
-import HomePage from './components/HomePage';
-import RegisterPage from './components/RegisterPage';
-import AdminRegisterPage from './components/AdminRegisterPage';
-import LoginPage from './components/LoginPage';
-import WelcomePage from './components/WelcomePage';
-import WelcomeAdmin from './components/WelcomeAdmin';
-import LegalizationPage from './components/LegalizationPage';
-import AdminWelcomePage from './components/AdminWelcomePage'; // Página de bienvenida para administradores
-import LoginAdmin from './components/LoginAdmin'; // Página de bienvenida para administradores
-import UserProfile from './components/UserProfile ';
 
-const App = () => {
-  const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext); // Usar el contexto para obtener la información del usuario
-  
-  // Si no hay usuario, redirige al login
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [titulos, setTitulos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Estado para manejar el inicio de sesión
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [role, setRole] = useState(''); // Para almacenar el rol del usuario
+
+  // Obtener títulos desde el backend (cuando el usuario está autenticado)
   useEffect(() => {
-    if (!user) {
-      navigate("/login");
+    if (isLoggedIn) {
+      axios.get('http://localhost:5000/api/titulos')
+        .then(response => {
+          setTitulos(response.data);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error('Error al obtener títulos:', error);
+          setError('Error al obtener los títulos.');
+          setLoading(false);
+        });
     }
-  }, [user, navigate]);
+  }, [isLoggedIn]);
 
+  // Función para manejar el inicio de sesión
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', {
+        username,
+        password,
+      });
+      localStorage.setItem('token', response.data.token); // Almacenar el token
+      setIsLoggedIn(true);
+      setRole(response.data.role); // Asignar el rol desde la respuesta
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError('Error en la autenticación: ' + error.response.data.message);
+      console.error('Error en la autenticación:', error);
+    }
+  };
+
+  // Si el usuario no está autenticado, mostrar el formulario de inicio de sesión
+  if (!isLoggedIn) {
+    return (
+      <div>
+        <h1>Iniciar Sesión</h1>
+        <form onSubmit={handleLogin}>
+          <div>
+            <label>Usuario:</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Cargando...' : 'Iniciar Sesión'}
+          </button>
+        </form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </div>
+    );
+  }
+
+  // Si el usuario está autenticado, mostrar la lista de títulos
   return (
     <div>
-      {/* Barra de navegación */}
-      
-
-      {/* Rutas */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admin" element={<AdminRegisterPage />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/welcomeAdmin" element={<WelcomeAdmin />} />
-        <Route path="/legalization" element={<LegalizationPage />} />
-        <Route path="/admin/welcome" element={<AdminWelcomePage />} />
-        <Route path="/userPerfil" element={<UserProfile />} />
-      </Routes>
+      <h1>Legalización de Títulos</h1>
+      <h2>Bienvenido, {role}</h2> {/* Mostrar el rol del usuario */}
+      {loading && <p>Cargando títulos...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <ul>
+        {titulos.map(titulo => (
+          <li key={titulo._id}>{titulo.nombre}</li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
 export default App;

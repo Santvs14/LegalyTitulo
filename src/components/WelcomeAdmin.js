@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import mesy from '../image/gob.png';
 
 const WelcomeAdmin = () => {
+  
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 

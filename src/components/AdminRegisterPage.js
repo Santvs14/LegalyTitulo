@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import gob from '../image/gob.png';
+
 const AdminRegisterPage = () => {
-    const [formData, setFormData] = useState({
+    const apiUrl = process.env.REACT_APP_API_URL;
+console.log('piUrl--Backend produccion', apiUrl)
+    
+
+const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
         codigo: '',
@@ -21,7 +26,10 @@ const AdminRegisterPage = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/admins/register', {
+           // const response = await fetch('http://localhost:5000/api/admins/register', {
+            const response = await fetch(`${apiUrl}/api/admins/register`, {
+
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

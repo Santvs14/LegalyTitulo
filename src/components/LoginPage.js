@@ -12,6 +12,8 @@ const LoginPage = () => {
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState("");
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+console.log('piUrl--Backend produccion', apiUrl)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,7 +24,9 @@ const LoginPage = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/login', {
+            //const response = await fetch('http://localhost:5000/api/users/login', {
+            const response = await fetch(`${apiUrl}/api/users/login`, {
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

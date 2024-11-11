@@ -27,6 +27,8 @@ import unicariLogo from '../image/unicaribe.png';
 const AdminWelcomePage = () => {
     const { user } = useContext(UserContext); // Obtén el usuario del contexto
     const navigate = useNavigate();
+    const apiUrl = process.env.REACT_APP_API_URL;
+console.log('piUrl--Backend produccion', apiUrl)
 
     const [solicitudes, setSolicitudes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +48,9 @@ const AdminWelcomePage = () => {
     useEffect(() => {
         const fetchSolicitudes = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/legalization/requests');
+                //const response = await fetch('http://localhost:5000/api/legalization/requests');
+                const response = await fetch(`${apiUrl}/api/legalization/requests`);
+
                 const data = await response.json();
                 setSolicitudes(data);
                 setContadorSolicitudes(data.length); // Actualizar el contador
@@ -65,8 +69,10 @@ const AdminWelcomePage = () => {
         setSelectedSolicitud(solicitud);
         if (solicitud.estado === "pendiente") {
             try {
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
-                    method: 'PUT',
+               // const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
+                const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitud._id}`, {
+
+               method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ estado: "revisión" })
                 });
@@ -78,7 +84,9 @@ const AdminWelcomePage = () => {
                  console.log('Email del usuario:', userEmail);
  
                  // Envía la notificación al usuario a través del endpoint
-                 const notifyResponse = await fetch('http://localhost:5000/notify', {
+                 //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                 const notifyResponse = await fetch(`${apiUrl}/notify`, {
+
                      method: 'POST',
                      headers: { 'Content-Type': 'application/json' },
                      body: JSON.stringify({ email: userEmail, estado: "revisión" })
@@ -119,8 +127,10 @@ const AdminWelcomePage = () => {
           setIsSigning(false);
       
           try {
-            const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
-              firmaDataUrl: dataUrl,
+           // const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
+            const response = await fetch(`${apiUrl}/api/legalization/save-signature`, {
+
+           firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
               adminId: user.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
             });
@@ -132,7 +142,9 @@ const AdminWelcomePage = () => {
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            const notifyResponse = await fetch('http://localhost:5000/notify', {
+            //const notifyResponse = await fetch('http://localhost:5000/notify', {
+            const notifyResponse = await fetch(`${apiUrl}/notify`, {
+
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: userEmail, estado: "verificado" })
@@ -186,8 +198,10 @@ const generarCerti = async (solicitudId) => {
                 console.log('Aprobando la solicitud con ID:', solicitudId);
     
                 // 1. Actualizar el estado de la solicitud a "aprobada"
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
-                    method: 'PUT',
+                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
+
+                method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ estado: "aprobada" })
                 });
@@ -214,8 +228,9 @@ const generarCerti = async (solicitudId) => {
                 // 4. Enviar la notificación al usuario a través del endpoint
 
 
-                const notifyResponse = await fetch('http://localhost:5000/notify', {
-                    
+                //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                const notifyResponse = await fetch(`${apiUrl}/notify`, {
+
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
@@ -256,7 +271,9 @@ const generarCerti = async (solicitudId) => {
         if (selectedSolicitud) {
             try {
                 const solicitudId = selectedSolicitud._id;
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                    const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
+
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ estado: "rechazada" })
@@ -276,7 +293,9 @@ const generarCerti = async (solicitudId) => {
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            const notifyResponse = await fetch('http://localhost:5000/notify', {
+            //const notifyResponse = await fetch('http://localhost:5000/notify', {
+            const notifyResponse = await fetch(`${apiUrl}/notify`, {
+
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: userEmail, estado: "rechazada" })

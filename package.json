@@ -1,6 +1,6 @@
 {
-  "_comentario": "redirigir las peticiones API al backend: proxy",
-  "proxy": "http://localhost:5000",
+  "_comentario": "redirigir las peticiones API al backend: proxy colocando la ruta url",
+
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
