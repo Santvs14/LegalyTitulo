@@ -5,8 +5,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa';
 
 // Modal para mostrar la solicitud
-const apiUrl = process.env.REACT_APP_API_URL;
-console.log('piUrl--Backend produccion', apiUrl)
 
 const Modal = ({ isOpen, onClose, request }) => {
     if (!isOpen) return null;
@@ -62,8 +60,8 @@ const UserProfile = () => {
     
         const fetchSolicitudes = async () => {
             try {
-                //const response = await fetch('http://localhost:5000/api/legalization/requests');
-                const response = await fetch(`${apiUrl}/api/legalization/requests`);
+                const response = await fetch('http://localhost:5000/api/legalization/requests');
+
 
                 const data = await response.json();
                 setSolicitudes(data);

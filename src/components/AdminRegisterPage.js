@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import gob from '../image/gob.png';
 
 const AdminRegisterPage = () => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-console.log('piUrl--Backend produccion', apiUrl)
     
 
 const [formData, setFormData] = useState({
@@ -26,15 +24,15 @@ const [formData, setFormData] = useState({
         e.preventDefault();
 
         try {
-           // const response = await fetch('http://localhost:5000/api/admins/register', {
-            const response = await fetch(`${apiUrl}/api/admins/register`, {
+           const response = await fetch('http://localhost:5000/api/admins/register', {
+
 
 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
                 body: JSON.stringify(formData),
             });
 

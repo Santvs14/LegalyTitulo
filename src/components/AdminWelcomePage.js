@@ -27,9 +27,7 @@ import unicariLogo from '../image/unicaribe.png';
 const AdminWelcomePage = () => {
     const { user } = useContext(UserContext); // Obtén el usuario del contexto
     const navigate = useNavigate();
-    const apiUrl = process.env.REACT_APP_API_URL;
-console.log('piUrl--Backend produccion', apiUrl)
-
+console.log('disponibilidad user:', user)
     const [solicitudes, setSolicitudes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const solicitudesPorPagina = 4;
@@ -48,8 +46,8 @@ console.log('piUrl--Backend produccion', apiUrl)
     useEffect(() => {
         const fetchSolicitudes = async () => {
             try {
-                //const response = await fetch('http://localhost:5000/api/legalization/requests');
-                const response = await fetch(`${apiUrl}/api/legalization/requests`);
+                const response = await fetch('http://localhost:5000/api/legalization/requests');
+
                            // Imprimir los encabezados para verificar CORS
                console.log('Response Headers:', response.headers);
 
@@ -72,12 +70,11 @@ console.log('piUrl--Backend produccion', apiUrl)
         setSelectedSolicitud(solicitud);
         if (solicitud.estado === "pendiente") {
             try {
-               // const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
-                const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitud._id}`, {
+                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
 
                method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                     body: JSON.stringify({ estado: "revisión" })
                 });
@@ -89,12 +86,12 @@ console.log('piUrl--Backend produccion', apiUrl)
                  console.log('Email del usuario:', userEmail);
  
                  // Envía la notificación al usuario a través del endpoint
-                 //const notifyResponse = await fetch('http://localhost:5000/notify', {
-                 const notifyResponse = await fetch(`${apiUrl}/notify`, {
+                 const notifyResponse = await fetch('http://localhost:5000/notify', {
+
 
                      method: 'POST',
                      headers: { 'Content-Type': 'application/json' },
-                     mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                      body: JSON.stringify({ email: userEmail, estado: "revisión" })
                  });
@@ -134,8 +131,8 @@ console.log('piUrl--Backend produccion', apiUrl)
           setIsSigning(false);
       
           try {
-           // const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
-            const response = await fetch(`${apiUrl}/api/legalization/save-signature`, {
+            const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
+
 
            firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
@@ -149,12 +146,11 @@ console.log('piUrl--Backend produccion', apiUrl)
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            //const notifyResponse = await fetch('http://localhost:5000/notify', {
-            const notifyResponse = await fetch(`${apiUrl}/notify`, {
+            const notifyResponse = await fetch('http://localhost:5000/notify', {
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                 body: JSON.stringify({ email: userEmail, estado: "verificado" })
             });
@@ -207,12 +203,12 @@ const generarCerti = async (solicitudId) => {
                 console.log('Aprobando la solicitud con ID:', solicitudId);
     
                 // 1. Actualizar el estado de la solicitud a "aprobada"
-                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
-                const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
+                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+
 
                 method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                     body: JSON.stringify({ estado: "aprobada" })
                 });
@@ -239,12 +235,12 @@ const generarCerti = async (solicitudId) => {
                 // 4. Enviar la notificación al usuario a través del endpoint
 
 
-                //const notifyResponse = await fetch('http://localhost:5000/notify', {
-                const notifyResponse = await fetch(`${apiUrl}/notify`, {
+                const notifyResponse = await fetch('http://localhost:5000/notify', {
+
 
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                     body: JSON.stringify({ 
                         email: userEmail, 
@@ -284,12 +280,12 @@ const generarCerti = async (solicitudId) => {
         if (selectedSolicitud) {
             try {
                 const solicitudId = selectedSolicitud._id;
-                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
-                    const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
+                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+
 
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                     body: JSON.stringify({ estado: "rechazada" })
                 });
@@ -308,12 +304,12 @@ const generarCerti = async (solicitudId) => {
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            //const notifyResponse = await fetch('http://localhost:5000/notify', {
-            const notifyResponse = await fetch(`${apiUrl}/notify`, {
+            const notifyResponse = await fetch('http://localhost:5000/notify', {
+
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                 body: JSON.stringify({ email: userEmail, estado: "rechazada" })
             });

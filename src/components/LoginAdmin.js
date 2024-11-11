@@ -5,8 +5,6 @@ import gob from "../image/gob.png";
 
 const LoginAdmin = () => {
   const navigate = useNavigate();
-  const apiUrl = process.env.REACT_APP_API_URL;
-  console.log('piUrl--Backend produccion', apiUrl)
   
   const [nombre, setNombre] = useState("");
   const [codigo, setCodigo] = useState("");
@@ -15,14 +13,14 @@ const LoginAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //const response = await fetch("http://localhost:5000/api/admins/login", {
-        const response = await fetch(`${apiUrl}/api/admins/login`, {
+      const response = await fetch("http://localhost:5000/api/admins/login", {
+
 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
         body: JSON.stringify({ nombre, codigo }),
       });

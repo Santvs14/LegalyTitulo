@@ -6,8 +6,6 @@ import { CheckCircleIcon } from '@heroicons/react/solid';
 const LegalizationPage = () => {
     const navigate = useNavigate();
     const { user } = useContext(UserContext); // Obtén el usuario del contexto
-    const apiUrl = process.env.REACT_APP_API_URL;
-console.log('piUrl--Backend produccion', apiUrl)
 
     // Maneja la inicialización del estado
     const [formData, setFormData] = useState({
@@ -121,11 +119,11 @@ console.log('piUrl--Backend produccion', apiUrl)
         
     
         try {
-            //const response = await fetch('http://localhost:5000/api/solicitud', {
-                const response = await fetch(`${apiUrl}/api/solicitud`, {
+            const response = await fetch('http://localhost:5000/api/solicitud', {
+
 
                 method: 'POST',
-                mode: 'cors',  // Asegúrate de tener "cors" aquí y no "no-cors"
+
 
                 body: formDataToSend, // Enviar FormData
             });
