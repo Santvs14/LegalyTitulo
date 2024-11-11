@@ -51,7 +51,7 @@ console.log('piUrl--Backend produccion', apiUrl)
                 //const response = await fetch('http://localhost:5000/api/legalization/requests');
                 const response = await fetch(`${apiUrl}/api/legalization/requests`);
                            // Imprimir los encabezados para verificar CORS
-        console.log('Response Headers:', response.headers);
+               console.log('Response Headers:', response.headers);
 
                 
                 const data = await response.json();
