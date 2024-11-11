@@ -84,9 +84,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("../image/azul.jpg"); /* Cambia esta ruta a la correcta */
-  background-size: cover;
-  background-position: left;
+
 `;
 
 const LoginForm = styled.form`
