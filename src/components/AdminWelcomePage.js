@@ -141,7 +141,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
                 const response = await axios.post(`${apiUrl}/api/legalization/save-signature`,{
 
 
-           firmaDataUrl: dataUrl,
+              firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
               adminId: user.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
             });
@@ -710,7 +710,11 @@ const styles = {
     universityCard: { padding: '1rem', background: '#3331', borderRadius: '8px', cursor: 'pointer' },
     modalBackdrop: { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' },
 
-    solicitudesList: { display: 'grid', gap: '1rem',background: '#3334' },
+    solicitudesList: { display: 'grid', gap: '1rem',background: '#3334',        
+        maxHeight: '400px', // Limita la altura de la lista
+        overflowY: 'auto',  // Agrega scroll vertical 
+        },
+    
     solicitudCard: { padding: '1rem', borderRadius: '8px', cursor: 'pointer' },
     
     universityInfo: {
