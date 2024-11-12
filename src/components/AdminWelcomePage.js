@@ -138,7 +138,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
       
           try {
             //const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
-                const response = await fetch(`${apiUrl}/api/legalization/save-signature`,{
+                const response = await axios.post(`${apiUrl}/api/legalization/save-signature`,{
 
 
            firmaDataUrl: dataUrl,

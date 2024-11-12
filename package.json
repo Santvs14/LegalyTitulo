@@ -1,6 +1,5 @@
 {
   "_comentario": "redirigir las peticiones API al backend: proxy colocando la ruta url",
-
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
