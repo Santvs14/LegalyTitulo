@@ -5,6 +5,7 @@ import gob from '../image/gob.png';
 
 const AdminRegisterPage = () => {
     
+    const apiUrl = process.env.REACT_APP_API_URL;
 
 const [formData, setFormData] = useState({
         nombre: '',
@@ -24,7 +25,8 @@ const [formData, setFormData] = useState({
         e.preventDefault();
 
         try {
-           const response = await fetch('http://localhost:5000/api/admins/register', {
+           //const response = await fetch('http://localhost:5000/api/admins/register', {
+            const response = await fetch(`${apiUrl}/api/admins/register`,{
 
 
 

@@ -5,7 +5,8 @@ import gob from "../image/gob.png";
 
 const LoginAdmin = () => {
   const navigate = useNavigate();
-  
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [nombre, setNombre] = useState("");
   const [codigo, setCodigo] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -13,7 +14,8 @@ const LoginAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/admins/login", {
+      //const response = await fetch("http://localhost:5000/api/admins/login", {
+        const response = await fetch(`${apiUrl}/api/admins/login`, {
 
 
         method: "POST",

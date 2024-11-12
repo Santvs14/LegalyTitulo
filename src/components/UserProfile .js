@@ -51,6 +51,7 @@ const UserProfile = () => {
     const [userRequest, setUserRequest] = useState(null);
     const [solicitudes, setSolicitudes] = useState([]);
     const [message, setMessage] = useState('');
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         if (!user) {
@@ -60,7 +61,8 @@ const UserProfile = () => {
     
         const fetchSolicitudes = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/legalization/requests');
+               // const response = await fetch('http://localhost:5000/api/legalization/requests');
+                const response = await fetch(`${apiUrl}/api/solicitud`);
 
 
                 const data = await response.json();

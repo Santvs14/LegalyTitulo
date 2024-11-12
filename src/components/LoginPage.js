@@ -8,6 +8,7 @@ import imagenLogin from '../image/mesy.png'; // Ajusta la ruta según tu estruct
 const LoginPage = () => {
     const navigate = useNavigate();
     const { login } = useContext(UserContext);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState("");
@@ -22,7 +23,8 @@ const LoginPage = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/login', {
+            //const response = await fetch('http://localhost:5000/api/users/login', {
+                const response = await fetch(`${apiUrl}/api/users/login`, {
 
 
                 method: 'POST',

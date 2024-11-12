@@ -28,6 +28,9 @@ const AdminWelcomePage = () => {
     const { user } = useContext(UserContext); // Obtén el usuario del contexto
     const navigate = useNavigate();
 console.log('disponibilidad user:', user)
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
     const [solicitudes, setSolicitudes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const solicitudesPorPagina = 4;
@@ -46,7 +49,8 @@ console.log('disponibilidad user:', user)
     useEffect(() => {
         const fetchSolicitudes = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/legalization/requests');
+                //const response = await fetch('http://localhost:5000/api/legalization/requests');
+                const response = await fetch(`${apiUrl}/api/legalization/requests`);
 
                            // Imprimir los encabezados para verificar CORS
                console.log('Response Headers:', response.headers);
@@ -70,7 +74,8 @@ console.log('disponibilidad user:', user)
         setSelectedSolicitud(solicitud);
         if (solicitud.estado === "pendiente") {
             try {
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
+                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitud._id}`, {
+                    const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitud._id}`, {
 
                method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
@@ -86,7 +91,8 @@ console.log('disponibilidad user:', user)
                  console.log('Email del usuario:', userEmail);
  
                  // Envía la notificación al usuario a través del endpoint
-                 const notifyResponse = await fetch('http://localhost:5000/notify', {
+                 //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                    const notifyResponse = await fetch(`${apiUrl}/notify`,{
 
 
                      method: 'POST',
@@ -131,7 +137,8 @@ console.log('disponibilidad user:', user)
           setIsSigning(false);
       
           try {
-            const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
+            //const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
+                const response = await fetch(`${apiUrl}/api/legalization/save-signature`,{
 
 
            firmaDataUrl: dataUrl,
@@ -146,7 +153,8 @@ console.log('disponibilidad user:', user)
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            const notifyResponse = await fetch('http://localhost:5000/notify', {
+            //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                const notifyResponse = await fetch(`${apiUrl}/notify`,{
 
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -203,7 +211,8 @@ const generarCerti = async (solicitudId) => {
                 console.log('Aprobando la solicitud con ID:', solicitudId);
     
                 // 1. Actualizar el estado de la solicitud a "aprobada"
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                    const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
 
 
                 method: 'PUT',
@@ -235,7 +244,8 @@ const generarCerti = async (solicitudId) => {
                 // 4. Enviar la notificación al usuario a través del endpoint
 
 
-                const notifyResponse = await fetch('http://localhost:5000/notify', {
+                //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                    const notifyResponse = await fetch(`${apiUrl}/notify`,{
 
 
                     method: 'POST',
@@ -280,7 +290,8 @@ const generarCerti = async (solicitudId) => {
         if (selectedSolicitud) {
             try {
                 const solicitudId = selectedSolicitud._id;
-                const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                //const response = await fetch(`http://localhost:5000/api/legalization/requests/${solicitudId}`, {
+                    const response = await fetch(`${apiUrl}/api/legalization/requests/${solicitudId}`, {
 
 
                     method: 'PUT',
@@ -304,7 +315,8 @@ const generarCerti = async (solicitudId) => {
             console.log('Email del usuario:', userEmail);
 
             // Envía la notificación al usuario a través del endpoint
-            const notifyResponse = await fetch('http://localhost:5000/notify', {
+            //const notifyResponse = await fetch('http://localhost:5000/notify', {
+                const notifyResponse = await fetch(`${apiUrl}/notify`,{
 
 
                 method: 'POST',
