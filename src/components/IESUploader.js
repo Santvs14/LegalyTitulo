@@ -35,7 +35,7 @@ const IESUploader = () => {
     try {
       // Crear un nuevo registro IES
       //const createResponse = await axios.post('/api/ies/create', formData);
-      const createResponse = await axios.post(`${apiUrl}/api/ies/create`, formData);
+      const createResponse = await axios.post(`${apiUrl}/api/ies`, formData);
        console.log('contenido IES:', createResponse)
       const iesId = createResponse.data.data._id;
 
@@ -44,7 +44,9 @@ const IESUploader = () => {
       fileData.append('document', selectedFile);
 
       // Enviar el archivo al backend para procesarlo y subirlo a Cloudinary
-      const uploadResponse = await axios.put(`/api/ies/${iesId}/add-document`, fileData, {
+      //const uploadResponse = await axios.put(`/api/ies/${iesId}/add-document`, fileData, {
+        const uploadResponse = await axios.put(`${apiUrl}/api/ies/${iesId}/documento`, fileData, {
+
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
