@@ -41,7 +41,8 @@ const IESUploader = () => {
 
       // Configurar FormData para la carga del archivo
       const fileData = new FormData();
-      fileData.append('document', selectedFile);
+      fileData.append('documentos', selectedFile); // Cambiar 'document' a 'documentos'
+      
 
       // Enviar el archivo al backend para procesarlo y subirlo a Cloudinary
       //const uploadResponse = await axios.put(`/api/ies/${iesId}/add-document`, fileData, {
