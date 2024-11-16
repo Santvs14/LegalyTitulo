@@ -15,7 +15,6 @@ import WelcomeAdmin from './components/WelcomeAdmin';
 import LegalizationPage from './components/LegalizationPage';
 import AdminWelcomePage from './components/AdminWelcomePage'; // Página de bienvenida para administradores
 import LoginAdmin from './components/LoginAdmin'; // Página de bienvenida para administradores
-import IESForm  from './components/IESForm'; // Página de bienvenida para administradores
 
 
 import UserProfile from './components/UserProfile '
@@ -27,8 +26,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserProvider>
-    <IESProvider> {/* Envuelves el IESProvider aquí */}
-
+      
     <Router> {/* Asegúrate de usar BrowserRouter aquí */}
 
         <Routes>
@@ -46,7 +44,6 @@ root.render(
           <Route path="/userPerfil" element={<UserProfile/>} />
         </Routes>
       </Router>
-      </IESProvider>
     </UserProvider>
   </React.StrictMode>
 );
