@@ -42,7 +42,7 @@ const IESForm = () => {
         form.append('documentos', formData.documentos[i]);
       }
   
-      const response = await fetch(`${apiUrl}/ies/create`, {
+      const response = await fetch(`${apiUrl}/api/ies/create`, {
         method: 'POST',
         body: form,
       });
