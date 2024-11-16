@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext'; // Importa el UserProvider
-import { IESProvider } from './context/IESContext'; // Importa el IESProvider
 
 import HomePage from './components/HomePage';
 import RegisterPage from './components/RegisterPage';
@@ -15,6 +14,7 @@ import WelcomeAdmin from './components/WelcomeAdmin';
 import LegalizationPage from './components/LegalizationPage';
 import AdminWelcomePage from './components/AdminWelcomePage'; // Página de bienvenida para administradores
 import LoginAdmin from './components/LoginAdmin'; // Página de bienvenida para administradores
+import IESForm  from './components/IESForm'; // Página de bienvenida para administradores
 
 
 import UserProfile from './components/UserProfile '
@@ -26,7 +26,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserProvider>
-      
     <Router> {/* Asegúrate de usar BrowserRouter aquí */}
 
         <Routes>
