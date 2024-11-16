@@ -29,29 +29,41 @@ const IESForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
       const form = new FormData();
       form.append('nombres', formData.nombres);
       form.append('apellidos', formData.apellidos);
       form.append('carrera', formData.carrera);
       form.append('matricula', formData.matricula);
-
+  
       // Agregar los archivos al FormData
       for (let i = 0; i < formData.documentos.length; i++) {
         form.append('documentos', formData.documentos[i]);
       }
-
-      // Enviar datos al backend
-     // const response = await axios.post('http://localhost:5000/api/ies/create', form, {
+  
+      // Enviar los datos al backend con fetch
       const response = await fetch(`${apiUrl}/ies/create`, {
         method: 'POST',
         body: form,
       });
-
-
-      console.log('ruta Ies:', response)
-      setMessage(response.data.message);
+  
+      // Verificar si la respuesta es exitosa (status 200-299)
+      if (!response.ok) {
+        throw new Error('Error al enviar los datos al servidor');
+      }
+  
+      // Analizar la respuesta JSON
+      const responseData = await response.json();
+  
+      // Verificar si 'message' existe en la respuesta
+      if (responseData && responseData.message) {
+        setMessage(responseData.message);
+      } else {
+        throw new Error('La respuesta del servidor no tiene el campo "message"');
+      }
+  
+      // Limpiar el formulario
       setFormData({
         nombres: '',
         apellidos: '',
@@ -59,7 +71,7 @@ const IESForm = () => {
         matricula: '',
         documentos: [],
       });
-      console.log('contenido del formulario:',setFormData)
+      
     } catch (error) {
       console.error(error);
       setMessage('Error al enviar los datos. Intenta nuevamente.');
@@ -67,7 +79,7 @@ const IESForm = () => {
       setLoading(false);
     }
   };
-
+  
   return (
     <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
       <h1>Registro IES</h1>
