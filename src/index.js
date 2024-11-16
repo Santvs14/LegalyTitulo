@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/UserContext'; // Importa el UserProvider
+import { IESProvider } from './context/IESContext'; // Importa el IESProvider
 
 import HomePage from './components/HomePage';
 import RegisterPage from './components/RegisterPage';
@@ -26,6 +27,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserProvider>
+    <IESProvider> {/* Envuelves el IESProvider aquí */}
+
     <Router> {/* Asegúrate de usar BrowserRouter aquí */}
 
         <Routes>
@@ -43,6 +46,7 @@ root.render(
           <Route path="/userPerfil" element={<UserProfile/>} />
         </Routes>
       </Router>
+      </IESProvider>
     </UserProvider>
   </React.StrictMode>
 );
