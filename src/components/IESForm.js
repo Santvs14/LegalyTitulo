@@ -42,28 +42,24 @@ const IESForm = () => {
         form.append('documentos', formData.documentos[i]);
       }
   
-      // Enviar los datos al backend con fetch
+      // Enviar datos al backend
       const response = await fetch(`${apiUrl}/ies/create`, {
         method: 'POST',
         body: form,
       });
   
-      // Verificar si la respuesta es exitosa (status 200-299)
+      // Verifica si la respuesta es 200 o 201
       if (!response.ok) {
-        throw new Error('Error al enviar los datos al servidor');
+        const errorData = await response.json();
+        console.error('Error desde el servidor:', errorData); // Log de respuesta de error
+        setMessage('Error al enviar los datos. Intenta nuevamente.');
+        return;
       }
   
-      // Analizar la respuesta JSON
-      const responseData = await response.json();
+      const data = await response.json();
+      console.log('Respuesta del servidor:', data);
+      setMessage(data.message);
   
-      // Verificar si 'message' existe en la respuesta
-      if (responseData && responseData.message) {
-        setMessage(responseData.message);
-      } else {
-        throw new Error('La respuesta del servidor no tiene el campo "message"');
-      }
-  
-      // Limpiar el formulario
       setFormData({
         nombres: '',
         apellidos: '',
@@ -71,14 +67,15 @@ const IESForm = () => {
         matricula: '',
         documentos: [],
       });
-      
+  
     } catch (error) {
-      console.error(error);
-      setMessage('Error al enviar los datos. Intenta nuevamente.');
+      console.error('Error en la solicitud al backend:', error); // Log detallado del error de red
+      setMessage('Error al enviar los datos al servidor. Intenta nuevamente.');
     } finally {
       setLoading(false);
     }
   };
+  
   
   return (
     <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
