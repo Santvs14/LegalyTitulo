@@ -36,30 +36,30 @@ const IESForm = () => {
       form.append('apellidos', formData.apellidos);
       form.append('carrera', formData.carrera);
       form.append('matricula', formData.matricula);
-  
-      // Agregar los archivos al FormData
+      
+      // Agregar los archivos
       for (let i = 0; i < formData.documentos.length; i++) {
         form.append('documentos', formData.documentos[i]);
       }
   
-      // Enviar datos al backend
       const response = await fetch(`${apiUrl}/ies/create`, {
         method: 'POST',
         body: form,
       });
   
-      // Verifica si la respuesta es 200 o 201
+      // Verifica si la respuesta es correcta
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Error desde el servidor:', errorData); // Log de respuesta de error
-        setMessage('Error al enviar los datos. Intenta nuevamente.');
+        const errorText = await response.text();
+        console.error('Error en la solicitud:', errorText);
+        setMessage('Error al enviar los datos al servidor. Intenta nuevamente.');
         return;
       }
   
       const data = await response.json();
       console.log('Respuesta del servidor:', data);
       setMessage(data.message);
-  
+      
+      // Limpiar formulario
       setFormData({
         nombres: '',
         apellidos: '',
@@ -67,15 +67,14 @@ const IESForm = () => {
         matricula: '',
         documentos: [],
       });
-  
     } catch (error) {
-      console.error('Error en la solicitud al backend:', error); // Log detallado del error de red
-      setMessage('Error al enviar los datos al servidor. Intenta nuevamente.');
+      console.error('Error en la solicitud:', error);
+      setMessage('Error al enviar los datos. Intenta nuevamente.');
     } finally {
       setLoading(false);
     }
   };
-  
+    
   
   return (
     <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
