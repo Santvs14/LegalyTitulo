@@ -13,6 +13,7 @@ const IESForm = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const apiUrl = process.env.REACT_APP_API_URL;
+  console.log('servidor en produccion:', apiUrl)
   // Manejar cambios en los campos de texto
   const handleChange = (e) => {
     const { name, value } = e.target;
