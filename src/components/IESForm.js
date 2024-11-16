@@ -44,12 +44,11 @@ const IESForm = () => {
 
       // Enviar datos al backend
      // const response = await axios.post('http://localhost:5000/api/ies/create', form, {
-      const response = await axios.post('https://serverlegalyt.onrender.com/ies/create', form,  {
-
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      const response = await fetch(`${apiUrl}/ies/create`, {
+        method: 'POST',
+        body: form,
       });
+
 
       console.log('ruta Ies:', response)
       setMessage(response.data.message);
