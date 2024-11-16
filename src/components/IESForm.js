@@ -13,7 +13,7 @@ const IESForm = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const apiUrl = process.env.REACT_APP_API_URL;
-  console.log('servidor en produccion:', apiUrl)
+
   // Manejar cambios en los campos de texto
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,79 +74,33 @@ const IESForm = () => {
       setLoading(false);
     }
   };
-    
-  
+
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
+    <div>
       <h1>Registro IES</h1>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <label>Nombres</label>
-          <input
-            type="text"
-            name="nombres"
-            value={formData.nombres}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', padding: '8px', margin: '10px 0' }}
-          />
+          <input type="text" name="nombres" value={formData.nombres} onChange={handleChange} required />
         </div>
         <div>
           <label>Apellidos</label>
-          <input
-            type="text"
-            name="apellidos"
-            value={formData.apellidos}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', padding: '8px', margin: '10px 0' }}
-          />
+          <input type="text" name="apellidos" value={formData.apellidos} onChange={handleChange} required />
         </div>
         <div>
           <label>Carrera</label>
-          <input
-            type="text"
-            name="carrera"
-            value={formData.carrera}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', padding: '8px', margin: '10px 0' }}
-          />
+          <input type="text" name="carrera" value={formData.carrera} onChange={handleChange} required />
         </div>
         <div>
           <label>Matrícula</label>
-          <input
-            type="text"
-            name="matricula"
-            value={formData.matricula}
-            onChange={handleChange}
-            required
-            style={{ width: '100%', padding: '8px', margin: '10px 0' }}
-          />
+          <input type="text" name="matricula" value={formData.matricula} onChange={handleChange} required />
         </div>
         <div>
           <label>Documentos</label>
-          <input
-            type="file"
-            name="documentos"
-            multiple
-            onChange={handleFileChange}
-            required
-            style={{ width: '100%', padding: '8px', margin: '10px 0' }}
-          />
+          <input type="file" name="documentos" multiple onChange={handleFileChange} required />
         </div>
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: '10px 20px',
-            backgroundColor: loading ? '#ccc' : '#007BFF',
-            color: 'white',
-            border: 'none',
-            cursor: loading ? 'not-allowed' : 'pointer',
-          }}
-        >
+        <button type="submit" disabled={loading}>
           {loading ? 'Enviando...' : 'Registrar'}
         </button>
       </form>
