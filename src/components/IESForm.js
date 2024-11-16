@@ -27,12 +27,12 @@ const IESForm = () => {
 
     try {
 
-        const response = await axios.post(`${apiUrl}/api/registro-ies`, formData, {   
+      const response = await fetch(`${apiUrl}/api/registro-ies`, {
+        method: 'POST',
+        // No es necesario establecer 'Content-Type', fetch lo manejará automáticamente con FormData
+        body: formData,
+    });
 
-
-
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
       console.log('Registro exitoso:', response.data);
     } catch (error) {
       console.error('Error en el registro:', error);
