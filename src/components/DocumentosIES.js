@@ -2,100 +2,97 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const DocumentosIES = () => {
-  const [universidad, setUniversidad] = useState(''); // Filtro por universidad
-  const [registros, setRegistros] = useState([]); // Datos de las IES
-  const [loading, setLoading] = useState(true); // Estado de carga
-  const [error, setError] = useState(null); // Estado de error
+  const [iesRecords, setIesRecords] = useState([]);
+  const [universidad, setUniversidad] = useState('');
 
-  // Función para obtener los registros de las IES
-  const fetchRegistros = async () => {
-    try {
-      setLoading(true);
-      const response = await axios.get('/api/ies'); // Ajusta el endpoint según tu backend
-      setRegistros(response.data);
-    } catch (err) {
-      setError('Error al cargar los datos.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Llamada inicial para cargar los datos
+  // Obtener los registros desde la API
   useEffect(() => {
-    fetchRegistros();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('/api/ies'); // Ajusta la URL a tu ruta de API
+        setIesRecords(response.data);
+      } catch (error) {
+        console.error('Error al obtener los registros:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Filtrar registros por universidad
   const registrosFiltrados = universidad
-    ? registros.filter((registro) => registro.universidad === universidad)
-    : registros;
+    ? iesRecords.filter((record) => record.universidad === universidad)
+    : iesRecords;
+
+  // Estilo para las imágenes de los documentos
+  const styles = {
+    documentImage: {
+      maxWidth: '100px', // Tamaño máximo de las imágenes
+      margin: '5px',
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+    },
+  };
 
   return (
     <div>
-      <h1>Documentos de IES</h1>
-
-      {/* Campo para seleccionar la universidad */}
+      <h1>Documentos IES</h1>
       <div>
-        <label htmlFor="universidad">Filtrar por universidad:</label>
-        <input
-          type="text"
+        <label htmlFor="universidad">Filtrar por Universidad:</label>
+        <select
           id="universidad"
           value={universidad}
           onChange={(e) => setUniversidad(e.target.value)}
-          placeholder="Escribe el nombre de la universidad"
-        />
+        >
+          <option value="">Selecciona una universidad</option>
+          {Array.from(new Set(iesRecords.map((record) => record.universidad))).map(
+            (uni, index) => (
+              <option key={index} value={uni}>
+                {uni}
+              </option>
+            )
+          )}
+        </select>
       </div>
 
-      {/* Mostrar mensaje de carga */}
-      {loading && <p>Cargando registros...</p>}
-
-      {/* Mostrar mensaje de error */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {/* Mostrar los registros */}
-      {!loading && !error && (
-        <table>
-          <thead>
-            <tr>
-              <th>Nombres</th>
-              <th>Apellidos</th>
-              <th>Carrera</th>
-              <th>Matrícula</th>
-              <th>Universidad</th>
-              <th>Documentos</th>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Carrera</th>
+            <th>Matricula</th>
+            <th>Universidad</th>
+            <th>Documentos</th>
+          </tr>
+        </thead>
+        <tbody>
+          {registrosFiltrados.map((record) => (
+            <tr key={record.matricula}>
+              <td>{record.nombres}</td>
+              <td>{record.apellidos}</td>
+              <td>{record.carrera}</td>
+              <td>{record.matricula}</td>
+              <td>{record.universidad}</td>
+              <td>
+                <strong>Documentos:</strong>
+                {Array.isArray(record.documentos) && record.documentos.length > 0 ? (
+                  record.documentos.map((doc, i) => (
+                    <img
+                      key={i}
+                      src={doc}
+                      alt={`Documento ${i + 1}`}
+                      style={styles.documentImage}
+                    />
+                  ))
+                ) : (
+                  <span>No hay documentos disponibles</span>
+                )}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-  {registrosFiltrados.map((registro) => (
-    <tr key={registro.matricula}>
-      <td>{registro.nombres}</td>
-      <td>{registro.apellidos}</td>
-      <td>{registro.carrera}</td>
-      <td>{registro.matricula}</td>
-      <td>{registro.universidad}</td>
-      <td>
-        {registro.documentos.length > 0 ? (
-          registro.documentos.map((doc, index) => (
-            <a key={index} href={doc} target="_blank" rel="noopener noreferrer">
-              Documento {index + 1}
-            </a>
-          ))
-        ) : (
-          <span>No hay documentos</span>
-        )}
-      </td>
-    </tr>
-  ))}
-</tbody>
-
-
-        </table>
-      )}
-
-      {/* Mostrar mensaje si no hay registros */}
-      {!loading && !error && registrosFiltrados.length === 0 && (
-        <p>No se encontraron registros para esta universidad.</p>
-      )}
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
