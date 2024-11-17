@@ -96,7 +96,7 @@ const DocumentosIES = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Universidades</h2>
+      <h2>Documentos de las IES</h2>
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
           <div
@@ -137,27 +137,44 @@ const DocumentosIES = () => {
               </select>
             </label>
             <div style={styles.recordsContainer}>
-              {filteredRecords.length > 0 ? (
-                filteredRecords.map((record, index) => (
-                  <div key={index} style={styles.recordCard}>
-                    <p>
-                      <strong>Nombres:</strong> {record.nombres}
-                    </p>
-                    <p>
-                      <strong>Apellidos:</strong> {record.apellidos}
-                    </p>
-                    <p>
-                      <strong>Carrera:</strong> {record.carrera}
-                    </p>
-                    <p>
-                      <strong>Matrícula:</strong> {record.matricula}
-                    </p>
-                  </div>
-                ))
-              ) : (
-                <p>No se encontraron registros para esta universidad.</p>
-              )}
-            </div>
+  {filteredRecords.length > 0 ? (
+    filteredRecords.map((record, index) => (
+      <div key={index} style={styles.recordCard}>
+        <p>
+          <strong>Nombres:</strong> {record.nombres}
+        </p>
+        <p>
+          <strong>Apellidos:</strong> {record.apellidos}
+        </p>
+        <p>
+          <strong>Carrera:</strong> {record.carrera}
+        </p>
+        <p>
+          <strong>Matrícula:</strong> {record.matricula}
+        </p>
+        {/* Agregando documentos */}
+        <div>
+          <strong>Documentos:</strong>
+          {record.documentos && record.documentos.length > 0 ? (
+            record.documentos.map((doc, i) => (
+              <img
+                key={i}
+                src={doc}
+                alt={`Documento ${i + 1}`}
+                style={styles.documentImage}
+              />
+            ))
+          ) : (
+            <p>No hay documentos disponibles.</p>
+          )}
+        </div>
+      </div>
+    ))
+  ) : (
+    <p>No se encontraron registros para esta universidad.</p>
+  )}
+</div>
+
           </div>
         </div>
       )}
@@ -219,6 +236,12 @@ const styles = {
       overflowY: 'auto',
       position: 'relative',
     },
+    documentImage: {
+        width: "100px",
+        height: "100px",
+        objectFit: "cover",
+        margin: "8px 0",
+      },
     closeButton: {
       position: 'absolute',
       top: '10px',
