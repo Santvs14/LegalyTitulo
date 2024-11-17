@@ -570,152 +570,109 @@ useEffect(() => {
     ))}
 </div>
 
+{selectedSolicitud && (
+  <div style={styles.modalFullScreen} onClick={handleCloseSolicitudModal}>
+    <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+      <h2 style={styles.header}>Detalles de Solicitud</h2>
+      <p style={styles.paragraph}><strong>Nombre:</strong> {selectedSolicitud.nombre} {selectedSolicitud.apellido}</p>
+      <p style={styles.paragraph}><strong>Cédula:</strong> {selectedSolicitud.cedula}</p>
+      <p style={styles.paragraph}><strong>Email:</strong> {selectedSolicitud.email}</p>
+      <p style={styles.paragraph}><strong>Universidad:</strong> {selectedSolicitud.universidad}</p>
+      <p style={styles.paragraph}><strong>Matricula:</strong> {selectedSolicitud.matricula}</p>
+      <p style={styles.paragraph}><strong>Carrera:</strong> {selectedSolicitud.carrera}</p>
+      <p style={styles.paragraph}><strong>Estado:</strong> {selectedSolicitud.estado}</p>
 
-            {/* Modal para mostrar la solicitud seleccionada */}
-            {selectedSolicitud && (
-                <div style={styles.modalFullScreen} onClick={handleCloseSolicitudModal}>
-                    <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                        <h2>Detalles de Solicitud</h2>
-                        <p><strong>Nombre:</strong> {selectedSolicitud.nombre} {selectedSolicitud.apellido}</p>
-                        <p><strong>Cédula:</strong> {selectedSolicitud.cedula}</p>
-                        <p><strong>Email:</strong> {selectedSolicitud.email}</p>
-                        <p><strong>Universidad:</strong> {selectedSolicitud.universidad}</p>
-                        <p><strong>Matricula:</strong> {selectedSolicitud.matricula}</p>
-                        <p><strong>Carrera:</strong> {selectedSolicitud.carrera}</p>
-                        <p><strong>Estado:</strong> {selectedSolicitud.estado}</p>
-
-                        <div style={styles.imagesContainer}>
-                            <h4>Comprobante de pago:</h4>
-                            {selectedSolicitud.archivos && selectedSolicitud.archivos.map((archivo, index) => (
-                                <img 
-                                    key={index} 
-                                    src={archivo} 
-                                    alt="Archivo subido" 
-                                    style={styles.image} 
-                                    onClick={() => window.open(archivo)} // Abre la imagen en nueva pestaña
-                                />
-                            ))}
-                        </div>
-
-                        <div style={styles.imagesContainer}>
-                            <h4>Documentos:</h4>
-                            {selectedSolicitud.documentos && selectedSolicitud.documentos.map((documento, index) => (
-                                <img 
-                                    key={index} 
-                                    src={documento} 
-                                    alt="Documento subido" 
-                                    style={styles.image} 
-                                    onClick={() => window.open(documento)} // Abre la imagen en nueva pestaña
-                                />
-                            ))}
-                        </div>
-
-                        <div style={styles.signatureContainer}>
-                                  {/* Botón para abrir el modal DocumentosIES */}
-      <div style={styles.buttonContainer}>
-      <h3 style={{display:'flex',flexDirection:'column',alignItems:'flex-end'}}>Paso 1:</h3>
-        <button onClick={handleOpenModal} style={styles.IESButton}>
-          DocumentoIES
-        </button>
+      <div style={styles.imagesContainer}>
+        <h4>Comprobante de pago:</h4>
+        {selectedSolicitud.archivos && selectedSolicitud.archivos.map((archivo, index) => (
+          <img
+            key={index}
+            src={archivo}
+            alt="Archivo subido"
+            style={styles.image}
+            onClick={() => window.open(archivo)} // Abre la imagen en nueva pestaña
+          />
+        ))}
       </div>
-      
-      {/* Modal DocumentosIES */}
-      {showDocumentosIESModal && (
-        <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
-          <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <h3>DocumentoIES</h3>
-            {relatedRecord ? (
-              <div>
-                <p>
-                  <strong>Nombres:</strong> {relatedRecord.nombres}
-                </p>
-                <p>
-                  <strong>Apellidos:</strong> {relatedRecord.apellidos}
-                </p>
-                <p>
-                  <strong>Carrera:</strong> {relatedRecord.carrera}
-                </p>
-                <p>
-                  <strong>Matrícula:</strong> {relatedRecord.matricula}
-                </p>
-                <div>
-                  <strong>Documentos:</strong>
-                  {relatedRecord.documentos && relatedRecord.documentos.length > 0 ? (
-                    relatedRecord.documentos.map((doc, index) => (
-                      <img
-                        key={index}
-                        src={doc}
-                        alt={`Documento ${index + 1}`}
-                        style={styles.documentImage}
-                        onClick={() => window.open(doc)}
-                      />
-                    ))
-                  ) : (
-                    <p>No hay documentos disponibles.</p>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <p>No se encontró un registro relacionado con esta matrícula.</p>
-            )}
-            <button onClick={() => setShowDocumentosIESModal(false)} style={styles.closeButton}>
-              Cerrar
-            </button>
-          </div>
+
+      <div style={styles.imagesContainer}>
+        <h4>Documentos:</h4>
+        {selectedSolicitud.documentos && selectedSolicitud.documentos.map((documento, index) => (
+          <img
+            key={index}
+            src={documento}
+            alt="Documento subido"
+            style={styles.image}
+            onClick={() => window.open(documento)} // Abre la imagen en nueva pestaña
+          />
+        ))}
+      </div>
+
+      <div style={styles.signatureContainer}>
+        <div style={styles.buttonContainer}>
+          <h3 style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>Paso 1:</h3>
+          <button onClick={handleOpenModal} style={styles.IESButton}>
+            DocumentoIES
+          </button>
         </div>
-      )}
-    
 
-                            <h2>Paso 2: Firma Digital</h2>
-
-
-                        {/* Nuevo botón para generar certificado */}
-                        <div style={styles.certificadoContainer}>
-                <p>Paso 3: Si aprobara la solicitud, genere un certificado y luego aprueve.</p>
-                <button onClick={() => generarCerti(selectedSolicitud._id)}>Generar Certificado</button>
-
-                  
-            </div>
-
-
-
-
-
-                            {signature ? (
-                                <img src={signature} alt="Firma" style={styles.signatureImage} />
-                            ) : (
-                                <>
-                                    {isSigning ? (
-                                        <SignatureCanvas
-                                            penColor='black'
-                                            canvasProps={{ width: 500, height: 200, className: 'signatureCanvas' }}
-                                            ref={signaturePadRef}
-                                        />
-                                    ) : (
-                                        <FaPen 
-                                            onClick={() => setIsSigning(true)} 
-                                            style={styles.penIcon} 
-                                        />
-                                    )}
-                                    <div>
-                                        <button onClick={clearSignature} style={styles.clearButton}>Limpiar Firma</button>
-                                        <button onClick={saveSignature} style={styles.saveButton}>Guardar Firma</button>
-                                    </div>
-                                </>
-                            )}
-                            
-                        </div>
-
-                        <div style={styles.buttonContainer}>
-                            <button onClick={handleAprobar} style={styles.approveButton}>Aprobar</button>
-                            <button onClick={handleDeclinar} style={styles.declineButton}>Declinar</button>
-                        </div>
-                        
-
-                        <button onClick={handleCloseSolicitudModal} style={styles.closeButton}>Cerrar</button>
-                    </div>
+        {/* Modal DocumentosIES */}
+        {showDocumentosIESModal && (
+          <div style={styles.modalOverlay} onClick={handleCloseIESModal}>
+            <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+              <h3>DocumentoIES</h3>
+              {relatedRecord ? (
+                <div>
+                  <p><strong>Nombres:</strong> {relatedRecord.nombres}</p>
+                  <p><strong>Apellidos:</strong> {relatedRecord.apellidos}</p>
+                  <p><strong>Carrera:</strong> {relatedRecord.carrera}</p>
+                  <p><strong>Matrícula:</strong> {relatedRecord.matricula}</p>
                 </div>
-            )}
+              ) : (
+                <p>No hay información disponible.</p>
+              )}
+              <button onClick={handleCloseIESModal} style={styles.closeButton}>Cerrar</button>
+            </div>
+          </div>
+        )}
+
+        {/* Firma */}
+        <h3>Firma Digital:</h3>
+        <div>
+          {signature ? (
+            <img src={signature} alt="Firma guardada" style={styles.signatureImage} />
+          ) : (
+            <>
+              {isSigning ? (
+                <div>
+                  <SignatureCanvas
+                    ref={signaturePadRef}
+                    penColor="black"
+                    canvasProps={{ width: 500, height: 200, className: 'signature-canvas', style: styles.signatureCanvas }}
+                  />
+                  <div style={styles.buttonContainer}>
+                    <button onClick={clearSignature} style={styles.clearButton}>Borrar</button>
+                    <button onClick={saveSignature} style={styles.saveButton}>Guardar</button>
+                  </div>
+                </div>
+              ) : (
+                <button onClick={() => setIsSigning(true)} style={styles.penIcon}><FaPen /></button>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Botones para aprobar o declinar */}
+      <div style={styles.buttonContainer}>
+        <button onClick={handleAprobar} style={styles.approveButton}>Aceptar</button>
+        <button onClick={handleDeclinar} style={styles.declineButton}>Declinar</button>
+      </div>
+    </div>
+  </div>
+)}
+
+
         </div>
 
 
@@ -768,13 +725,7 @@ const styles = {
         fontSize: '14px',
         color: '#555',
     },
-    documentImage: {
-        maxWidth: '100px',
-        maxHeight: '100px',
-        margin: '5px',
-        cursor: 'pointer',
-      },
-
+    
 
     backButton: {
         padding: '10px',
@@ -883,59 +834,20 @@ const styles = {
         maxWidth: '1000px',
         position: 'relative',
     },
-    universitySection: {
-        margin: '20px',
+    header: {
+        fontSize: '1.5rem',
+        fontWeight: 'bold',
+        marginBottom: '10px',
         textAlign: 'center',
-        
-
-    },
-    IESButton: {
-        backgroundColor: '#007BFF',
-        color: '#FFF',
-        padding: '10px 15px',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        border: 'none',
-    },
-    universityButton: {
-        padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        backgroundColor: '#007BFF',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-    },
-    modalOverlay: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        
-    },
-//dentro de la solicitud
-    closeButton: {
-        marginTop: '10px',
-        backgroundColor: '#ff4747',
-        color: '#fff',
-        padding: '5px 10px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-
-
-    },
-
-
-
-
-
-    imagesContainer: {
+      },
+      paragraph: {
+        fontSize: '1rem',
+        marginBottom: '10px',
+      },
+      strong: {
+        fontWeight: 'bold',
+      },
+      imagesContainer: {
         margin: '20px 0',
     },
     image: {
@@ -947,37 +859,147 @@ const styles = {
     signatureContainer: {
         margin: '16px 0',
     },
-    signatureImage: {
-        width: '123px',
-        height: 'auto',
-    },
     buttonContainer: {
         display: 'flex',
         justifyContent: 'space-between',
         marginTop: '25px',
     },
-    approveButton: {
-        backgroundColor: 'green',
+
+    IESButton: {
+        backgroundColor: '#007BFF',
         color: '#FFF',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '4px',
+        padding: '10px 15px',
+        borderRadius: '5px',
         cursor: 'pointer',
-    },
-    declineButton: {
-        backgroundColor: 'red',
-        color: '#FFF',
-        padding: '10px 20px',
         border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
     },
-    clearButton: {
+    closeButton: {
+        marginTop: '10px',
+        backgroundColor: '#ff4747',
+        color: '#fff',
+        padding: '5px 10px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+
+
+    },
+    certificadoContainer: {
+        marginTop: '20px',
+        padding: '15px',
+        border: '1px solid #eee',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9',
+      },
+      penIcon: {
+        fontSize: '2rem',
+        color: '#000',
+        cursor: 'pointer',
+        marginTop: '10px',
+      },
+
+      signatureImage: {
+        maxWidth: '100%',
+        borderRadius: '8px',
+      },
+      clearButton: {
+        backgroundColor: '#f44336',
+        color: '#fff',
+        padding: '10px 15px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
         marginRight: '10px',
+        fontSize: '1rem',
+        transition: 'background-color 0.3s',
+      },
+      saveButton: {
+        backgroundColor: '#4CAF50',
+        color: '#fff',
+        padding: '10px 15px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '1rem',
+        transition: 'background-color 0.3s',
+      },
+
+      approveButton: {
+        backgroundColor: '#4CAF50',
+        color: '#fff',
+        padding: '12px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '1.1rem',
+        transition: 'background-color 0.3s',
+      },
+      declineButton: {
+        backgroundColor: '#FF6347',
+        color: '#fff',
+        padding: '12px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '1.1rem',
+        transition: 'background-color 0.3s',
+      },
+      modalOverlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 999,
+        padding: '20px',
+      },
+      documentImage: {
+        maxWidth: '100px',
+        maxHeight: '100px',
+        margin: '5px',
+        cursor: 'pointer',
+      },
+      signatureCanvas: {
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        marginTop: '20px',
+      },
+
+    universitySection: {
+        margin: '20px',
+        textAlign: 'center',
+        
+
     },
-    saveButton: {
-        marginLeft: '10px',
+
+    universityButton: {
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        backgroundColor: '#007BFF',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
     },
+    
+//dentro de la solicitud
+  
+
+
+
+
+
+
+
+   
+
+   
+    
+   
     pagination: {
         marginTop: '20px',
         display: 'flex',
@@ -994,11 +1016,7 @@ const styles = {
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
     },
-    penIcon: {
-        cursor: 'pointer',
-        marginTop: '10px',
-        fontSize: '24px',
-    },
+    
 };
 
 export default AdminWelcomePage;
