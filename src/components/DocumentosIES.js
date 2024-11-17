@@ -109,27 +109,30 @@ const DocumentosIES = () => {
                 <h1 style={styles.title}>Documentos de las IES</h1>
             </header>
 
-
+            <br></br>
+            <br></br>
       <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
 <br></br>
 <br></br>
 <br></br>
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
+            
           <div
             key={index}
             style={styles.universityCard}
             onClick={() => openModal(university)}
           >
+                        <span style={styles.solicitudFecha}>
+                    {new Date().toLocaleDateString('es-ES')} {/* Muestra la fecha del sistema */}
+                </span>
             <img
               src={logos[university]}
               alt={university}
               style={styles.universityLogo}
             />
             <p style={styles.universityName}>{university}</p>
-            <span style={styles.solicitudFecha}>
-                    {new Date().toLocaleDateString('es-ES')} {/* Muestra la fecha del sistema */}
-                </span>
+
 
           </div>
           
