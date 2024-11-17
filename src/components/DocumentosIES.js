@@ -96,10 +96,7 @@ const DocumentosIES = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.banner}>
-        <h2>Documentos de las IES</h2>
-      </div>
-
+      <h2>Documentos de las IES</h2>
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
           <div
@@ -140,43 +137,44 @@ const DocumentosIES = () => {
               </select>
             </label>
             <div style={styles.recordsContainer}>
-              {filteredRecords.length > 0 ? (
-                filteredRecords.map((record, index) => (
-                  <div key={index} style={styles.recordCard}>
-                    <p>
-                      <strong>Nombres:</strong> {record.nombres}
-                    </p>
-                    <p>
-                      <strong>Apellidos:</strong> {record.apellidos}
-                    </p>
-                    <p>
-                      <strong>Carrera:</strong> {record.carrera}
-                    </p>
-                    <p>
-                      <strong>Matrícula:</strong> {record.matricula}
-                    </p>
-                    {/* Agregando documentos */}
-                    <div>
-                      <strong>Documentos:</strong>
-                      {record.documentos && record.documentos.length > 0 ? (
-                        record.documentos.map((doc, i) => (
-                          <img
-                            key={i}
-                            src={doc}
-                            alt={`Documento ${i + 1}`}
-                            style={styles.documentImage}
-                          />
-                        ))
-                      ) : (
-                        <p>No hay documentos disponibles.</p>
-                      )}
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p>No se encontraron registros para esta universidad.</p>
-              )}
-            </div>
+  {filteredRecords.length > 0 ? (
+    filteredRecords.map((record, index) => (
+      <div key={index} style={styles.recordCard}>
+        <p>
+          <strong>Nombres:</strong> {record.nombres}
+        </p>
+        <p>
+          <strong>Apellidos:</strong> {record.apellidos}
+        </p>
+        <p>
+          <strong>Carrera:</strong> {record.carrera}
+        </p>
+        <p>
+          <strong>Matrícula:</strong> {record.matricula}
+        </p>
+        {/* Agregando documentos */}
+        <div>
+          <strong>Documentos:</strong>
+          {record.documentos && record.documentos.length > 0 ? (
+            record.documentos.map((doc, i) => (
+              <img
+                key={i}
+                src={doc}
+                alt={`Documento ${i + 1}`}
+                style={styles.documentImage}
+              />
+            ))
+          ) : (
+            <p>No hay documentos disponibles.</p>
+          )}
+        </div>
+      </div>
+    ))
+  ) : (
+    <p>No se encontraron registros para esta universidad.</p>
+  )}
+</div>
+
           </div>
         </div>
       )}
@@ -186,110 +184,99 @@ const DocumentosIES = () => {
 
 // Estilos básicos
 const styles = {
-  container: {
-    padding: '1rem',
-  },
-  banner: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#1a1a1a',
-    padding: '10px 20px',
-    color: '#FFF',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-  },
-  universityContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
-    marginTop: '1rem',
-  },
-  universityCard: {
-    padding: '0.5rem', // Reducir el padding
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-    cursor: 'pointer',
-    flex: '1 1 calc(25% - 1rem)', // Ajustar tamaño a 25% del ancho
-    textAlign: 'center',
-    fontWeight: 'bold',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    transition: 'transform 0.2s',
-    maxWidth: '150px', // Limitar el ancho máximo
-  },
-  universityLogo: {
-    width: '60px', // Reducir tamaño del logo
-    height: '60px', // Reducir tamaño del logo
-    marginBottom: '0.5rem',
-  },
-  universityName: {
-    fontSize: '0.875rem', // Reducir tamaño del texto
-    color: '#333',
-  },
-  modal: {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: '1000',
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: '2rem',
-    borderRadius: '5px',
-    width: '90%',
-    maxHeight: '153%',
-    overflowY: 'auto',
-    position: 'relative',
-  },
-  documentImage: {
-    width: "100px",
-    height: "100px",
-    objectFit: "cover",
-    margin: "8px 0",
-  },
-  closeButton: {
-    position: 'absolute',
-    top: '10px',
-    right: '20px',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '1rem',
-  },
-  select: {
-    width: '100%',
-    padding: '0.5rem',
-    marginTop: '0.25rem',
-    marginBottom: '1rem',
-    borderRadius: '3px',
-    border: '1px solid #ccc',
-  },
-  recordsContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
-    marginTop: '1rem',
-  },
-  recordCard: {
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-    width: '48%',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  },
-};
+    container: {
+      padding: '1rem',
+    },
+    universityContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '1rem',
+      marginTop: '1rem',
+    },
+    universityCard: {
+      padding: '0.5rem', // Reducir el padding
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+      backgroundColor: '#f9f9f9',
+      cursor: 'pointer',
+      flex: '1 1 calc(25% - 1rem)', // Ajustar tamaño a 25% del ancho
+      textAlign: 'center',
+      fontWeight: 'bold',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      transition: 'transform 0.2s',
+      maxWidth: '150px', // Limitar el ancho máximo
+    },
+    universityLogo: {
+      width: '60px', // Reducir tamaño del logo
+      height: '60px', // Reducir tamaño del logo
+      marginBottom: '0.5rem',
+    },
+    universityName: {
+      fontSize: '0.875rem', // Reducir tamaño del texto
+      color: '#333',
+    },
+    modal: {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: '1000',
+    },
+    modalContent: {
+      backgroundColor: '#fff',
+      padding: '2rem',
+      borderRadius: '5px',
+      width: '90%',
+      maxHeight: '153%',
+      overflowY: 'auto',
+      position: 'relative',
+    },
+    documentImage: {
+        width: "100px",
+        height: "100px",
+        objectFit: "cover",
+        margin: "8px 0",
+      },
+    closeButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '20px',
+      fontSize: '24px',
+      fontWeight: 'bold',
+      cursor: 'pointer',
+    },
+    label: {
+      display: 'block',
+      marginBottom: '1rem',
+    },
+    select: {
+      width: '100%',
+      padding: '0.5rem',
+      marginTop: '0.25rem',
+      marginBottom: '1rem',
+      borderRadius: '3px',
+      border: '1px solid #ccc',
+    },
+    recordsContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '1rem',
+      marginTop: '1rem',
+    },
+    recordCard: {
+      padding: '1rem',
+      border: '1px solid #ccc',
+      borderRadius: '5px',
+      backgroundColor: '#f9f9f9',
+      flex: '1 1 calc(33.33% - 1rem)',
+      boxSizing: 'border-box',
+    },
+  };
+  
 
 export default DocumentosIES;
