@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'; // Importa useHistory si usas React Router
 
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
@@ -8,6 +9,9 @@ const DocumentosIES = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
+  
+  // Usando useHistory para regresar a la página anterior
+  const history = useHistory();
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -56,6 +60,11 @@ const DocumentosIES = () => {
     setFilteredRecords([]);
     setSelectedUniversity('');
     setSelectedCareer('');
+  };
+
+  // Function to go back to the previous page
+  const handleGoBack = () => {
+    history.goBack(); // Navigate to the previous page
   };
 
   // Extract unique universities and careers
@@ -136,6 +145,10 @@ const DocumentosIES = () => {
                 <p>No se encontraron registros para esta universidad y carrera.</p>
               )}
             </div>
+            {/* Button to go back */}
+            <button onClick={handleGoBack} style={styles.backButton}>
+              Regresar
+            </button>
           </div>
         </div>
       )}
@@ -167,6 +180,15 @@ const styles = {
     backgroundColor: '#28a745',
     color: '#fff',
     cursor: 'pointer',
+  },
+  backButton: {
+    padding: '0.75rem 1.5rem',
+    border: 'none',
+    borderRadius: '3px',
+    backgroundColor: '#dc3545',
+    color: '#fff',
+    cursor: 'pointer',
+    marginTop: '1rem',
   },
   modal: {
     position: 'fixed',
