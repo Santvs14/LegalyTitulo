@@ -27,12 +27,14 @@ const ies = {
 
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
+  const [files, setFiles] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   // Obtener los registros desde la API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/ies'); // Ajusta la URL a tu ruta de API
+        const response = await axios.get(`${apiUrl}/api/ies`);
         setIesRecords(response.data);
       } catch (error) {
         console.error('Error al obtener los registros:', error);
@@ -40,7 +42,7 @@ const DocumentosIES = () => {
     };
 
     fetchData();
-  }, []);
+  }, [apiUrl]);
 
   // Estilo para las tarjetas y las imágenes
   const styles = {
@@ -63,7 +65,9 @@ const DocumentosIES = () => {
       marginRight: '10px',
     }
   };
-
+  const data = new FormData();
+  Object.keys().forEach((key) => data.append(key));
+  Array.from(files).forEach((file) => data.append('documentos', file));
   return (
     <div>
       <h1>Documentos IES</h1>
@@ -85,20 +89,19 @@ const DocumentosIES = () => {
             />
           )}
 
-          {/* Verificar si record.documentos es un array antes de mapear */}
-          {Array.isArray(record.documentos) && record.documentos.length > 0 && (
-            <div>
-              <strong>Documentos:</strong>
-              {record.documentos.map((doc, i) => (
-                <img
-                  key={i}
-                  src={doc}
-                  alt={`Documento ${i + 1}`}
-                  style={styles.documentImage}
-                />
-              ))}
-            </div>
-          )}
+             {record.documentos && (
+              <div>
+                <strong>Documentos:</strong>
+                {record.documentos.map((doc, i) => (
+                  <img
+                    key={i}
+                    src={doc}
+                    alt={`Documento ${i + 1}`}
+                    style={styles.documentImage}
+                  />
+                ))}
+              </div>
+            )}
         </div>
       ))}
     </div>
