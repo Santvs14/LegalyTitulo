@@ -24,8 +24,16 @@ const DocumentosIES = () => {
     ? iesRecords.filter((record) => record.universidad === universidad)
     : iesRecords;
 
-  // Estilo para las imágenes de los documentos
+  // Estilo para las tarjetas y las imágenes
   const styles = {
+    recordCard: {
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      padding: '16px',
+      marginBottom: '16px',
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+      maxWidth: '500px',
+    },
     documentImage: {
       maxWidth: '100px', // Tamaño máximo de las imágenes
       margin: '5px',
@@ -55,44 +63,28 @@ const DocumentosIES = () => {
         </select>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Carrera</th>
-            <th>Matricula</th>
-            <th>Universidad</th>
-            <th>Documentos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {registrosFiltrados.map((record) => (
-            <tr key={record.matricula}>
-              <td>{record.nombres}</td>
-              <td>{record.apellidos}</td>
-              <td>{record.carrera}</td>
-              <td>{record.matricula}</td>
-              <td>{record.universidad}</td>
-              <td>
-                <strong>Documentos:</strong>
-                {Array.isArray(record.documentos) && record.documentos.length > 0 ? (
-                  record.documentos.map((doc, i) => (
-                    <img
-                      key={i}
-                      src={doc}
-                      alt={`Documento ${i + 1}`}
-                      style={styles.documentImage}
-                    />
-                  ))
-                ) : (
-                  <span>No hay documentos disponibles</span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {registrosFiltrados.map((record, index) => (
+        <div key={index} style={styles.recordCard}>
+          <p><strong>Nombres:</strong> {record.nombres}</p>
+          <p><strong>Apellidos:</strong> {record.apellidos}</p>
+          <p><strong>Carrera:</strong> {record.carrera}</p>
+          <p><strong>Matrícula:</strong> {record.matricula}</p>
+          <p><strong>Universidad:</strong> {record.universidad}</p>
+          {record.documentos && record.documentos.length > 0 && (
+            <div>
+              <strong>Documentos:</strong>
+              {record.documentos.map((doc, i) => (
+                <img
+                  key={i}
+                  src={doc}
+                  alt={`Documento ${i + 1}`}
+                  style={styles.documentImage}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
