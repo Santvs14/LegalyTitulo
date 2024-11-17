@@ -111,10 +111,10 @@ const DocumentosIES = () => {
 
             <br></br>
             <br></br>
+<br></br>
+<br></br>
       <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
-<br></br>
-<br></br>
-<br></br>
+
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
             
@@ -123,9 +123,7 @@ const DocumentosIES = () => {
             style={styles.universityCard}
             onClick={() => openModal(university)}
           >
-                        <span style={styles.solicitudFecha}>
-                    {new Date().toLocaleDateString('es-ES')} {/* Muestra la fecha del sistema */}
-                </span>
+
             <img
               src={logos[university]}
               alt={university}
