@@ -11,20 +11,19 @@ import inteLogo from '../image/INTEC.png';
 import utesaLogo from '../image/UTESA.png';
 import unicariLogo from '../image/unicaribe.png';
 
-
 // Imágenes de universidades
 const ies = {
-    "Universidad Nacioanal(UNPHU)": unphuLogo,
-    "Universidad Dominicana O&M": oymLogo,
-    "Universidad Católica Santo Domingo(UCSD)": ucsdLogo,
-    "Universidad Católica Madre y Maestra (PUCMM)": pucmmLogo,
-    "Universidad Autónoma de Santo Domingo(UASD)": uasLogo,
-    "Universidad Iberoamericana(UNIBE)": unibeLogo,
-    "Universidad APEC": apecLogo,
-    "Instituto Tecnológico de Santo Domingo(INTEC)": inteLogo,
-    "Universidad Tecnológica de Santiago(UTESA)": utesaLogo,
-    "Universidad del Caribe (UNICARIBE)": unicariLogo
-};          
+  "Universidad Nacioanal(UNPHU)": unphuLogo,
+  "Universidad Dominicana O&M": oymLogo,
+  "Universidad Católica Santo Domingo(UCSD)": ucsdLogo,
+  "Universidad Católica Madre y Maestra (PUCMM)": pucmmLogo,
+  "Universidad Autónoma de Santo Domingo(UASD)": uasLogo,
+  "Universidad Iberoamericana(UNIBE)": unibeLogo,
+  "Universidad APEC": apecLogo,
+  "Instituto Tecnológico de Santo Domingo(INTEC)": inteLogo,
+  "Universidad Tecnológica de Santiago(UTESA)": utesaLogo,
+  "Universidad del Caribe (UNICARIBE)": unicariLogo
+};
 
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
@@ -86,7 +85,8 @@ const DocumentosIES = () => {
             />
           )}
 
-          {record.documentos && record.documentos.length > 0 && (
+          {/* Verificar si record.documentos es un array antes de mapear */}
+          {Array.isArray(record.documentos) && record.documentos.length > 0 && (
             <div>
               <strong>Documentos:</strong>
               {record.documentos.map((doc, i) => (
