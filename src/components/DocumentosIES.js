@@ -30,6 +30,8 @@ const DocumentosIES = () => {
   const [selectedCareer, setSelectedCareer] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(5);  // Número de registros por página
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -78,12 +80,10 @@ const DocumentosIES = () => {
     }
   };
 
-  // Obtener universidades únicas
   const universities = Array.from(
     new Set(iesRecords.map(record => record.universidad))
   );
 
-  // Obtener carreras únicas dentro de la universidad seleccionada
   const careers = selectedUniversity
     ? Array.from(
         new Set(
@@ -93,6 +93,13 @@ const DocumentosIES = () => {
         )
       )
     : [];
+
+  // Lógica para paginación
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div style={styles.container}>
@@ -140,8 +147,8 @@ const DocumentosIES = () => {
               </select>
             </label>
             <div style={styles.recordsContainer}>
-              {filteredRecords.length > 0 ? (
-                filteredRecords.map((record, index) => (
+              {currentRecords.length > 0 ? (
+                currentRecords.map((record, index) => (
                   <div key={index} style={styles.recordCard}>
                     <p>
                       <strong>Nombres:</strong> {record.nombres}
@@ -177,6 +184,19 @@ const DocumentosIES = () => {
                 <p>No se encontraron registros para esta universidad.</p>
               )}
             </div>
+
+            {/* Paginación */}
+            <div style={styles.pagination}>
+              {Array.from({ length: Math.ceil(filteredRecords.length / recordsPerPage) }, (_, i) => (
+                <button
+                  key={i + 1}
+                  onClick={() => paginate(i + 1)}
+                  style={styles.pageButton}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
@@ -208,45 +228,44 @@ const styles = {
     marginTop: '1rem',
   },
   universityCard: {
-    padding: '0.5rem', // Reducir el padding
+    padding: '0.5rem', 
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
     cursor: 'pointer',
-    flex: '1 1 calc(25% - 1rem)', // Ajustar tamaño a 25% del ancho
+    flex: '1 1 calc(25% - 1rem)', 
     textAlign: 'center',
     fontWeight: 'bold',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s',
-    maxWidth: '150px', // Limitar el ancho máximo
+    maxWidth: '150px',
   },
   universityLogo: {
-    width: '60px', // Reducir tamaño del logo
-    height: '60px', // Reducir tamaño del logo
+    width: '60px', 
+    height: '60px', 
     marginBottom: '0.5rem',
   },
   universityName: {
-    fontSize: '0.875rem', // Reducir tamaño del texto
+    fontSize: '0.875rem', 
     color: '#333',
   },
   modal: {
     position: 'fixed',
-    top: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: '1000',
+    width: '80%',
+    maxWidth: '900px',
+    padding: '1rem',
+    zIndex: 1000,
   },
   modalContent: {
     backgroundColor: '#fff',
     padding: '2rem',
     borderRadius: '5px',
-    width: '90%',
-    maxHeight: '153%',
+    width: '100%',
+    maxHeight: '500px',
     overflowY: 'auto',
     position: 'relative',
   },
@@ -259,36 +278,43 @@ const styles = {
   closeButton: {
     position: 'absolute',
     top: '10px',
-    right: '20px',
-    fontSize: '24px',
-    fontWeight: 'bold',
+    right: '10px',
+    fontSize: '2rem',
     cursor: 'pointer',
   },
+  pagination: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1rem',
+  },
+  pageButton: {
+    margin: '0 5px',
+    padding: '8px 16px',
+    backgroundColor: '#007BFF',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  },
   label: {
-    display: 'block',
-    marginBottom: '1rem',
+    marginRight: '10px',
   },
   select: {
-    width: '100%',
-    padding: '0.5rem',
-    marginTop: '0.25rem',
-    marginBottom: '1rem',
-    borderRadius: '3px',
+    padding: '8px',
+    borderRadius: '4px',
     border: '1px solid #ccc',
+    backgroundColor: '#fff',
   },
   recordsContainer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '1rem',
     marginTop: '1rem',
   },
   recordCard: {
+    border: '1px solid #ddd',
     padding: '1rem',
-    border: '1px solid #ccc',
+    marginBottom: '1rem',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
-    width: '48%',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
 };
 
