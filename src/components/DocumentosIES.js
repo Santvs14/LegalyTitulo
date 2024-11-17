@@ -1,5 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import unphuLogo from '../image/UNPHU.png';
+import oymLogo from '../image/oym.jpg';
+import ucsdLogo from '../image/UCSD.png';
+import pucmmLogo from '../image/PUMM.png';
+import uasLogo from '../image/uasd.png';
+import unibeLogo from '../image/Unibe.png';
+import apecLogo from '../image/UNAPEC.png';
+import inteLogo from '../image/INTEC.png';
+import utesaLogo from '../image/UTESA.png';
+import unicariLogo from '../image/unicaribe.png';
+
+const logos = {
+  "Universidad Nacioanal(UNPHU)": unphuLogo,
+  "Universidad Dominicana O&M": oymLogo,
+  "Universidad Católica Santo Domingo(UCSD)": ucsdLogo,
+  "Universidad Católica Madre y Maestra (PUCMM)": pucmmLogo,
+  "Universidad Autónoma de Santo Domingo(UASD)": uasLogo,
+  "Universidad Iberoamericana(UNIBE)": unibeLogo,
+  "Universidad APEC": apecLogo,
+  "Instituto Tecnológico de Santo Domingo(INTEC)": inteLogo,
+  "Universidad Tecnológica de Santiago(UTESA)": utesaLogo,
+  "Universidad del Caribe (UNICARIBE)": unicariLogo,
+};
 
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
@@ -81,6 +104,11 @@ const DocumentosIES = () => {
             style={styles.universityCard}
             onClick={() => openModal(university)}
           >
+            <img
+              src={logos[university]}
+              alt={university}
+              style={styles.universityLogo}
+            />
             <p style={styles.universityName}>{university}</p>
           </div>
         ))}
@@ -149,7 +177,7 @@ const styles = {
     marginTop: '1rem',
   },
   universityCard: {
-    padding: '2rem',
+    padding: '1rem',
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
@@ -160,11 +188,13 @@ const styles = {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s',
   },
-  universityCardHover: {
-    transform: 'scale(1.05)',
+  universityLogo: {
+    width: '80px',
+    height: '80px',
+    marginBottom: '0.5rem',
   },
   universityName: {
-    fontSize: '1.2rem',
+    fontSize: '1rem',
     color: '#333',
   },
   modal: {
