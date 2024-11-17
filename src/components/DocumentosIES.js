@@ -30,6 +30,8 @@ const DocumentosIES = () => {
   const [selectedCareer, setSelectedCareer] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(6); // Cambiar este valor ajustará la cantidad de registros por página.
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -51,6 +53,7 @@ const DocumentosIES = () => {
       iesRecords.filter(record => record.universidad === university)
     );
     setModalVisible(true);
+    setCurrentPage(1);
   };
 
   const closeModal = () => {
@@ -78,12 +81,10 @@ const DocumentosIES = () => {
     }
   };
 
-  // Obtener universidades únicas
   const universities = Array.from(
     new Set(iesRecords.map(record => record.universidad))
   );
 
-  // Obtener carreras únicas dentro de la universidad seleccionada
   const careers = selectedUniversity
     ? Array.from(
         new Set(
@@ -93,6 +94,28 @@ const DocumentosIES = () => {
         )
       )
     : [];
+
+  // Lógica de paginación
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredRecords.slice(
+    indexOfFirstRecord,
+    indexOfLastRecord
+  );
+
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -137,8 +160,8 @@ const DocumentosIES = () => {
               </select>
             </label>
             <div style={styles.recordsContainer}>
-              {filteredRecords.length > 0 ? (
-                filteredRecords.map((record, index) => (
+              {currentRecords.length > 0 ? (
+                currentRecords.map((record, index) => (
                   <div key={index} style={styles.recordCard}>
                     <p>
                       <strong>Nombres:</strong> {record.nombres}
@@ -157,6 +180,23 @@ const DocumentosIES = () => {
               ) : (
                 <p>No se encontraron registros para esta universidad.</p>
               )}
+            </div>
+            <div style={styles.pagination}>
+              <button
+                style={styles.paginationButton}
+                onClick={handlePreviousPage}
+                disabled={currentPage === 1}
+              >
+                Anterior
+              </button>
+              <span>Página {currentPage} de {totalPages}</span>
+              <button
+                style={styles.paginationButton}
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages}
+              >
+                Siguiente
+              </button>
             </div>
           </div>
         </div>
@@ -201,8 +241,8 @@ const styles = {
     position: 'fixed',
     top: '0',
     left: '0',
-    width: '70%',
-    height: '70%',
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     display: 'flex',
     justifyContent: 'center',
@@ -211,9 +251,9 @@ const styles = {
   },
   modalContent: {
     backgroundColor: '#fff',
-    padding: '2rem',
+    padding: '1rem',
     borderRadius: '5px',
-    width: '80%',
+    width: '90%',
     maxHeight: '90%',
     overflowY: 'auto',
     position: 'relative',
@@ -242,15 +282,27 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     gap: '1rem',
-    marginTop: '1rem',
   },
   recordCard: {
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    backgroundColor: '#f9f9f9',
-    flex: '1 1 calc(33.33% - 1rem)',
-    boxSizing: 'border-box',
+    border: '1px solid #ddd',
+    padding: '0.5rem',
+    borderRadius: '3px',
+    backgroundColor: '#fdfdfd',
+    width: 'calc(33.33% - 1rem)',
+  },
+  pagination: {
+    marginTop: '1rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  paginationButton: {
+    padding: '0.5rem 1rem',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '3px',
+    cursor: 'pointer',
   },
 };
 
