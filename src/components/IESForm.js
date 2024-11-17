@@ -7,6 +7,7 @@ const IESForm = () => {
     apellidos: '',
     carrera: '',
     matricula: '',
+    universidad: '',
   });
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -56,6 +57,7 @@ const IESForm = () => {
         apellidos: '',
         carrera: '',
         matricula: '',
+        universidad: '',
       });
       setFiles([]);
     } catch (error) {
@@ -115,6 +117,20 @@ const IESForm = () => {
             style={styles.input}
           />
         </label>
+
+        <label style={styles.label}>
+          Universidad:
+          <input
+            type="text"
+            name="universidad"
+            value={formData.universidad}
+            onChange={handleInputChange}
+            required
+            style={styles.input}
+          />
+        </label>
+
+
         <label style={styles.label}>
           Documentos:
           <input
@@ -140,6 +156,7 @@ const IESForm = () => {
             <p><strong>Apellidos:</strong> {record.apellidos}</p>
             <p><strong>Carrera:</strong> {record.carrera}</p>
             <p><strong>Matrícula:</strong> {record.matricula}</p>
+            <p><strong>Universidad:</strong> {record.universidad}</p>
             {record.documentos && (
               <div>
                 <strong>Documentos:</strong>
