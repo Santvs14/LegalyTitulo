@@ -613,12 +613,12 @@ useEffect(() => {
                         <div style={styles.signatureContainer}>
                                   {/* Botón para abrir el modal DocumentosIES */}
       <div style={styles.buttonContainer}>
-      <h3>Paso 1:</h3>
+      <h3 style={{display:'flex',flexDirection:'column',alignItems:'flex-end'}}>Paso 1:</h3>
         <button onClick={handleOpenModal} style={styles.IESButton}>
           DocumentoIES
         </button>
       </div>
-
+      
       {/* Modal DocumentosIES */}
       {showDocumentosIESModal && (
         <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
