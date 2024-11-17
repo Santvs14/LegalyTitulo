@@ -108,32 +108,34 @@ const DocumentosIES = () => {
           <div style={styles.modalContent}>
             <span onClick={handleCloseModal} style={styles.closeButton}>&times;</span>
             <h2>Registros de {selectedUniversity} {selectedCareer && ` - Carrera: ${selectedCareer}`}</h2>
-            {filteredRecords.length > 0 ? (
-              filteredRecords.map((record, index) => (
-                <div key={index} style={styles.recordCard}>
-                  <p><strong>Nombres:</strong> {record.nombres}</p>
-                  <p><strong>Apellidos:</strong> {record.apellidos}</p>
-                  <p><strong>Carrera:</strong> {record.carrera}</p>
-                  <p><strong>Matrícula:</strong> {record.matricula}</p>
-                  <p><strong>Universidad:</strong> {record.universidad}</p>
-                  {record.documentos && (
-                    <div>
-                      <strong>Documentos:</strong>
-                      {record.documentos.map((doc, i) => (
-                        <img
-                          key={i}
-                          src={doc}
-                          alt={`Documento ${i + 1}`}
-                          style={styles.documentImage}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))
-            ) : (
-              <p>No se encontraron registros para esta universidad y carrera.</p>
-            )}
+            <div style={styles.recordsContainer}>
+              {filteredRecords.length > 0 ? (
+                filteredRecords.map((record, index) => (
+                  <div key={index} style={styles.recordCard}>
+                    <p><strong>Nombres:</strong> {record.nombres}</p>
+                    <p><strong>Apellidos:</strong> {record.apellidos}</p>
+                    <p><strong>Carrera:</strong> {record.carrera}</p>
+                    <p><strong>Matrícula:</strong> {record.matricula}</p>
+                    <p><strong>Universidad:</strong> {record.universidad}</p>
+                    {record.documentos && (
+                      <div>
+                        <strong>Documentos:</strong>
+                        {record.documentos.map((doc, i) => (
+                          <img
+                            key={i}
+                            src={doc}
+                            alt={`Documento ${i + 1}`}
+                            style={styles.documentImage}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>No se encontraron registros para esta universidad y carrera.</p>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -182,11 +184,12 @@ const styles = {
     backgroundColor: '#fff',
     padding: '2rem',
     borderRadius: '5px',
-    maxWidth: '90%',
-    maxHeight: '90%',
+    width: '95%',
+    height: '95%',
     overflowY: 'auto',
     position: 'relative',
-    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   closeButton: {
     position: 'absolute',
@@ -196,15 +199,28 @@ const styles = {
     fontWeight: 'bold',
     cursor: 'pointer',
   },
+  recordsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: '1rem',
+    overflowY: 'auto',
+    height: '90%',
+    padding: '1rem',
+  },
   recordCard: {
+    width: 'calc(33.33% - 1rem)',
+    boxSizing: 'border-box',
     marginBottom: '1rem',
     padding: '1rem',
     border: '1px solid #ccc',
     borderRadius: '5px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   documentImage: {
-    maxWidth: '70%',
-    maxHeight: '70px',
+    maxWidth: '100%',
+    maxHeight: '120px',
     display: 'block',
     marginBottom: '0.5rem',
   },
