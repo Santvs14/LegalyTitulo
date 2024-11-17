@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import unphuLogo from '../image/UNPHU.png';
 import oymLogo from '../image/oym.jpg';
 import ucsdLogo from '../image/UCSD.png';
@@ -31,7 +32,7 @@ const DocumentosIES = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchRecords = async () => {
       try {
@@ -94,9 +95,20 @@ const DocumentosIES = () => {
       )
     : [];
 
+
+    const handleGoBack = () => {
+        // Navega a la página anterior
+        navigate('/welcomeAdmin'); // Redirige a la página de bienvenida
+    };
+
+
   return (
     <div style={styles.container}>
       <h2>Documentos de las IES</h2>
+      <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
+<br></br>
+<br></br>
+<br></br>
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
           <div
@@ -192,6 +204,18 @@ const styles = {
       flexWrap: 'wrap',
       gap: '1rem',
       marginTop: '1rem',
+    },
+    backButton: {
+        padding: '10px',
+        fontSize: '16px',
+        backgroundColor: '#39a4cb',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        marginBottom: '3px',
+        alignSelf: 'flex-start',  // Esto moverá el botón al extremo izquierdo
+        marginTop: 43
     },
     universityCard: {
       padding: '0.5rem', // Reducir el padding
