@@ -238,8 +238,8 @@ const styles = {
     borderRadius: '5px',
   },
   documentImage: {
-    maxWidth: '80%',
-    maxHeight: '100px',
+    maxWidth: '70%',
+    maxHeight: '70px',
     display: 'block',
     marginBottom: '0.5rem',
   },
