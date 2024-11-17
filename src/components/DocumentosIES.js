@@ -31,7 +31,7 @@ const DocumentosIES = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(5);  // Número de registros por página
+  const [recordsPerPage] = useState(5);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -53,6 +53,7 @@ const DocumentosIES = () => {
       iesRecords.filter(record => record.universidad === university)
     );
     setModalVisible(true);
+    setCurrentPage(1);  // Reset to first page when opening a modal
   };
 
   const closeModal = () => {
@@ -80,10 +81,22 @@ const DocumentosIES = () => {
     }
   };
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
+
+  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
+
+  // Obtener universidades únicas
   const universities = Array.from(
     new Set(iesRecords.map(record => record.universidad))
   );
 
+  // Obtener carreras únicas dentro de la universidad seleccionada
   const careers = selectedUniversity
     ? Array.from(
         new Set(
@@ -93,13 +106,6 @@ const DocumentosIES = () => {
         )
       )
     : [];
-
-  // Lógica para paginación
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div style={styles.container}>
@@ -187,15 +193,31 @@ const DocumentosIES = () => {
 
             {/* Paginación */}
             <div style={styles.pagination}>
-              {Array.from({ length: Math.ceil(filteredRecords.length / recordsPerPage) }, (_, i) => (
+              {currentPage > 1 && (
                 <button
-                  key={i + 1}
-                  onClick={() => paginate(i + 1)}
+                  onClick={() => handlePageChange(currentPage - 1)}
                   style={styles.pageButton}
                 >
-                  {i + 1}
+                  Anterior
+                </button>
+              )}
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handlePageChange(index + 1)}
+                  style={styles.pageButton}
+                >
+                  {index + 1}
                 </button>
               ))}
+              {currentPage < totalPages && (
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  style={styles.pageButton}
+                >
+                  Siguiente
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -228,93 +250,94 @@ const styles = {
     marginTop: '1rem',
   },
   universityCard: {
-    padding: '0.5rem', 
+    padding: '0.5rem', // Reducir el padding
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
     cursor: 'pointer',
-    flex: '1 1 calc(25% - 1rem)', 
+    flex: '1 1 calc(25% - 1rem)', // Ajustar tamaño a 25% del ancho
     textAlign: 'center',
     fontWeight: 'bold',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s',
-    maxWidth: '150px',
+    maxWidth: '150px', // Limitar el ancho máximo
   },
   universityLogo: {
-    width: '60px', 
-    height: '60px', 
-    marginBottom: '0.5rem',
+    width: '60px', // Reducir tamaño del logo
+    height: 'auto',
+    marginBottom: '10px',
   },
   universityName: {
-    fontSize: '0.875rem', 
-    color: '#333',
+    fontSize: '0.9rem',
   },
   modal: {
     position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    width: '80%',
-    maxWidth: '900px',
-    padding: '1rem',
-    zIndex: 1000,
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: '2rem',
-    borderRadius: '5px',
-    width: '100%',
-    maxHeight: '500px',
-    overflowY: 'auto',
-    position: 'relative',
-  },
-  documentImage: {
-    width: "100px",
-    height: "100px",
-    objectFit: "cover",
-    margin: "8px 0",
-  },
-  closeButton: {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    fontSize: '2rem',
-    cursor: 'pointer',
-  },
-  pagination: {
+    zIndex: 10,
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '1rem',
+    alignItems: 'center',
   },
-  pageButton: {
-    margin: '0 5px',
-    padding: '8px 16px',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
+  modalContent: {
+    backgroundColor: 'white',
+    padding: '20px',
+    borderRadius: '8px',
+    width: '80%',
+    maxHeight: '80%',
+    overflowY: 'auto',
+  },
+  closeButton: {
+    fontSize: '24px',
     cursor: 'pointer',
-    transition: 'background-color 0.3s',
+    position: 'absolute',
+    top: '10px',
+    right: '20px',
   },
   label: {
-    marginRight: '10px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+    display: 'block',
   },
   select: {
+    width: '100%',
     padding: '8px',
+    fontSize: '16px',
     borderRadius: '4px',
-    border: '1px solid #ccc',
-    backgroundColor: '#fff',
+    borderColor: '#ccc',
   },
   recordsContainer: {
-    marginTop: '1rem',
+    marginTop: '20px',
   },
   recordCard: {
+    marginBottom: '10px',
+    padding: '10px',
     border: '1px solid #ddd',
-    padding: '1rem',
-    marginBottom: '1rem',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
+  },
+  documentImage: {
+    width: '100px',
+    height: 'auto',
+    margin: '5px',
+    borderRadius: '5px',
+  },
+  pagination: {
+    marginTop: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  pageButton: {
+    padding: '5px 10px',
+    margin: '0 5px',
+    cursor: 'pointer',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
   },
 };
 
