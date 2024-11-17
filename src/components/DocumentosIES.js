@@ -128,6 +128,7 @@ const DocumentosIES = () => {
               src={logos[university]}
               alt={university}
               style={styles.universityLogo}
+              
             />
             <p style={styles.universityName}>{university}</p>
 
@@ -185,6 +186,7 @@ const DocumentosIES = () => {
                 src={doc}
                 alt={`Documento ${i + 1}`}
                 style={styles.documentImage}
+                onClick={() => window.open(documento)} // Abre la imagen en nueva pestaña
               />
             ))
           ) : (
