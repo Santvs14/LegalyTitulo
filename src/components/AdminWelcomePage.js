@@ -43,6 +43,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
     const [contadorSolicitudes, setContadorSolicitudes] = useState(0);
     const [selectedUniversity, setSelectedUniversity] = useState(null);
     const [showUniversityModal, setShowUniversityModal] = useState(false);
+    const [showDocumentosIESModal, setShowDocumentosIESModal] = useState(false);
 
 
 
@@ -603,6 +604,28 @@ const logos = {
             </div>
 
 
+            {/* Botón para abrir el modal DocumentosIES */}
+            <div style={styles.buttonContainer}>
+                <button onClick={() => setShowDocumentosIESModal(true)} style={styles.IESButton}>
+                    DocumentosIES
+                </button>
+            </div>
+
+            {/* Modal DocumentosIES */}
+            {showDocumentosIESModal && (
+                <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
+                    <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                        <h3>DocumentosIES</h3>
+                        <p>Aquí puedes mostrar información específica sobre los DocumentosIES.</p>
+                        <button onClick={() => setShowDocumentosIESModal(false)} style={styles.closeButton}>
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            )}
+
+
+
 
                             {signature ? (
                                 <img src={signature} alt="Firma" style={styles.signatureImage} />
@@ -806,6 +829,14 @@ const styles = {
         textAlign: 'center',
         
 
+    },
+    IESButton: {
+        backgroundColor: '#007BFF',
+        color: '#FFF',
+        padding: '10px 15px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        border: 'none',
     },
     universityButton: {
         padding: '10px 20px',
