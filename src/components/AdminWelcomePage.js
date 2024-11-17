@@ -575,14 +575,14 @@ useEffect(() => {
             {selectedSolicitud && (
                 <div style={styles.modalFullScreen} onClick={handleCloseSolicitudModal}>
                     <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                        <h2 style={styles.header} >Detalles de Solicitud</h2>
-                        <p style={styles.paragraph}><strong>Nombre:</strong> {selectedSolicitud.nombre} {selectedSolicitud.apellido}</p>
-                        <p style={styles.paragraph}><strong>Cédula:</strong> {selectedSolicitud.cedula}</p>
-                        <p style={styles.paragraph}><strong>Email:</strong> {selectedSolicitud.email}</p>
-                        <p style={styles.paragraph}><strong>Universidad:</strong> {selectedSolicitud.universidad}</p>
-                        <p style={styles.paragraph}><strong>Matricula:</strong> {selectedSolicitud.matricula}</p>
-                        <p style={styles.paragraph}><strong>Carrera:</strong> {selectedSolicitud.carrera}</p>
-                        <p style={styles.paragraph}><strong>Estado:</strong> {selectedSolicitud.estado}</p>
+                        <h2>Detalles de Solicitud</h2>
+                        <p><strong>Nombre:</strong> {selectedSolicitud.nombre} {selectedSolicitud.apellido}</p>
+                        <p><strong>Cédula:</strong> {selectedSolicitud.cedula}</p>
+                        <p><strong>Email:</strong> {selectedSolicitud.email}</p>
+                        <p><strong>Universidad:</strong> {selectedSolicitud.universidad}</p>
+                        <p><strong>Matricula:</strong> {selectedSolicitud.matricula}</p>
+                        <p><strong>Carrera:</strong> {selectedSolicitud.carrera}</p>
+                        <p><strong>Estado:</strong> {selectedSolicitud.estado}</p>
 
                         <div style={styles.imagesContainer}>
                             <h4>Comprobante de pago:</h4>
@@ -768,7 +768,13 @@ const styles = {
         fontSize: '14px',
         color: '#555',
     },
-    
+    documentImage: {
+        maxWidth: '100px',
+        maxHeight: '100px',
+        margin: '5px',
+        cursor: 'pointer',
+      },
+
 
     backButton: {
         padding: '10px',
@@ -877,37 +883,13 @@ const styles = {
         maxWidth: '1000px',
         position: 'relative',
     },
-    header: {
-        fontSize: '1.5rem',
-        fontWeight: 'bold',
-        marginBottom: '10px',
+    
+    universitySection: {
+        margin: '20px',
         textAlign: 'center',
-      },
-      paragraph: {
-        fontSize: '1rem',
-        marginBottom: '10px',
-      },
-      strong: {
-        fontWeight: 'bold',
-      },
-      imagesContainer: {
-        margin: '20px 0',
-    },
-    image: {
-        width: '80px',
-        height: 'auto',
-        margin: '5px',
-        cursor: 'pointer',
-    },
-    signatureContainer: {
-        margin: '16px 0',
-    },
-    buttonContainer: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginTop: '25px',
-    },
+        
 
+    },
     IESButton: {
         backgroundColor: '#007BFF',
         color: '#FFF',
@@ -916,6 +898,28 @@ const styles = {
         cursor: 'pointer',
         border: 'none',
     },
+    universityButton: {
+        padding: '10px 20px',
+        fontSize: '16px',
+        cursor: 'pointer',
+        backgroundColor: '#007BFF',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+    },
+    modalOverlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
+//dentro de la solicitud
     closeButton: {
         marginTop: '10px',
         backgroundColor: '#ff4747',
@@ -927,122 +931,54 @@ const styles = {
 
 
     },
-    certificadoContainer: {
-        marginTop: '20px',
-        padding: '15px',
-        border: '1px solid #eee',
-        borderRadius: '8px',
-        backgroundColor: '#f9f9f9',
-      },
-      penIcon: {
-        fontSize: '2rem',
-        color: '#000',
-        cursor: 'pointer',
-        marginTop: '10px',
-      },
 
-      signatureImage: {
-        maxWidth: '100%',
-        borderRadius: '8px',
-      },
-      clearButton: {
-        backgroundColor: '#f44336',
-        color: '#fff',
-        padding: '10px 15px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        marginRight: '10px',
-        fontSize: '1rem',
-        transition: 'background-color 0.3s',
-      },
-      saveButton: {
-        backgroundColor: '#4CAF50',
-        color: '#fff',
-        padding: '10px 15px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '1rem',
-        transition: 'background-color 0.3s',
-      },
 
-      approveButton: {
-        backgroundColor: '#4CAF50',
-        color: '#fff',
-        padding: '12px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '1.1rem',
-        transition: 'background-color 0.3s',
-      },
-      declineButton: {
-        backgroundColor: '#FF6347',
-        color: '#fff',
-        padding: '12px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        fontSize: '1.1rem',
-        transition: 'background-color 0.3s',
-      },
-      modalOverlay: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 999,
-        padding: '20px',
-      },
-      documentImage: {
-        maxWidth: '100px',
-        maxHeight: '100px',
+
+
+
+    imagesContainer: {
+        margin: '20px 0',
+    },
+    image: {
+        width: '80px',
+        height: 'auto',
         margin: '5px',
         cursor: 'pointer',
-      },
-      signatureCanvas: {
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        marginTop: '20px',
-      },
-
-    universitySection: {
-        margin: '20px',
-        textAlign: 'center',
-        
-
     },
-
-    universityButton: {
+    signatureContainer: {
+        margin: '16px 0',
+    },
+    signatureImage: {
+        width: '123px',
+        height: 'auto',
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginTop: '25px',
+    },
+    approveButton: {
+        backgroundColor: 'green',
+        color: '#FFF',
         padding: '10px 20px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        backgroundColor: '#007BFF',
-        color: 'white',
         border: 'none',
-        borderRadius: '5px',
+        borderRadius: '4px',
+        cursor: 'pointer',
     },
-    
-//dentro de la solicitud
-  
-
-
-
-
-
-
-
-   
-
-   
-    
-   
+    declineButton: {
+        backgroundColor: 'red',
+        color: '#FFF',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
+    clearButton: {
+        marginRight: '10px',
+    },
+    saveButton: {
+        marginLeft: '10px',
+    },
     pagination: {
         marginTop: '20px',
         display: 'flex',
@@ -1059,7 +995,11 @@ const styles = {
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
     },
-    
+    penIcon: {
+        cursor: 'pointer',
+        marginTop: '10px',
+        fontSize: '24px',
+    },
 };
 
 export default AdminWelcomePage;
