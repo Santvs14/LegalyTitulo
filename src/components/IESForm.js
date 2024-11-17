@@ -14,38 +14,44 @@ const IESForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append('nombres', nombres);
     formData.append('apellidos', apellidos);
     formData.append('carrera', carrera);
     formData.append('matricula', matricula);
-
+  
     if (documentos && documentos.length > 0) {
       for (let i = 0; i < documentos.length; i++) {
         formData.append('documentos', documentos[i]);
       }
     } else {
       console.error('No se seleccionaron documentos.');
+      alert('Debe seleccionar al menos un documento.');
       return;
     }
-
+  
     try {
       const response = await fetch(`${apiUrl}/api/registro-ies`, {
         method: 'POST',
         body: formData,
       });
-
+  
       if (!response.ok) {
+        const errorDetails = await response.json();
+        console.error('Detalles del error:', errorDetails);
         throw new Error(`Error en la solicitud: ${response.status}`);
       }
-
+  
       const data = await response.json();
       console.log('Registro exitoso:', data);
+      alert('Registro exitoso.');
     } catch (error) {
       console.error('Error en el registro:', error);
+      alert('Hubo un error al registrar los datos.');
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
