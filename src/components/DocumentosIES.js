@@ -11,7 +11,7 @@ import apecLogo from '../image/UNAPEC.png';
 import inteLogo from '../image/INTEC.png';
 import utesaLogo from '../image/UTESA.png';
 import unicariLogo from '../image/unicaribe.png';
-
+import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
 const logos = {
   "Universidad Nacioanal(UNPHU)": unphuLogo,
   "Universidad Dominicana O&M": oymLogo,
@@ -104,7 +104,12 @@ const DocumentosIES = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Documentos de las IES</h2>
+                    <header style={styles.banner}>
+            <img src={mesy} alt="Logo" style={styles.logo}/>
+                <h1 style={styles.title}>Documentos de las IES</h1>
+            </header>
+
+
       <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
 <br></br>
 <br></br>
@@ -122,7 +127,12 @@ const DocumentosIES = () => {
               style={styles.universityLogo}
             />
             <p style={styles.universityName}>{university}</p>
+            <span style={styles.solicitudFecha}>
+                    {new Date().toLocaleDateString('es-ES')} {/* Muestra la fecha del sistema */}
+                </span>
+
           </div>
+          
         ))}
       </div>
 
@@ -199,6 +209,35 @@ const styles = {
     container: {
       padding: '1rem',
     },
+    banner: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: '#1a1a1a',
+        padding: '10px 20px',
+        color: '#FFF',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+    },
+    logo: {
+        width: '93px',
+        height: '93px',
+        marginRight: '10px',
+    },
+    title: {
+        fontSize: '24px',
+        margin: 0,
+    },
+    solicitudFecha: {
+        position: 'absolute',
+        top: '10px',
+        right: '10px',
+        fontSize: '14px',
+        color: '#555',
+    },
+
     universityContainer: {
       display: 'flex',
       flexWrap: 'wrap',
