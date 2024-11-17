@@ -4,6 +4,7 @@ import axios from 'axios';
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
   const [selectedUniversity, setSelectedUniversity] = useState('');
+  const [selectedCareer, setSelectedCareer] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -24,11 +25,23 @@ const DocumentosIES = () => {
   const handleUniversityChange = (event) => {
     const university = event.target.value;
     setSelectedUniversity(university);
+    setSelectedCareer(''); // Reset the career filter when university changes
     if (university) {
-      const filtered = iesRecords.filter(record => record.universidad === university);
-      setFilteredRecords(filtered);
+      const filteredByUniversity = iesRecords.filter(record => record.universidad === university);
+      setFilteredRecords(filteredByUniversity);
     } else {
       setFilteredRecords([]);
+    }
+  };
+
+  const handleCareerChange = (event) => {
+    const career = event.target.value;
+    setSelectedCareer(career);
+    if (career) {
+      const filteredByCareer = filteredRecords.filter(record => record.carrera === career);
+      setFilteredRecords(filteredByCareer);
+    } else {
+      handleUniversityChange({ target: { value: selectedUniversity } }); // Reapply university filter
     }
   };
 
@@ -41,11 +54,17 @@ const DocumentosIES = () => {
   const handleCloseModal = () => {
     setModalVisible(false);
     setFilteredRecords([]);
+    setSelectedUniversity('');
+    setSelectedCareer('');
   };
+
+  // Extract unique universities and careers
+  const universities = Array.from(new Set(iesRecords.map(record => record.universidad)));
+  const careers = selectedUniversity ? Array.from(new Set(filteredRecords.map(record => record.carrera))) : [];
 
   return (
     <div style={styles.container}>
-      <h2>Ver Registros IES por Universidad</h2>
+      <h2>Ver Registros IES por Universidad y Carrera</h2>
       <label style={styles.label}>
         Seleccionar Universidad:
         <select
@@ -54,12 +73,27 @@ const DocumentosIES = () => {
           style={styles.select}
         >
           <option value="">Seleccione una universidad</option>
-          {Array.from(new Set(iesRecords.map(record => record.universidad)))
-            .map((university, index) => (
-              <option key={index} value={university}>{university}</option>
-            ))}
+          {universities.map((university, index) => (
+            <option key={index} value={university}>{university}</option>
+          ))}
         </select>
       </label>
+
+      {selectedUniversity && (
+        <label style={styles.label}>
+          Seleccionar Carrera:
+          <select
+            value={selectedCareer}
+            onChange={handleCareerChange}
+            style={styles.select}
+          >
+            <option value="">Seleccione una carrera</option>
+            {careers.map((career, index) => (
+              <option key={index} value={career}>{career}</option>
+            ))}
+          </select>
+        </label>
+      )}
 
       <button
         onClick={handleOpenModal}
@@ -73,7 +107,7 @@ const DocumentosIES = () => {
         <div style={styles.modal}>
           <div style={styles.modalContent}>
             <span onClick={handleCloseModal} style={styles.closeButton}>&times;</span>
-            <h2>Registros de {selectedUniversity}</h2>
+            <h2>Registros de {selectedUniversity} {selectedCareer && ` - Carrera: ${selectedCareer}`}</h2>
             {filteredRecords.length > 0 ? (
               filteredRecords.map((record, index) => (
                 <div key={index} style={styles.recordCard}>
@@ -98,7 +132,7 @@ const DocumentosIES = () => {
                 </div>
               ))
             ) : (
-              <p>No se encontraron registros para esta universidad.</p>
+              <p>No se encontraron registros para esta universidad y carrera.</p>
             )}
           </div>
         </div>
@@ -138,7 +172,7 @@ const styles = {
     left: '0',
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Slightly darker background
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -148,8 +182,11 @@ const styles = {
     backgroundColor: '#fff',
     padding: '2rem',
     borderRadius: '5px',
-    maxWidth: '80%',
+    maxWidth: '90%',
+    maxHeight: '90%',
     overflowY: 'auto',
+    position: 'relative',
+    height: '100%',
   },
   closeButton: {
     position: 'absolute',
