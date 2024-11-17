@@ -186,7 +186,7 @@ const DocumentosIES = () => {
                 src={doc}
                 alt={`Documento ${i + 1}`}
                 style={styles.documentImage}
-                onClick={() => window.open(documento)} // Abre la imagen en nueva pestaña
+                onClick={() => window.open(doc)} // Abre la imagen en nueva pestaña
               />
             ))
           ) : (
