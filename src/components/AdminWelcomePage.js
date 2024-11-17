@@ -44,8 +44,9 @@ const apiUrl = process.env.REACT_APP_API_URL;
     const [selectedUniversity, setSelectedUniversity] = useState(null);
     const [showUniversityModal, setShowUniversityModal] = useState(false);
     const [showDocumentosIESModal, setShowDocumentosIESModal] = useState(false);
-
-
+    const [iesRecords, setIesRecords] = useState([]);
+    const [relatedRecord, setRelatedRecord] = useState(null);
+  
 
     useEffect(() => {
         const fetchSolicitudes = async () => {
@@ -411,10 +412,27 @@ const logos = {
     "Universidad del Caribe (UNICARIBE)": unicariLogo
 };          
 
+//Datos del documentoIES
+useEffect(() => {
+    const fetchRecords = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/ies`);
+        setIesRecords(response.data);
+      } catch (error) {
+        console.error('Error al obtener los registros:', error);
+      }
+    };
 
+    fetchRecords();
+  }, [apiUrl]);
 
+    // Función para buscar el registro relacionado con la matrícula
+  const handleOpenModal = () => {
+    const record = iesRecords.find((rec) => rec.matricula === selectedSolicitud.matricula);
+    setRelatedRecord(record);
+    setShowDocumentosIESModal(true);
+  };
 
-    
     return (
         <div style={styles.container}>
             <header style={styles.banner}>
@@ -605,26 +623,59 @@ const logos = {
             </div>
 
 
-            {/* Botón para abrir el modal DocumentosIES */}
-            <div style={styles.buttonContainer}>
-                <button onClick={() => setShowDocumentosIESModal(true)} style={styles.IESButton}>
-                    DocumentosIES
-                </button>
-            </div>
+      {/* Botón para abrir el modal DocumentosIES */}
+      <div style={styles.buttonContainer}>
+        <button onClick={handleOpenModal} style={styles.IESButton}>
+          DocumentosIES
+        </button>
+      </div>
 
-            {/* Modal DocumentosIES */}
-            {showDocumentosIESModal && (
-                <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
-                    <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                        <h3>DocumentosIES</h3>
-                        <p>Aquí puedes mostrar información específica sobre los DocumentosIES.</p>
-                        <button onClick={() => setShowDocumentosIESModal(false)} style={styles.closeButton}>
-                            Cerrar
-                        </button>
-                    </div>
+      {/* Modal DocumentosIES */}
+      {showDocumentosIESModal && (
+        <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
+          <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <h3>DocumentosIES</h3>
+            {relatedRecord ? (
+              <div>
+                <p>
+                  <strong>Nombres:</strong> {relatedRecord.nombres}
+                </p>
+                <p>
+                  <strong>Apellidos:</strong> {relatedRecord.apellidos}
+                </p>
+                <p>
+                  <strong>Carrera:</strong> {relatedRecord.carrera}
+                </p>
+                <p>
+                  <strong>Matrícula:</strong> {relatedRecord.matricula}
+                </p>
+                <div>
+                  <strong>Documentos:</strong>
+                  {relatedRecord.documentos && relatedRecord.documentos.length > 0 ? (
+                    relatedRecord.documentos.map((doc, index) => (
+                      <img
+                        key={index}
+                        src={doc}
+                        alt={`Documento ${index + 1}`}
+                        style={styles.documentImage}
+                        onClick={() => window.open(doc)}
+                      />
+                    ))
+                  ) : (
+                    <p>No hay documentos disponibles.</p>
+                  )}
                 </div>
+              </div>
+            ) : (
+              <p>No se encontró un registro relacionado con esta matrícula.</p>
             )}
-
+            <button onClick={() => setShowDocumentosIESModal(false)} style={styles.closeButton}>
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
+    
 
 
 

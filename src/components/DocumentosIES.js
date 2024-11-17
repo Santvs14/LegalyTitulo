@@ -33,6 +33,8 @@ const DocumentosIES = () => {
   const [filteredRecords, setFilteredRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
+  
+  
   useEffect(() => {
     const fetchRecords = async () => {
       try {
