@@ -65,13 +65,38 @@ const DocumentosIES = () => {
       marginRight: '10px',
     }
   };
-  const data = new FormData();
-  Object.keys().forEach((key) => data.append(key));
-  Array.from(files).forEach((file) => data.append('documentos', file));
+
+  // Manejo de archivos (si es necesario)
+  const handleFileChange = (e) => {
+    setFiles(e.target.files);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    
+    // Agregar los campos del formulario a FormData
+    Object.keys(iesRecords).forEach((key) => {
+      data.append(key, iesRecords[key]);
+    });
+
+    // Agregar los archivos a FormData
+    Array.from(files).forEach((file) => data.append('documentos', file));
+
+    // Realizar el envío de los datos (por ejemplo, a la API)
+    axios.post(`${apiUrl}/api/ies-submit`, data)
+      .then(response => {
+        console.log('Datos enviados:', response);
+      })
+      .catch(error => {
+        console.error('Error al enviar los datos:', error);
+      });
+  };
+
   return (
     <div>
       <h1>Documentos IES</h1>
-
+      
       {iesRecords.map((record, index) => (
         <div key={index} style={styles.recordCard}>
           <p><strong>Nombres:</strong> {record.nombres}</p>
@@ -89,21 +114,28 @@ const DocumentosIES = () => {
             />
           )}
 
-             {record.documentos && (
-              <div>
-                <strong>Documentos:</strong>
-                {record.documentos.map((doc, i) => (
-                  <img
-                    key={i}
-                    src={doc}
-                    alt={`Documento ${i + 1}`}
-                    style={styles.documentImage}
-                  />
-                ))}
-              </div>
-            )}
+          {/* Mostrar los documentos si existen */}
+          {record.documentos && (
+            <div>
+              <strong>Documentos:</strong>
+              {record.documentos.map((doc, i) => (
+                <img
+                  key={i}
+                  src={doc}
+                  alt={`Documento ${i + 1}`}
+                  style={styles.documentImage}
+                />
+              ))}
+            </div>
+          )}
         </div>
       ))}
+
+      {/* Formularios para cargar documentos */}
+      <form onSubmit={handleSubmit}>
+        <input type="file" multiple onChange={handleFileChange} />
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 };
