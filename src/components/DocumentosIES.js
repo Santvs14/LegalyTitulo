@@ -66,23 +66,28 @@ const DocumentosIES = () => {
             </tr>
           </thead>
           <tbody>
-            {registrosFiltrados.map((registro) => (
-              <tr key={registro.matricula}>
-                <td>{registro.nombres}</td>
-                <td>{registro.apellidos}</td>
-                <td>{registro.carrera}</td>
-                <td>{registro.matricula}</td>
-                <td>{registro.universidad}</td>
-                <td>
-                  {registro.documentos.map((doc, index) => (
-                    <a key={index} href={doc} target="_blank" rel="noopener noreferrer">
-                      Documento {index + 1}
-                    </a>
-                  ))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
+  {registrosFiltrados.map((registro) => (
+    <tr key={registro.matricula}>
+      <td>{registro.nombres}</td>
+      <td>{registro.apellidos}</td>
+      <td>{registro.carrera}</td>
+      <td>{registro.matricula}</td>
+      <td>{registro.universidad}</td>
+      <td>
+        {Array.isArray(registro.documentos) && registro.documentos.length > 0 ? (
+          registro.documentos.map((doc, index) => (
+            <a key={index} href={doc} target="_blank" rel="noopener noreferrer">
+              Documento {index + 1}
+            </a>
+          ))
+        ) : (
+          <span>No hay documentos</span>
+        )}
+      </td>
+    </tr>
+  ))}
+</tbody>
+
         </table>
       )}
 
