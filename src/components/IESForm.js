@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const IESForm = () => {
   const [nombres, setNombres] = useState('');
@@ -8,6 +7,7 @@ const IESForm = () => {
   const [matricula, setMatricula] = useState('');
   const [documentos, setDocumentos] = useState(null);
   const apiUrl = process.env.REACT_APP_API_URL;
+
   const handleFileChange = (e) => {
     setDocumentos(e.target.files);
   };
@@ -21,19 +21,27 @@ const IESForm = () => {
     formData.append('carrera', carrera);
     formData.append('matricula', matricula);
 
-    for (let i = 0; i < documentos.length; i++) {
-      formData.append('documentos', documentos[i]);
+    if (documentos && documentos.length > 0) {
+      for (let i = 0; i < documentos.length; i++) {
+        formData.append('documentos', documentos[i]);
+      }
+    } else {
+      console.error('No se seleccionaron documentos.');
+      return;
     }
 
     try {
-
       const response = await fetch(`${apiUrl}/api/registro-ies`, {
         method: 'POST',
-        // No es necesario establecer 'Content-Type', fetch lo manejará automáticamente con FormData
         body: formData,
-    });
+      });
 
-      console.log('Registro exitoso:', response.data);
+      if (!response.ok) {
+        throw new Error(`Error en la solicitud: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Registro exitoso:', data);
     } catch (error) {
       console.error('Error en el registro:', error);
     }
