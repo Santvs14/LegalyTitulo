@@ -30,8 +30,6 @@ const DocumentosIES = () => {
   const [selectedCareer, setSelectedCareer] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [filteredRecords, setFilteredRecords] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(5);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -53,7 +51,6 @@ const DocumentosIES = () => {
       iesRecords.filter(record => record.universidad === university)
     );
     setModalVisible(true);
-    setCurrentPage(1);  // Reset to first page when opening a modal
   };
 
   const closeModal = () => {
@@ -80,16 +77,6 @@ const DocumentosIES = () => {
       );
     }
   };
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  const totalPages = Math.ceil(filteredRecords.length / recordsPerPage);
 
   // Obtener universidades únicas
   const universities = Array.from(
@@ -153,8 +140,8 @@ const DocumentosIES = () => {
               </select>
             </label>
             <div style={styles.recordsContainer}>
-              {currentRecords.length > 0 ? (
-                currentRecords.map((record, index) => (
+              {filteredRecords.length > 0 ? (
+                filteredRecords.map((record, index) => (
                   <div key={index} style={styles.recordCard}>
                     <p>
                       <strong>Nombres:</strong> {record.nombres}
@@ -188,35 +175,6 @@ const DocumentosIES = () => {
                 ))
               ) : (
                 <p>No se encontraron registros para esta universidad.</p>
-              )}
-            </div>
-
-            {/* Paginación */}
-            <div style={styles.pagination}>
-              {currentPage > 1 && (
-                <button
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  style={styles.pageButton}
-                >
-                  Anterior
-                </button>
-              )}
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handlePageChange(index + 1)}
-                  style={styles.pageButton}
-                >
-                  {index + 1}
-                </button>
-              ))}
-              {currentPage < totalPages && (
-                <button
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  style={styles.pageButton}
-                >
-                  Siguiente
-                </button>
               )}
             </div>
           </div>
@@ -264,80 +222,73 @@ const styles = {
   },
   universityLogo: {
     width: '60px', // Reducir tamaño del logo
-    height: 'auto',
-    marginBottom: '10px',
+    height: '60px', // Reducir tamaño del logo
+    marginBottom: '0.5rem',
   },
   universityName: {
-    fontSize: '0.9rem',
+    fontSize: '0.875rem', // Reducir tamaño del texto
+    color: '#333',
   },
   modal: {
     position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    zIndex: 10,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: '1000',
   },
   modalContent: {
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '8px',
-    width: '80%',
-    maxHeight: '80%',
+    backgroundColor: '#fff',
+    padding: '2rem',
+    borderRadius: '5px',
+    width: '90%',
+    maxHeight: '153%',
     overflowY: 'auto',
+    position: 'relative',
+  },
+  documentImage: {
+    width: "100px",
+    height: "100px",
+    objectFit: "cover",
+    margin: "8px 0",
   },
   closeButton: {
-    fontSize: '24px',
-    cursor: 'pointer',
     position: 'absolute',
     top: '10px',
     right: '20px',
+    fontSize: '24px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
   },
   label: {
-    fontWeight: 'bold',
-    marginBottom: '10px',
     display: 'block',
+    marginBottom: '1rem',
   },
   select: {
     width: '100%',
-    padding: '8px',
-    fontSize: '16px',
-    borderRadius: '4px',
-    borderColor: '#ccc',
+    padding: '0.5rem',
+    marginTop: '0.25rem',
+    marginBottom: '1rem',
+    borderRadius: '3px',
+    border: '1px solid #ccc',
   },
   recordsContainer: {
-    marginTop: '20px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '1rem',
+    marginTop: '1rem',
   },
   recordCard: {
-    marginBottom: '10px',
-    padding: '10px',
-    border: '1px solid #ddd',
+    padding: '1rem',
+    border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
-  },
-  documentImage: {
-    width: '100px',
-    height: 'auto',
-    margin: '5px',
-    borderRadius: '5px',
-  },
-  pagination: {
-    marginTop: '20px',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  pageButton: {
-    padding: '5px 10px',
-    margin: '0 5px',
-    cursor: 'pointer',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
+    width: '48%',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
 };
 
