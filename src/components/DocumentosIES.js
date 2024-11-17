@@ -81,7 +81,7 @@ const DocumentosIES = () => {
             style={styles.universityCard}
             onClick={() => openModal(university)}
           >
-            {university}
+            <p style={styles.universityName}>{university}</p>
           </div>
         ))}
       </div>
@@ -149,7 +149,7 @@ const styles = {
     marginTop: '1rem',
   },
   universityCard: {
-    padding: '1rem',
+    padding: '2rem',
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
@@ -157,6 +157,15 @@ const styles = {
     flex: '1 1 calc(33.33% - 1rem)',
     textAlign: 'center',
     fontWeight: 'bold',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    transition: 'transform 0.2s',
+  },
+  universityCardHover: {
+    transform: 'scale(1.05)',
+  },
+  universityName: {
+    fontSize: '1.2rem',
+    color: '#333',
   },
   modal: {
     position: 'fixed',
