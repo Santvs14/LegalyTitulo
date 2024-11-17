@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'; // Importa useHistory si usas React Router
+import { useNavigate } from 'react-router-dom'; // Usar useNavigate en lugar de useHistory
 
 const DocumentosIES = () => {
   const [iesRecords, setIesRecords] = useState([]);
@@ -10,8 +10,8 @@ const DocumentosIES = () => {
   const [filteredRecords, setFilteredRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
   
-  // Usando useHistory para regresar a la página anterior
-  const history = useHistory();
+  // Usando useNavigate para regresar a la página anterior
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecords = async () => {
@@ -64,7 +64,7 @@ const DocumentosIES = () => {
 
   // Function to go back to the previous page
   const handleGoBack = () => {
-    history.goBack(); // Navigate to the previous page
+    navigate(-1); // Navigate to the previous page
   };
 
   // Extract unique universities and careers
