@@ -611,20 +611,9 @@ useEffect(() => {
                         </div>
 
                         <div style={styles.signatureContainer}>
-                            <h2>Paso 1: Firma Digital</h2>
-
-
-                        {/* Nuevo botón para generar certificado */}
-                        <div style={styles.certificadoContainer}>
-                <p>Paso 2: Si aprobara la solicitud, genere un certificado y luego aprueve.</p>
-                <button onClick={() => generarCerti(selectedSolicitud._id)}>Generar Certificado</button>
-
-                  
-            </div>
-
-
-      {/* Botón para abrir el modal DocumentosIES */}
+                                  {/* Botón para abrir el modal DocumentosIES */}
       <div style={styles.buttonContainer}>
+      <h3>Paso 1:</h3>
         <button onClick={handleOpenModal} style={styles.IESButton}>
           DocumentoIES
         </button>
@@ -676,6 +665,19 @@ useEffect(() => {
         </div>
       )}
     
+
+                            <h2>Paso 2: Firma Digital</h2>
+
+
+                        {/* Nuevo botón para generar certificado */}
+                        <div style={styles.certificadoContainer}>
+                <p>Paso 3: Si aprobara la solicitud, genere un certificado y luego aprueve.</p>
+                <button onClick={() => generarCerti(selectedSolicitud._id)}>Generar Certificado</button>
+
+                  
+            </div>
+
+
 
 
 
