@@ -15,6 +15,8 @@ import LegalizationPage from './components/LegalizationPage';
 import AdminWelcomePage from './components/AdminWelcomePage'; // Página de bienvenida para administradores
 import LoginAdmin from './components/LoginAdmin'; // Página de bienvenida para administradores
 import IESForm  from './components/IESForm'; // Página de bienvenida para administradores
+import DocumentosIES  from './components/DocumentosIES'; // Página de bienvenida para administradores
+
 
 
 import UserProfile from './components/UserProfile '
@@ -38,6 +40,7 @@ root.render(
           <Route path="/welcomeAdmin" element={<WelcomeAdmin />} />
 
           <Route path="/Ies" element={<IESForm />} />
+          <Route path="/DocumentosIES" element={<DocumentosIES/>} />
           <Route path="/legalization" element={<LegalizationPage />} />
           <Route path="/admin/welcome" element={<AdminWelcomePage/>} />
           <Route path="/userPerfil" element={<UserProfile/>} />

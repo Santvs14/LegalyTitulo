@@ -149,6 +149,12 @@ const IESForm = () => {
       </form>
 
       <div style={styles.records}>
+        
+        <div style={styles.solicitudesCounter}>
+                    <span style={{ color: '#fff', fontWeight: 'bold' }}>
+                        Todos los registros: {iesRecords.length}
+                    </span>
+                    </div>
         <h2>Registros IES</h2>
         {iesRecords.map((record, index) => (
           <div key={index} style={styles.recordCard}>
@@ -195,6 +201,12 @@ const styles = {
     display: 'block',
     marginBottom: '0.5rem',
   },
+  solicitudesCounter: {
+    position: 'absolute',
+    top: '20px',
+    right: '20px',
+},
+
   input: {
     width: '100%',
     padding: '0.5rem',
@@ -226,8 +238,8 @@ const styles = {
     borderRadius: '5px',
   },
   documentImage: {
-    maxWidth: '100%',
-    maxHeight: '150px',
+    maxWidth: '80%',
+    maxHeight: '100px',
     display: 'block',
     marginBottom: '0.5rem',
   },

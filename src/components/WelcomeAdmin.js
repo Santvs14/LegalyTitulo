@@ -25,6 +25,12 @@ const WelcomeAdmin = () => {
     navigate('/admin/welcome');
   };
 
+
+  const handleDocumentClick = () => {
+    navigate('/DocumentosIES');
+  };
+
+
   return (
     <Container>
       <Logo src={mesy} alt="Logo del sistema" />
@@ -44,6 +50,7 @@ const WelcomeAdmin = () => {
 
       <ButtonGroup>
         <ActionButton onClick={handleSolicitudesClick}>Solicitudes</ActionButton>
+        <ActionButton onClick={handleDocumentClick}>Documentos IES</ActionButton>
 
       </ButtonGroup>
     </Container>
