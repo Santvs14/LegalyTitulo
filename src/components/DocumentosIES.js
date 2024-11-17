@@ -73,6 +73,12 @@ const DocumentosIES = () => {
 
   return (
     <div style={styles.container}>
+      <button
+        onClick={handleGoBack}
+        style={styles.backButton}
+      >
+        Regresar
+      </button>
       <h2>Ver Registros IES por Universidad y Carrera</h2>
       <label style={styles.label}>
         Seleccionar Universidad:
@@ -145,10 +151,6 @@ const DocumentosIES = () => {
                 <p>No se encontraron registros para esta universidad y carrera.</p>
               )}
             </div>
-            {/* Button to go back */}
-            <button onClick={handleGoBack} style={styles.backButton}>
-              Regresar
-            </button>
           </div>
         </div>
       )}
@@ -160,6 +162,7 @@ const DocumentosIES = () => {
 const styles = {
   container: {
     padding: '1rem',
+    position: 'relative',
   },
   label: {
     display: 'block',
@@ -182,13 +185,15 @@ const styles = {
     cursor: 'pointer',
   },
   backButton: {
+    position: 'absolute',
+    top: '10px',
+    left: '10px',
     padding: '0.75rem 1.5rem',
     border: 'none',
     borderRadius: '3px',
     backgroundColor: '#dc3545',
     color: '#fff',
     cursor: 'pointer',
-    marginTop: '1rem',
   },
   modal: {
     position: 'fixed',
