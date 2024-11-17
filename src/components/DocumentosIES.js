@@ -78,10 +78,12 @@ const DocumentosIES = () => {
     }
   };
 
+  // Obtener universidades únicas
   const universities = Array.from(
     new Set(iesRecords.map(record => record.universidad))
   );
 
+  // Obtener carreras únicas dentro de la universidad seleccionada
   const careers = selectedUniversity
     ? Array.from(
         new Set(
@@ -94,15 +96,9 @@ const DocumentosIES = () => {
 
   return (
     <div style={styles.container}>
-      {/* Banner superior */}
       <div style={styles.banner}>
-        <h2 style={styles.title}>Documentos de las IES</h2>
+        <h2>Documentos de las IES</h2>
       </div>
-
-      {/* Botón de regresar */}
-      {modalVisible && (
-        <button onClick={closeModal} style={styles.backButton}>Regresar</button>
-      )}
 
       <div style={styles.universityContainer}>
         {universities.map((university, index) => (
@@ -159,6 +155,7 @@ const DocumentosIES = () => {
                     <p>
                       <strong>Matrícula:</strong> {record.matricula}
                     </p>
+                    {/* Agregando documentos */}
                     <div>
                       <strong>Documentos:</strong>
                       {record.documentos && record.documentos.length > 0 ? (
@@ -187,29 +184,22 @@ const DocumentosIES = () => {
   );
 };
 
+// Estilos básicos
 const styles = {
   container: {
     padding: '1rem',
   },
   banner: {
-    backgroundColor: '#333',
-    padding: '1rem',
-    textAlign: 'center',
-    color: 'white',
-  },
-  title: {
-    margin: 0,
-    fontSize: '2rem',
-  },
-  backButton: {
-    backgroundColor: '#add8e6',
-    border: 'none',
-    padding: '0.5rem 1rem',
-    marginBottom: '1rem',
-    cursor: 'pointer',
-    fontSize: '1rem',
-    borderRadius: '5px',
-    transition: 'background-color 0.3s',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#1a1a1a',
+    padding: '10px 20px',
+    color: '#FFF',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
   },
   universityContainer: {
     display: 'flex',
@@ -218,25 +208,25 @@ const styles = {
     marginTop: '1rem',
   },
   universityCard: {
-    padding: '0.5rem',
+    padding: '0.5rem', // Reducir el padding
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
     cursor: 'pointer',
-    flex: '1 1 calc(25% - 1rem)',
+    flex: '1 1 calc(25% - 1rem)', // Ajustar tamaño a 25% del ancho
     textAlign: 'center',
     fontWeight: 'bold',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s',
-    maxWidth: '150px',
+    maxWidth: '150px', // Limitar el ancho máximo
   },
   universityLogo: {
-    width: '60px',
-    height: '60px',
+    width: '60px', // Reducir tamaño del logo
+    height: '60px', // Reducir tamaño del logo
     marginBottom: '0.5rem',
   },
   universityName: {
-    fontSize: '0.875rem',
+    fontSize: '0.875rem', // Reducir tamaño del texto
     color: '#333',
   },
   modal: {
@@ -261,10 +251,10 @@ const styles = {
     position: 'relative',
   },
   documentImage: {
-    width: '100px',
-    height: '100px',
-    objectFit: 'cover',
-    margin: '8px 0',
+    width: "100px",
+    height: "100px",
+    objectFit: "cover",
+    margin: "8px 0",
   },
   closeButton: {
     position: 'absolute',
@@ -288,14 +278,16 @@ const styles = {
   },
   recordsContainer: {
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
     gap: '1rem',
+    marginTop: '1rem',
   },
   recordCard: {
-    border: '1px solid #ccc',
     padding: '1rem',
+    border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#f9f9f9',
+    width: '48%',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
   },
 };
