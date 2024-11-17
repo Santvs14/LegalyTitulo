@@ -74,12 +74,10 @@ const DocumentosIES = () => {
       <td>{registro.matricula}</td>
       <td>{registro.universidad}</td>
       <td>
-        {Array.isArray(registro.documentos) && registro.documentos.length > 0 ? (
-          registro.documentos.map((doc, index) => (
-            <a key={index} href={doc} target="_blank" rel="noopener noreferrer">
-              Documento {index + 1}
-            </a>
-          ))
+        {registro.documentos ? (
+          <a href={registro.documentos} target="_blank" rel="noopener noreferrer">
+            Ver documento
+          </a>
         ) : (
           <span>No hay documentos</span>
         )}
