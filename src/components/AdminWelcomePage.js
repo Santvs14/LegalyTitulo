@@ -562,6 +562,7 @@ const logos = {
                         <p><strong>Cédula:</strong> {selectedSolicitud.cedula}</p>
                         <p><strong>Email:</strong> {selectedSolicitud.email}</p>
                         <p><strong>Universidad:</strong> {selectedSolicitud.universidad}</p>
+                        <p><strong>Matricula:</strong> {selectedSolicitud.matricula}</p>
                         <p><strong>Carrera:</strong> {selectedSolicitud.carrera}</p>
                         <p><strong>Estado:</strong> {selectedSolicitud.estado}</p>
 

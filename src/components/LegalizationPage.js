@@ -16,6 +16,7 @@ const LegalizationPage = () => {
         telefono:'',
         cedula: '',
         universidad: '',
+        matricula: '',
         carrera: '',
         estado: 'pendiente',
         archivos: [],
@@ -40,6 +41,7 @@ const LegalizationPage = () => {
             telefono: user.telefono || '',
             cedula: user.cedula || '',
             universidad: user.universidad || '',
+            matricula: user.matricula || '',
             carrera: user.carrera || '',
                 estado: 'pendiente',  // Mantén "pendiente" como valor inicial del estado
                 haPagado: '',
@@ -101,6 +103,7 @@ const LegalizationPage = () => {
         formDataToSend.append('estado', formData.estado); // El estado será "pendiente"
         formDataToSend.append('cedula', formData.cedula);
         formDataToSend.append('universidad', formData.universidad);
+        formDataToSend.append('matricula', formData.matricula);
         formDataToSend.append('carrera', formData.carrera);
         formDataToSend.append('haPagado', formData.haPagado);
     
@@ -188,6 +191,7 @@ const LegalizationPage = () => {
                 <input type="telefono" name="telefono" placeholder="telefono" value={formData.telefono} readOnly style={styles.input} />
                 <input type="text" name="cedula" placeholder="Cedula" value={formData.cedula} readOnly style={styles.input} />
                 <input type="text" name="universidad" placeholder="Universidad" value={formData.universidad} readOnly style={styles.input} />
+                <input type="text" name="matricula" placeholder="matricula" value={formData.matricula} readOnly style={styles.input} />
                 <input type="text" name="carrera" placeholder="Carrera" value={formData.carrera} readOnly style={styles.input} />
                
                 <input type="text" name="estado" placeholder="Estado" 
