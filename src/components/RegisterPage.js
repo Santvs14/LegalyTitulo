@@ -122,7 +122,7 @@ const RegisterPage = () => {
                     name="matricula" 
                     placeholder="Matricula" 
                     onChange={handleChange} 
-                    
+                    required 
                 />
 
 
