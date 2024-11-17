@@ -14,6 +14,7 @@ const RegisterPage = () => {
         cedula: '',
         email: '',
         carrera: '',
+        matricula: '',
         universidad: '',
         contraseña: '',
         confirmarContraseña: '',
@@ -116,7 +117,13 @@ const RegisterPage = () => {
                     <option value="Ingenieria Industrial">Ingenieria Industrial</option>
                 </Select>
 
-
+                <Input 
+                    type="text" 
+                    name="matricula" 
+                    placeholder="Matricula" 
+                    onChange={handleChange} 
+                    required 
+                />
 
 
                 <Select
