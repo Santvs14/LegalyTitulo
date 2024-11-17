@@ -626,7 +626,7 @@ useEffect(() => {
       {/* Botón para abrir el modal DocumentosIES */}
       <div style={styles.buttonContainer}>
         <button onClick={handleOpenModal} style={styles.IESButton}>
-          DocumentosIES
+          DocumentoIES
         </button>
       </div>
 
@@ -634,7 +634,7 @@ useEffect(() => {
       {showDocumentosIESModal && (
         <div style={styles.modalOverlay} onClick={() => setShowDocumentosIESModal(false)}>
           <div style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <h3>DocumentosIES</h3>
+            <h3>DocumentoIES</h3>
             {relatedRecord ? (
               <div>
                 <p>
@@ -766,7 +766,12 @@ const styles = {
         fontSize: '14px',
         color: '#555',
     },
-
+    documentImage: {
+        maxWidth: '100px',
+        maxHeight: '100px',
+        margin: '5px',
+        cursor: 'pointer',
+      },
 
 
     backButton: {
