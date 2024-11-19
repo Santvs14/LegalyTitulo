@@ -109,7 +109,7 @@ const IESForm = () => {
         </label>
 
         
-                 <Select
+                 <select
                     name="carrera"
                     onChange={handleInputChange}
                     value={formData.carrera}
@@ -122,8 +122,8 @@ const IESForm = () => {
                     <option value="Doctor en Leyes">Doctor en Leyes</option>
                     <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
                     <option value="Ingenieria Industrial">Ingenieria Industrial</option>
-                </Select>
-                <Select
+                </select>
+                <select
                     name="universidad"
                     onChange={handleInputChange}
                     value={formData.universidad}
@@ -141,7 +141,7 @@ const IESForm = () => {
                     <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
                     <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
                     <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
-                </Select>
+                </select>
         
 
 
