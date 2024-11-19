@@ -95,17 +95,7 @@ const IESForm = () => {
             style={styles.input}
           />
         </label>
-        <label style={styles.label}>
-          Carrera:
-          <input
-            type="text"
-            name="carrera"
-            value={formData.carrera}
-            onChange={handleInputChange}
-            required
-            style={styles.input}
-          />
-        </label>
+        
         <label style={styles.label}>
           Matrícula:
           <input
@@ -118,17 +108,41 @@ const IESForm = () => {
           />
         </label>
 
-        <label style={styles.label}>
-          Universidad:
-          <input
-            type="text"
-            name="universidad"
-            value={formData.universidad}
-            onChange={handleInputChange}
-            required
-            style={styles.input}
-          />
-        </label>
+        
+                 <Select
+                    name="carrera"
+                    onChange={handleInputChange}
+                    value={formData.carrera}
+                    required
+                    style={styles.input}
+                >
+                    <option value="">Selecciona la carrera que estudiaste</option>
+                    <option value="Doctor en Odontologia">Doctor en Odontologia</option>
+                    <option value="Doctor en Medicina">Doctor en Medicina</option>
+                    <option value="Doctor en Leyes">Doctor en Leyes</option>
+                    <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                </Select>
+                <Select
+                    name="universidad"
+                    onChange={handleInputChange}
+                    value={formData.universidad}
+                    required
+                    style={styles.input}
+                >
+                    <option value="">Selecciona tu universidad</option>
+                    <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
+                    <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
+                    <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
+                    <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
+                    <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
+                    <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
+                    <option value="Universidad APEC">Universidad APEC</option>
+                    <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
+                    <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
+                    <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
+                </Select>
+        
 
 
         <label style={styles.label}>
@@ -160,52 +174,10 @@ const IESForm = () => {
           <div key={index} style={styles.recordCard}>
             <p><strong>Nombres:</strong> {record.nombres}</p>
             <p><strong>Apellidos:</strong> {record.apellidos}</p>
-
-            <select
-  name="carrera"
-  value={record.carrera} // Cambiado a "record.carrera" para que coincida con el campo correcto
-  required
-  style={styles.input} // Puedes usar estilos si lo deseas
-  onChange={(e) => console.log(`Carrera seleccionada: ${e.target.value}`)} // Cambia según tu lógica
->
-  <option value="">Selecciona la carrera que estudiaste</option>
-  <option value="Doctor en Odontologia">Doctor en Odontología</option>
-  <option value="Doctor en Medicina">Doctor en Medicina</option>
-  <option value="Doctor en Leyes">Doctor en Leyes</option>
-  <option value="Ingenieria en Sistemas">Ingeniería en Sistemas</option>
-  <option value="Ingenieria Industrial">Ingeniería Industrial</option>
-</select>
-
-            <select
-              name="universidad"
-              value={record.universidad}
-              required
-              style={styles.input}
-              onChange={(e) => console.log(`Universidad seleccionada: ${e.target.value}`)} // Cambia según tu lógica
-            >
-              <option value="">Selecciona tu universidad</option>
-              <option value="Universidad Nacional (UNPHU)">Universidad Nacional(UNPHU)</option>
-              <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
-              <option value="Universidad Católica Santo Domingo(UCSD)">
-                Universidad Católica Santo Domingo(UCSD)
-              </option>
-              <option value="Universidad Católica Madre y Maestra (PUCMM)">
-                Universidad Católica Madre y Maestra (PUCMM)
-              </option>
-              <option value="Universidad Autónoma de Santo Domingo(UASD)">
-                Universidad Autónoma de Santo Domingo(UASD)
-              </option>
-              <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
-              <option value="Universidad APEC">Universidad APEC</option>
-              <option value="Instituto Tecnológico de Santo Domingo(INTEC)">
-                Instituto Tecnológico de Santo Domingo(INTEC)
-              </option>
-              <option value="Universidad Tecnológica de Santiago(UTESA)">
-                Universidad Tecnológica de Santiago(UTESA)
-              </option>
-              <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
-            </select>
-
+            <p><strong>Carrera:</strong> {record.carrera}</p>
+            <p><strong>Matrícula:</strong> {record.matricula}</p>
+            <p><strong>Universidad:</strong> {record.universidad}</p>
+            
             {record.documentos && (
               <div>
                 <strong>Documentos:</strong>
