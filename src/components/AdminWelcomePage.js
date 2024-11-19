@@ -636,6 +636,9 @@ useEffect(() => {
                   <strong>Carrera:</strong> {relatedRecord.carrera}
                 </p>
                 <p>
+                  <strong>Universidad:</strong> {relatedRecord.universidad}
+                </p>
+                <p>
                   <strong>Matrícula:</strong> {relatedRecord.matricula}
                 </p>
                 <div>
