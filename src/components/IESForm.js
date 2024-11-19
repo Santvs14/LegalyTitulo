@@ -160,9 +160,38 @@ const IESForm = () => {
           <div key={index} style={styles.recordCard}>
             <p><strong>Nombres:</strong> {record.nombres}</p>
             <p><strong>Apellidos:</strong> {record.apellidos}</p>
-            <p><strong>Carrera:</strong> {record.carrera}</p>
+
+            <Select
+                    name="carrera"
+                    value={record.universidad}
+                    required
+                >
+                    <option value="">Selecciona la carrera que estudiaste</option>
+                    <option value="Doctor en Odontologia">Doctor en Odontologia</option>
+                    <option value="Doctor en Medicina">Doctor en Medicina</option>
+                    <option value="Doctor en Leyes">Doctor en Leyes</option>
+                    <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+                </Select>
             <p><strong>Matrícula:</strong> {record.matricula}</p>
-            <p><strong>Universidad:</strong> {record.universidad}</p>
+
+            <Select
+                    name="universidad"
+                    value={record.universidad}
+                    required
+                >
+                    <option value="">Selecciona tu universidad</option>
+                    <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
+                    <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
+                    <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
+                    <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
+                    <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
+                    <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
+                    <option value="Universidad APEC">Universidad APEC</option>
+                    <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
+                    <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
+                    <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
+                </Select>
             {record.documentos && (
               <div>
                 <strong>Documentos:</strong>

@@ -788,7 +788,7 @@ const styles = {
         alignSelf: 'flex-start',  // Esto moverá el botón al extremo izquierdo
         marginTop: 43
     },
-    cardContainer2: { display: 'flex', flexWrap: 'wrap', gap: '1rem',        overflowX: 'auto' },
+    cardContainer2: { display: 'flex', flexWrap: 'wrap', gap: '1rem' },
     universityCard: { padding: '1rem', background: '#3331', borderRadius: '8px', cursor: 'pointer' },
     modalBackdrop: { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' },
 
