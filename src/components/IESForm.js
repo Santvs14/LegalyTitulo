@@ -272,8 +272,8 @@ const styles = {
     
   },
   documentImage: {
-    maxWidth: '70%',
-    maxHeight: '70px',
+    maxWidth: '50%',
+    maxHeight: '50px',
     display: 'block',
     marginBottom: '0.5rem',
   },
