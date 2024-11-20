@@ -276,6 +276,7 @@ const styles = {
     maxHeight: '40px',
     display: 'flex',
     marginBottom: '0.5rem',
+    flexWrap: 'wrap', // Permite que las imágenes pasen a la siguiente fila si no caben
   },
 };
 
