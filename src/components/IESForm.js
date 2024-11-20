@@ -188,7 +188,8 @@ const IESForm = () => {
             <p><strong>Universidad:</strong> {record.universidad}</p>
             
             {record.documentos && (
-              <div>
+                <div style={styles.documentImageContainer}>
+
                 <strong>Documentos:</strong>
                 {record.documentos.map((doc, i) => (
                   <img
@@ -272,12 +273,17 @@ const styles = {
     
   },
   documentImage: {
-    maxWidth: '40%',
+    maxWidth: '40px',
     maxHeight: '40px',
-    display: 'flex',
-    marginBottom: '0.5rem',
-    flexWrap: 'wrap', // Permite que las imágenes pasen a la siguiente fila si no caben
+    marginRight: '10px', // Espaciado horizontal entre imágenes
   },
+documentImageContainer: {
+    display: 'flex',
+    flexWrap: 'wrap', // Permite que las imágenes pasen a la siguiente fila si no caben
+    gap: '10px', // Espaciado entre filas y columnas
+    alignItems: 'center', // Centra las imágenes verticalmente
+},
+
 };
 
 export default IESForm;
