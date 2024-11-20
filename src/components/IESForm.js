@@ -238,7 +238,7 @@ const styles = {
   solicitudesCounter: {
     position: 'absolute',
     top: '20px',
-    right: '30px',
+    right: '43px',
 },
 
   input: {
