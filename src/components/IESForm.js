@@ -80,7 +80,7 @@ const IESForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Envio de dato egresado IES</h2>
+        <h2>Envio de datos egresado IES</h2>
         {message && <p>{message}</p>}
         <label style={styles.label}>
           Nombres:
@@ -174,7 +174,7 @@ const IESForm = () => {
       <div style={styles.records}>
         
         <div style={styles.solicitudesCounter}>
-                    <span style={{ color: '#000', fontWeight: 'bold',marginLeft:-8 }}>
+                    <span style={{ color: '#000', fontWeight: 'bold' }}>
                         Todos los registros: {iesRecords.length}
                     </span>
                     </div>
@@ -238,7 +238,7 @@ const styles = {
   solicitudesCounter: {
     position: 'absolute',
     top: '20px',
-    right: '20px',
+    right: '30px',
 },
 
   input: {
