@@ -174,7 +174,7 @@ const IESForm = () => {
       <div style={styles.records}>
         
         <div style={styles.solicitudesCounter}>
-                    <span style={{ color: '#000', fontWeight: 'bold',right:8 }}>
+                    <span style={{ color: '#000', fontWeight: 'bold',marginRight:5}}>
                         Todos los registros: {iesRecords.length}
                     </span>
                     </div>
@@ -269,11 +269,11 @@ const styles = {
     padding: '1rem',
     border: '1px solid #ccc',
     borderRadius: '5px',
-    height: 70
+    height: 190
   },
   documentImage: {
-    maxWidth: '43%',
-    maxHeight: '43px',
+    maxWidth: '23%',
+    maxHeight: '23px',
     display: 'block',
     marginBottom: '0.5rem',
   },
