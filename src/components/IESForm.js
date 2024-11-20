@@ -80,7 +80,7 @@ const IESForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Enviar dato egresado IES</h2>
+        <h2>Envio de dato egresado IES</h2>
         {message && <p>{message}</p>}
         <label style={styles.label}>
           Nombres:
@@ -272,9 +272,9 @@ const styles = {
     
   },
   documentImage: {
-    maxWidth: '50%',
-    maxHeight: '50px',
-    display: 'block',
+    maxWidth: '40%',
+    maxHeight: '40px',
+    display: 'flex',
     marginBottom: '0.5rem',
   },
 };
