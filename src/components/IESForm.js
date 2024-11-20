@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
 const IESForm = () => {
   const [formData, setFormData] = useState({
     nombres: '',
@@ -70,8 +70,17 @@ const IESForm = () => {
 
   return (
     <div style={styles.container}>
+            {/* Banner superior */}
+            <div style={styles.banner}>
+        <img
+          src={mesy}// Cambia esta ruta al logo que quieras usar
+          alt="Logo"
+          style={styles.logo}
+        />
+      </div>
+
       <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Crear Registro IES</h2>
+        <h2>Enviar dato egresado IES</h2>
         {message && <p>{message}</p>}
         <label style={styles.label}>
           Nombres:
@@ -205,6 +214,15 @@ const styles = {
     justifyContent: 'space-between',
     padding: '1rem',
   },
+  banner: {
+    backgroundColor: 'navy',
+    padding: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  logo: {
+    height: '50px',
+  },
   form: {
     flex: 1,
     marginRight: '1rem',
@@ -243,7 +261,7 @@ const styles = {
     padding: '1rem',
     border: '1px solid #ccc',
     borderRadius: '5px',
-    maxHeight: '80vh',
+    maxHeight: '50vh',
     overflowY: 'auto',
   },
   recordCard: {
