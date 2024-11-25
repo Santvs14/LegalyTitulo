@@ -63,8 +63,8 @@ const LoginPage = () => {
     };
 
     const handleSendCode = async () => {
-        if (!phoneNumber || !/^\+\d{11,15}$/.test(phoneNumber)) {
-            setErrorMessage("El teléfono debe incluir el prefijo internacional y tener entre 11 y 15 dígitos.");
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setErrorMessage("Por favor, introduce un correo electrónico válido.");
             return;
         }
     
@@ -74,13 +74,12 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ phoneNumber }),
+                body: JSON.stringify({ email }),
             });
     
             const data = await response.json();
             if (response.ok) {
-                console.log('Código de verificación enviado:', data); // Log para verificar
-
+                console.log('Código de verificación enviado:', data);
                 setStep('verify');
                 setErrorMessage('');
             } else {
@@ -91,6 +90,7 @@ const LoginPage = () => {
             console.error(error);
         }
     };
+    
     
     const handleVerifyCode = async () => {
         if (!verificationCode || verificationCode.length !== 6) {
@@ -104,7 +104,7 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ phoneNumber, verificationCode }),
+                body: JSON.stringify({ email, verificationCode }),
             });
     
             const data = await response.json();
@@ -119,6 +119,8 @@ const LoginPage = () => {
             console.error(error);
         }
     };
+    
+    
     
 
 
@@ -137,49 +139,50 @@ const LoginPage = () => {
                 {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <Title>Iniciar Sesión</Title>
                     
-                                            {step === 'login' && (
-                            <Form onSubmit={handleSubmit}>
-                                <Input 
-                                    type="text" 
-                                    name="cedula" 
-                                    placeholder="Cédula" 
-                                    onChange={handleChange} 
-                                    required 
-                                />
-                                <Input 
-                                    type="password" 
-                                    name="contraseña" 
-                                    placeholder="Contraseña" 
-                                    onChange={handleChange} 
-                                    required 
-                                />
-                                <Input
-                                    type="text"
-                                    placeholder="Teléfono (ej. +18291234567)"
-                                    value={phoneNumber}
-                                    onChange={(e) => setPhoneNumber(e.target.value)}
-                                    required
-                                />
-                                <SubmitButton type="button" onClick={handleSendCode}>
-                                    Enviar Código
-                                </SubmitButton>
-                            </Form>
-                        )}
+                    {step === 'login' && (
+    <Form onSubmit={handleSubmit}>
+        <Input 
+            type="text" 
+            name="cedula" 
+            placeholder="Cédula" 
+            onChange={handleChange} 
+            required 
+        />
+        <Input 
+            type="password" 
+            name="contraseña" 
+            placeholder="Contraseña" 
+            onChange={handleChange} 
+            required 
+        />
+        <Input
+            type="email"
+            placeholder="Correo Electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+        />
+        <SubmitButton type="button" onClick={handleSendCode}>
+            Enviar Código
+        </SubmitButton>
+    </Form>
+)}
 
-                        {step === 'verify' && (
-                            <Form>
-                                <Input
-                                    type="text"
-                                    placeholder="Código de Verificación"
-                                    value={verificationCode}
-                                    onChange={(e) => setVerificationCode(e.target.value)}
-                                    required
-                                />
-                                <SubmitButton type="button" onClick={handleVerifyCode}>
-                                    Verificar Código
-                                </SubmitButton>
-                            </Form>
-                        )}
+{step === 'verify' && (
+    <Form>
+        <Input
+            type="text"
+            placeholder="Código de Verificación"
+            value={verificationCode}
+            onChange={(e) => setVerificationCode(e.target.value)}
+            required
+        />
+        <SubmitButton type="button" onClick={handleVerifyCode}>
+            Verificar Código
+        </SubmitButton>
+    </Form>
+)}
+
 
                 </LoginCard>
             </LoginContainer>
