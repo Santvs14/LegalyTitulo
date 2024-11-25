@@ -83,7 +83,7 @@ const LoginPage = () => {
             if (response.ok) {
                 console.log('Código de verificación enviado:', data);
                 setStep('verify');  // Cambia el paso al formulario de verificación
-                setErrorMessage('');
+                //setErrorMessage('');
             } else {
                 setErrorMessage(data.message || "Error al enviar el código");
             }
