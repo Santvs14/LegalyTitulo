@@ -108,8 +108,10 @@ const LoginPage = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, verificationCode }),
+                
             });
-    
+            console.log({ email, verificationCode });
+
             const data = await response.json();
             if (response.ok) {
                 setStep('login');
