@@ -12,6 +12,9 @@ const LoginPage = () => {
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [step, setStep] = useState('login'); // 'login', 'verify'
+    const [verificationCode, setVerificationCode] = useState('');
 
 
     const handleChange = (e) => {
@@ -59,6 +62,54 @@ const LoginPage = () => {
         navigate('/'); // Redirige a la página de bienvenida
     };
 
+    const handleSendCode = async () => {
+        try {
+            const response = await fetch(`${apiUrl}/send-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ phoneNumber }),
+            });
+    
+            const data = await response.json();
+            if (response.ok) {
+                setStep('verify');
+                setErrorMessage('');
+            } else {
+                setErrorMessage(data.message || "Error al enviar el código");
+            }
+        } catch (error) {
+            setErrorMessage("Error de conexión con el servidor");
+            console.error(error);
+        }
+    };
+    
+    const handleVerifyCode = async () => {
+        try {
+            const response = await fetch(`${apiUrl}/verify-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ phoneNumber, verificationCode }),
+            });
+    
+            const data = await response.json();
+            if (response.ok) {
+                setStep('login');
+                setErrorMessage('');
+            } else {
+                setErrorMessage(data.message || "Código incorrecto o expirado");
+            }
+        } catch (error) {
+            setErrorMessage("Error de conexión con el servidor");
+            console.error(error);
+        }
+    };
+    
+
+
     return (
         <PageContainer>
             <ImageContainer>
@@ -74,23 +125,50 @@ const LoginPage = () => {
                 {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <Title>Iniciar Sesión</Title>
                     
-                    <Form onSubmit={handleSubmit}>
-                        <Input 
-                            type="text" 
-                            name="cedula" 
-                            placeholder="Cédula" 
-                            onChange={handleChange} 
-                            required 
-                        />
-                        <Input 
-                            type="password" 
-                            name="contraseña" 
-                            placeholder="Contraseña" 
-                            onChange={handleChange} 
-                            required 
-                        />
-                        <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
-                    </Form>
+                                            {step === 'login' && (
+                            <Form onSubmit={handleSubmit}>
+                                <Input 
+                                    type="text" 
+                                    name="cedula" 
+                                    placeholder="Cédula" 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <Input 
+                                    type="password" 
+                                    name="contraseña" 
+                                    placeholder="Contraseña" 
+                                    onChange={handleChange} 
+                                    required 
+                                />
+                                <Input
+                                    type="text"
+                                    placeholder="Teléfono (ej. +18291234567)"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    required
+                                />
+                                <SubmitButton type="button" onClick={handleSendCode}>
+                                    Enviar Código
+                                </SubmitButton>
+                            </Form>
+                        )}
+
+                        {step === 'verify' && (
+                            <Form>
+                                <Input
+                                    type="text"
+                                    placeholder="Código de Verificación"
+                                    value={verificationCode}
+                                    onChange={(e) => setVerificationCode(e.target.value)}
+                                    required
+                                />
+                                <SubmitButton type="button" onClick={handleVerifyCode}>
+                                    Verificar Código
+                                </SubmitButton>
+                            </Form>
+                        )}
+
                 </LoginCard>
             </LoginContainer>
         </PageContainer>
