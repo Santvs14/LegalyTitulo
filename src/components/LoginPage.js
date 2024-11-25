@@ -63,6 +63,11 @@ const LoginPage = () => {
     };
 
     const handleSendCode = async () => {
+        if (!phoneNumber || !/^\+\d{11,15}$/.test(phoneNumber)) {
+            setErrorMessage("El teléfono debe incluir el prefijo internacional y tener entre 11 y 15 dígitos.");
+            return;
+        }
+    
         try {
             const response = await fetch(`${apiUrl}/send-code`, {
                 method: 'POST',
@@ -86,6 +91,11 @@ const LoginPage = () => {
     };
     
     const handleVerifyCode = async () => {
+        if (!verificationCode || verificationCode.length !== 6) {
+            setErrorMessage("El código de verificación debe tener 6 dígitos.");
+            return;
+        }
+    
         try {
             const response = await fetch(`${apiUrl}/verify-code`, {
                 method: 'POST',
