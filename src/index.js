@@ -16,6 +16,8 @@ import AdminWelcomePage from './components/AdminWelcomePage'; // Página de bien
 import LoginAdmin from './components/LoginAdmin'; // Página de bienvenida para administradores
 import IESForm  from './components/IESForm'; // Página de bienvenida para administradores
 import DocumentosIES  from './components/DocumentosIES'; // Página de bienvenida para administradores
+import VerifyCode  from './components/VerifyCode'; // Página de bienvenida para administradores
+
 
 
 
@@ -39,6 +41,7 @@ root.render(
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/welcomeAdmin" element={<WelcomeAdmin />} />
 
+          <Route path="/verify" element={<VerifyCode />} />
           <Route path="/Ies" element={<IESForm />} />
           <Route path="/DocumentosIES" element={<DocumentosIES/>} />
           <Route path="/legalization" element={<LegalizationPage />} />

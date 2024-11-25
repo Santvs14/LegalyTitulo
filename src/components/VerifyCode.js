@@ -5,13 +5,17 @@ import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa'; // Importa el icono de una flecha moderna
 import imagenLogin from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
 
-const LoginPage = () => {
+const VerifyCode = () => {
     const navigate = useNavigate();
     const { login } = useContext(UserContext);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState("");
+    const [email, setEmail] = useState(''); // Declara el estado para el email
+
+    const [step, setStep] = useState('login'); // 'login', 'verify'
+    const [verificationCode, setVerificationCode] = useState('');
 
 
     const handleChange = (e) => {
@@ -44,7 +48,7 @@ const LoginPage = () => {
             // Si las credenciales son correctas, guarda el token y redirige al dashboard
 
                 localStorage.setItem("token", data.token);
-                navigate('/verify');
+                navigate('/welcome');
             } else {
                 setErrorMessage(data.message || "Credenciales incorrectas");
                 console.error('Error de autenticación:', data.message);
@@ -57,6 +61,68 @@ const LoginPage = () => {
 
     const handleGoBack = () => {
         navigate('/'); // Redirige a la página de bienvenida
+    };
+
+    const handleSendCode = async () => {
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setErrorMessage("Por favor, introduce un correo electrónico válido.");
+            return;
+        }
+    
+        try {
+            const response = await fetch(`${apiUrl}/send-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+    
+            if (!response.ok) {
+                const data = await response.json();
+                setErrorMessage(data.message || "Error desconocido");
+                console.error('Error al enviar el código:', data.message);
+            } else {
+                const data = await response.json();
+                console.log('Código de verificación enviado:', data);
+                setStep('verify');  // Cambia el paso al formulario de verificación
+                setErrorMessage('');
+            }
+        } catch (error) {
+            setErrorMessage("Error de conexión con el servidor");
+            console.error('Error de red o conexión:', error);
+        }
+    };
+    
+    
+    const handleVerifyCode = async () => {
+        if (!verificationCode || verificationCode.length !== 6) {
+            setErrorMessage("El código de verificación debe tener 6 dígitos.");
+            return;
+        }
+    
+        try {
+            const response = await fetch(`${apiUrl}/verify-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, verificationCode }),
+                
+            });
+            console.log({ email, verificationCode });
+
+            const data = await response.json();
+            if (response.ok) {
+                setStep('login');
+                setErrorMessage('');
+            } else {
+                setErrorMessage(data.message || "Código incorrecto o expirado");
+            }
+        } catch (error) {
+            setErrorMessage("Error de conexión con el servidor");
+            console.error(error);
+        }
     };
 
     return (
@@ -72,25 +138,39 @@ const LoginPage = () => {
             <LoginContainer>
                 <LoginCard>
                 {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                    <Title>Iniciar Sesión</Title>
+                    <Title>Verificación para poder iniciar</Title>
                     
-                    <Form onSubmit={handleSubmit}>
-                        <Input 
-                            type="text" 
-                            name="cedula" 
-                            placeholder="Cédula" 
-                            onChange={handleChange} 
-                            required 
-                        />
-                        <Input 
-                            type="password" 
-                            name="contraseña" 
-                            placeholder="Contraseña" 
-                            onChange={handleChange} 
-                            required 
-                        />
-                        <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
-                    </Form>
+                    {step === 'login' && (
+                        <Form onSubmit={handleSubmit}>
+                          
+                            <Input
+                                type="email"
+                                placeholder="Correo Electrónico"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} // Usa setEmail para actualizar el estado
+                                required
+                            />
+                            <SubmitButton type="button" onClick={handleSendCode}>
+                                Enviar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
+
+                    {step === 'verify' && (
+                        <Form>
+                            <Input
+                                type="text"
+                                placeholder="Código de Verificación"
+                                value={verificationCode}
+                                onChange={(e) => setVerificationCode(e.target.value)}
+                                required
+                            />
+                            <SubmitButton type="button" onClick={handleVerifyCode}>
+                                Verificar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
+
                 </LoginCard>
             </LoginContainer>
         </PageContainer>
@@ -232,5 +312,5 @@ const SubmitButton = styled.button`
     }
 `;
 
-export default LoginPage;
+export default VerifyCode;
 
