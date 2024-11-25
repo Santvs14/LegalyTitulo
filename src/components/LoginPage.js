@@ -78,20 +78,22 @@ const LoginPage = () => {
                 body: JSON.stringify({ email }),
             });
     
-            const data = await response.json();
-            
-            if (response.ok) {
+            if (!response.ok) {
+                const data = await response.json();
+                setErrorMessage(data.message || "Error desconocido");
+                console.error('Error al enviar el código:', data.message);
+            } else {
+                const data = await response.json();
                 console.log('Código de verificación enviado:', data);
                 setStep('verify');  // Cambia el paso al formulario de verificación
-                //setErrorMessage('');
-            } else {
-                setErrorMessage(data.message || "Error al enviar el código");
+                setErrorMessage('');
             }
         } catch (error) {
             setErrorMessage("Error de conexión con el servidor");
-            console.error(error);
+            console.error('Error de red o conexión:', error);
         }
     };
+    
     
     const handleVerifyCode = async () => {
         if (!verificationCode || verificationCode.length !== 6) {
