@@ -79,9 +79,10 @@ const LoginPage = () => {
             });
     
             const data = await response.json();
+            
             if (response.ok) {
                 console.log('Código de verificación enviado:', data);
-                setStep('verify');
+                setStep('verify');  // Cambia el paso al formulario de verificación
                 setErrorMessage('');
             } else {
                 setErrorMessage(data.message || "Error al enviar el código");
@@ -91,7 +92,7 @@ const LoginPage = () => {
             console.error(error);
         }
     };
-
+    
     const handleVerifyCode = async () => {
         if (!verificationCode || verificationCode.length !== 6) {
             setErrorMessage("El código de verificación debe tener 6 dígitos.");
