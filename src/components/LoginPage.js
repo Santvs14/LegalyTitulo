@@ -12,7 +12,8 @@ const LoginPage = () => {
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState(''); // Declara el estado para el email
+
     const [step, setStep] = useState('login'); // 'login', 'verify'
     const [verificationCode, setVerificationCode] = useState('');
 
