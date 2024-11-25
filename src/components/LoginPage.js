@@ -91,8 +91,7 @@ const LoginPage = () => {
             console.error(error);
         }
     };
-    
-    
+
     const handleVerifyCode = async () => {
         if (!verificationCode || verificationCode.length !== 6) {
             setErrorMessage("El código de verificación debe tener 6 dígitos.");
@@ -120,10 +119,6 @@ const LoginPage = () => {
             console.error(error);
         }
     };
-    
-    
-    
-
 
     return (
         <PageContainer>
@@ -141,49 +136,48 @@ const LoginPage = () => {
                     <Title>Iniciar Sesión</Title>
                     
                     {step === 'login' && (
-    <Form onSubmit={handleSubmit}>
-        <Input 
-            type="text" 
-            name="cedula" 
-            placeholder="Cédula" 
-            onChange={handleChange} 
-            required 
-        />
-        <Input 
-            type="password" 
-            name="contraseña" 
-            placeholder="Contraseña" 
-            onChange={handleChange} 
-            required 
-        />
-        <Input
-            type="email"
-            placeholder="Correo Electrónico"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-        />
-        <SubmitButton type="button" onClick={handleSendCode}>
-            Enviar Código
-        </SubmitButton>
-    </Form>
-)}
+                        <Form onSubmit={handleSubmit}>
+                            <Input 
+                                type="text" 
+                                name="cedula" 
+                                placeholder="Cédula" 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <Input 
+                                type="password" 
+                                name="contraseña" 
+                                placeholder="Contraseña" 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <Input
+                                type="email"
+                                placeholder="Correo Electrónico"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} // Usa setEmail para actualizar el estado
+                                required
+                            />
+                            <SubmitButton type="button" onClick={handleSendCode}>
+                                Enviar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
 
-{step === 'verify' && (
-    <Form>
-        <Input
-            type="text"
-            placeholder="Código de Verificación"
-            value={verificationCode}
-            onChange={(e) => setVerificationCode(e.target.value)}
-            required
-        />
-        <SubmitButton type="button" onClick={handleVerifyCode}>
-            Verificar Código
-        </SubmitButton>
-    </Form>
-)}
-
+                    {step === 'verify' && (
+                        <Form>
+                            <Input
+                                type="text"
+                                placeholder="Código de Verificación"
+                                value={verificationCode}
+                                onChange={(e) => setVerificationCode(e.target.value)}
+                                required
+                            />
+                            <SubmitButton type="button" onClick={handleVerifyCode}>
+                                Verificar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
 
                 </LoginCard>
             </LoginContainer>
