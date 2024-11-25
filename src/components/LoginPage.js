@@ -79,6 +79,8 @@ const LoginPage = () => {
     
             const data = await response.json();
             if (response.ok) {
+                console.log('Código de verificación enviado:', data); // Log para verificar
+
                 setStep('verify');
                 setErrorMessage('');
             } else {
