@@ -40,9 +40,9 @@ const WelcomePage = () => {
             <MainContent expanded={showServices}>
                 <Logo src={mesy} alt="Logo" />
                 <Title>Sistema De Automatización Para La Legalización De Documentos</Title>
-                <Subtitle>Bienvenido, {user.nombre} {user.apellido}</Subtitle>
+                <Subtitle style={{color:'#333'}}>Bienvenido, {user.nombre} {user.apellido}</Subtitle>
                 <ProfileContainer>
-                    <ProfileName>{user.nombre} {user.apellido}</ProfileName>
+                    <ProfileName style={{color:'#333'}}>{user.nombre} {user.apellido}</ProfileName>
                     <ProfileButton onClick={handleToggleProfileMenu}>▼</ProfileButton>
                     {showProfileMenu && (
                         <ProfileMenu>
@@ -67,7 +67,7 @@ const Container = styled.div`
 const Sidebar = styled.div`
     width: 200px;
     padding: 10px;
-    background-color: #333;
+    background-color: #7fa6bb;
     display: flex;
     flex-direction: column;
     align-items: center;
