@@ -332,8 +332,8 @@ const ModalContent = styled.div`
 `;
 
 const CloseButton = styled.button`
-  
-  color: #ff0000;
+  background-color: transparent; /* Fondo transparente */
+  color: #ff0000; /* Color del texto */
   font-size: 1.5rem;
   padding: 0.5rem;
   border: none;
@@ -341,8 +341,9 @@ const CloseButton = styled.button`
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 50px;
 `;
+
 
 const RecordCard = styled.div`
   background-color: #ffffff;
