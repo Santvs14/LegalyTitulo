@@ -46,6 +46,15 @@ const LoginIES = () => {
 
     return (
         <Container>
+            <ContentSection>
+                <StyledImage src={imagenLogin} alt="Imagen de inicio" />
+                <TextContainer>
+                    <TitleText>Universidades IES</TitleText>
+                    <SubtitleText>
+                        Bienvenidos al sistema lotes de egresados
+                    </SubtitleText>
+                </TextContainer>
+            </ContentSection>
             <LoginSection>
                 <BackButton onClick={handleGoBack}>
                     <FaArrowLeft />
@@ -74,15 +83,6 @@ const LoginIES = () => {
                     </LoginForm>
                 </LoginCard>
             </LoginSection>
-            <ImageSection>
-                <StyledImage src={imagenLogin} alt="Imagen de inicio" />
-                <TextContainer>
-                    <TitleText>Universidades IES</TitleText>
-                    <SubtitleText>
-                        Bienvenidos al sistema lotes de egresados
-                    </SubtitleText>
-                </TextContainer>
-            </ImageSection>
         </Container>
     );
 };
@@ -90,30 +90,51 @@ const LoginIES = () => {
 // Estilos con styled-components
 const Container = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     background-color: #f5f7fa;
+    padding: 20px;
 `;
 
-const LoginSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-`;
-
-const ImageSection = styled.div`
+const ContentSection = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #d0e7f9;
-    width: 50%;
+    width: 70%;
     border-radius: 16px;
-    padding: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+`;
+
+const StyledImage = styled.img`
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+`;
+
+const TextContainer = styled.div`
+    text-align: center;
+`;
+
+const TitleText = styled.h3`
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 10px;
+`;
+
+const SubtitleText = styled.p`
+    color: #555;
+    font-size: 1.2rem;
+`;
+
+const LoginSection = styled.div`
+    width: 70%;
 `;
 
 const BackButton = styled.button`
@@ -137,7 +158,6 @@ const LoginCard = styled.div`
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 40px;
     width: 100%;
-    max-width: 400px;
 `;
 
 const Title = styled.h2`
@@ -176,28 +196,6 @@ const SubmitButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
-`;
-
-const StyledImage = styled.img`
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-`;
-
-const TextContainer = styled.div`
-    text-align: center;
-`;
-
-const TitleText = styled.h3`
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 10px;
-`;
-
-const SubtitleText = styled.p`
-    color: #555;
-    font-size: 1.2rem;
 `;
 
 const ErrorMessage = styled.p`
