@@ -175,7 +175,7 @@ const ProfileMenuButton = styled.button`
     padding: 10px 20px;
     font-size: 16px;
     background-color: #d8dddf;
-    color: #fff;
+    color: #333;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -183,6 +183,7 @@ const ProfileMenuButton = styled.button`
     text-align: left;
     &:hover {
         background-color: #444;
+        color: #fff
     }
 `;
 
