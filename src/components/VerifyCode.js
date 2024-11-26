@@ -166,7 +166,7 @@ const ImageContainer = styled.div`
     margin-bottom: 30px; /* Espacio entre la imagen y el formulario */
 
     @media (max-width: 768px) {
-        width: 100%;
+        width: 95%;
         height: 300px;
         display: flex;
     flex-direction: column;
@@ -182,8 +182,8 @@ const StyledImage = styled.img`
     margin-bottom: 20px;
 
     @media (max-width: 768px) {
-        width: 120px;
-        height: 120px;
+        width: 133px;
+        height: 133px;
             margin-left: 3px;
 
     }
