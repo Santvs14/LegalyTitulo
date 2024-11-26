@@ -43,7 +43,7 @@ const WelcomePage = () => {
                 <Subtitle style={{color:'#333'}}>Bienvenido, {user.nombre} {user.apellido}</Subtitle>
                 <ProfileContainer>
                     <ProfileName style={{color:'#333'}}>{user.nombre} {user.apellido}</ProfileName>
-                    <ProfileButton onClick={handleToggleProfileMenu}>▼</ProfileButton>
+                    <ProfileButton style={{color:'#333'}} onClick={handleToggleProfileMenu}>▼</ProfileButton>
                     {showProfileMenu && (
                         <ProfileMenu>
                             <ProfileMenuButton onClick={handleViewProfile}>Ver Perfil</ProfileMenuButton>
@@ -67,7 +67,7 @@ const Container = styled.div`
 const Sidebar = styled.div`
     width: 200px;
     padding: 10px;
-    background-color: #7fa6bb;
+    background-color: #d8dddf;
     display: flex;
     flex-direction: column;
     align-items: center;
