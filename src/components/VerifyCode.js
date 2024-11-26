@@ -168,10 +168,7 @@ const ImageContainer = styled.div`
     @media (max-width: 768px) {
         width: 95%;
         height: 300px;
-        display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
     }
 `;
 
