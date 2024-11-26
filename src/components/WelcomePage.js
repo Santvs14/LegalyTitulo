@@ -26,8 +26,8 @@ const WelcomePage = () => {
         <Container>
             <Sidebar>
                 <MenuButton onClick={handleToggleServices}>
-                    <FaBars size={20} color="#fff" />
-                    <MenuText>Servicios de Legalizado</MenuText>
+                    <FaBars size={20} color="#333" />
+                    <MenuText style={{color:'#333'}}>Servicios de Legalizado</MenuText>
                 </MenuButton>
                 {showServices && (
                     <Services>
