@@ -62,7 +62,8 @@ const Container = styled.div`
     background-color: #f0f4f8;
     color: #fff;
     font-family: Arial, sans-serif;
-@media (min-width: 768px) {
+
+    @media (min-width: 768px) {
         flex-direction: row;
     }
 `;  
@@ -126,7 +127,7 @@ const Title = styled.h1`
     margin-bottom: 20px;
     color: #39a4cb;
 @media (min-width: 768px) {
-        font-size: 36px;
+        font-size: 30px;
     }
 `;
 
@@ -134,7 +135,7 @@ const Subtitle = styled.h2`
     font-size: 24px;
     margin-bottom: 20px;
 @media (min-width: 768px) {
-        font-size: 24px;
+        font-size: 22px;
     }
 `;
 
