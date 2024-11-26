@@ -45,7 +45,7 @@ const WelcomePage = () => {
                     <ProfileName style={{color:'#333'}}>{user.nombre} {user.apellido}</ProfileName>
                     <ProfileButton style={{color:'#333'}} onClick={handleToggleProfileMenu}>▼</ProfileButton>
                     {showProfileMenu && (
-                        <ProfileMenu>
+                        <ProfileMenu >
                             <ProfileMenuButton onClick={handleViewProfile}>Ver Perfil</ProfileMenuButton>
                             <ProfileMenuButton onClick={handleLogout}>Cerrar Sesión</ProfileMenuButton>
                         </ProfileMenu>
@@ -165,7 +165,7 @@ const ProfileMenu = styled.div`
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #333;
+    background-color: #d8dddf;
     border-radius: 5px;
     padding: 10px 0;
     z-index: 1000;

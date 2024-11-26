@@ -178,7 +178,8 @@ const LegalizationPage = () => {
             </div>
 
             )}
-
+<br></br>
+<br></br>
            <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
 
             <h2 style={styles.title}>Formulario de Legalización</h2>
@@ -242,7 +243,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#333',
+        backgroundColor: '#1a1a1a',
         padding: '20px',
     },
     checkIcon: {

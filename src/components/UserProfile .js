@@ -35,7 +35,7 @@ const Modal = ({ isOpen, onClose, request }) => {
 
 const GlobalStyle = createGlobalStyle`
     body {
-        background-color: #333;
+        background-color: #1a1a1a;
         margin: 0;
         font-family: Arial, sans-serif;
         display: flex;
@@ -113,7 +113,7 @@ const UserProfile = () => {
             <GlobalStyle />
             <Container>
                 <BackButton onClick={handleGoBack}>
-                    <FaArrowLeft style={{ marginRight: '8px' }} /> Regresar
+                    <FaArrowLeft style={{ marginRight: '8px',color:'#39a4cb' }} /> 
                 </BackButton>
                 <Title>Perfil de {user ? `${user.nombre} ${user.apellido}` : 'Cargando...'}</Title>
                 <ProfileInfo>
@@ -147,7 +147,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    background-color: #1a1a1a;
+    background-color: #d8dddf;
     color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -182,7 +182,7 @@ const BackButton = styled.button`
     align-self: flex-start;
     display: flex;
     align-items: center;
-    background-color: #39a4cb;
+    background-color: #1a1a1a;
     color: white;
     border: none;
     padding: 10px 20px;
