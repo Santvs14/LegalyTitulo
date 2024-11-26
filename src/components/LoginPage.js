@@ -135,9 +135,11 @@ const StyledImage = styled.img`
     height: 250px;
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
-@media (max-width: 768px) {
-        width: 120px;
-        height: 120px;
+
+    @media (max-width: 768px) {
+        top:5px;
+        width: 123px;
+        height: 123px;
     }
 `;
 

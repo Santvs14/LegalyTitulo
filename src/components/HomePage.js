@@ -59,12 +59,13 @@ const TitleContainer = styled.div`
 const ImageTop = styled.img`
   width: 300px;
   margin-bottom: 1.5rem;
-@media (max-width: 768px) {
-    width: 150px; // Ajustar el tamaño de la imagen en pantallas más pequeñas
+
+  @media (max-width: 768px) {
+    width: 170px; // Ajustar el tamaño de la imagen en pantallas más pequeñas
   }
 
   @media (max-width: 480px) {
-    width: 120px; // Ajustar aún más en pantallas pequeñas
+    width: 140px; // Ajustar aún más en pantallas pequeñas
   }
 `;
 const Title = styled.h1`
