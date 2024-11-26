@@ -102,7 +102,7 @@ const VerifyCodeIES = () => {
                 </TextContainer>
 
             </ContentSection>
-            {showLogin && (
+
                 <LoginSection>
 
                     <LoginCard>
@@ -142,7 +142,7 @@ const VerifyCodeIES = () => {
                         </LoginForm>
                     </LoginCard>
                 </LoginSection>
-            )}
+            
         </Container>
     );
 };
