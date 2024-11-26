@@ -180,7 +180,9 @@ const LoginCard = styled.div`
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 50%;
+    width: 30%;
+    margin: 0 auto; /* Centrado */
+
 `;
 
 const Title = styled.h2`
