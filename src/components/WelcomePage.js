@@ -116,8 +116,8 @@ const Logo = styled.img`
     height: 193px;
     margin-bottom: 20px;
 @media (min-width: 768px) {
-        width: 193px;
-        height: 193px;
+        width: 190px;
+        height: 190px;
     }
 `;
 
@@ -127,7 +127,7 @@ const Title = styled.h1`
     margin-bottom: 20px;
     color: #39a4cb;
 @media (min-width: 768px) {
-        font-size: 30px;
+        font-size: 25px;
     }
 `;
 
@@ -135,7 +135,7 @@ const Subtitle = styled.h2`
     font-size: 24px;
     margin-bottom: 20px;
 @media (min-width: 768px) {
-        font-size: 22px;
+        font-size: 20px;
     }
 `;
 
