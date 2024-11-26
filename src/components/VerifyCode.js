@@ -182,8 +182,8 @@ const StyledImage = styled.img`
     margin-bottom: 20px;
 
     @media (max-width: 768px) {
-        width: 133px;
-        height: 133px;
+        width: 143px;
+        height: 143px;
             margin-left: 3px;
 
     }
