@@ -5,14 +5,16 @@ import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa';
 import imagenLogin from '../image/mesy.png';
 
+// Componente principal
 const LoginIES = () => {
-    const navigate = useNavigate();
     const { login } = useContext(UserContext);
+    const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState('');
 
+    // Handlers
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -20,7 +22,6 @@ const LoginIES = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
             const response = await fetch(`${apiUrl}/api/users/login`, {
                 method: 'POST',
@@ -29,7 +30,6 @@ const LoginIES = () => {
             });
 
             const data = await response.json();
-
             if (response.ok) {
                 login(data.user);
                 localStorage.setItem('token', data.token);
@@ -45,19 +45,20 @@ const LoginIES = () => {
     const handleGoBack = () => navigate('/');
 
     return (
-        <PageContainer>
-            <FormSection>
+        <Container>
+            <LoginSection>
                 <BackButton onClick={handleGoBack}>
                     <FaArrowLeft />
                 </BackButton>
                 <LoginCard>
-                    {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <Title>Iniciar Sesión</Title>
+                    {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <LoginForm onSubmit={handleSubmit}>
                         <Input
                             type="text"
                             name="cedula"
                             placeholder="Cédula"
+                            value={formData.cedula}
                             onChange={handleChange}
                             required
                         />
@@ -65,51 +66,116 @@ const LoginIES = () => {
                             type="password"
                             name="contraseña"
                             placeholder="Contraseña"
+                            value={formData.contraseña}
                             onChange={handleChange}
                             required
                         />
-                        <SubmitButton type="submit">Iniciar Sesión</SubmitButton>
+                        <SubmitButton type="submit">Ingresar</SubmitButton>
                     </LoginForm>
                 </LoginCard>
-            </FormSection>
+            </LoginSection>
             <ImageSection>
-                <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
-                <WelcomeText fontSize={33}>Universidades IES</WelcomeText>
-                <WelcomeText fontSize={23} marginBottom={133}>
-                    Bienvenidos al sistema lotes de egresados
-                </WelcomeText>
+                <StyledImage src={imagenLogin} alt="Imagen de inicio" />
+                <TextContainer>
+                    <TitleText>Universidades IES</TitleText>
+                    <SubtitleText>
+                        Bienvenidos al sistema lotes de egresados
+                    </SubtitleText>
+                </TextContainer>
             </ImageSection>
-        </PageContainer>
+        </Container>
     );
 };
 
-// Styled-components
-
-const PageContainer = styled.div`
+// Estilos con styled-components
+const Container = styled.div`
     display: flex;
-    height: 100vh;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
     background-color: #f5f7fa;
 `;
 
-const FormSection = styled.div`
+const LoginSection = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 40%;
 `;
 
 const ImageSection = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: #d0e7f9;
     width: 50%;
     border-radius: 16px;
     padding: 20px;
+`;
+
+const BackButton = styled.button`
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: #007bff;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+        color: #0056b3;
+    }
+`;
+
+const LoginCard = styled.div`
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+`;
+
+const Title = styled.h2`
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+`;
+
+const LoginForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`;
+
+const Input = styled.input`
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+
+    &:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+`;
+
+const SubmitButton = styled.button`
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
 `;
 
 const StyledImage = styled.img`
@@ -119,85 +185,26 @@ const StyledImage = styled.img`
     margin-bottom: 20px;
 `;
 
-const WelcomeText = styled.h3`
+const TextContainer = styled.div`
+    text-align: center;
+`;
+
+const TitleText = styled.h3`
     color: #333;
-    text-align: center;
-    margin-bottom: ${({ marginBottom }) => marginBottom || '20px'}px;
-    font-size: ${({ fontSize }) => fontSize || '1.3rem'}px;
-`;
-
-const BackButton = styled.button`
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    color: #007bff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-
-    &:hover {
-        color: #0056b3;
-    }
-`;
-
-const LoginCard = styled.div`
-    background: #fff;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-`;
-
-const Title = styled.h2`
     font-size: 2rem;
-    color: #007bff;
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 `;
 
-const LoginForm = styled.form`
-    display: flex;
-    flex-direction: column;
-`;
-
-const Input = styled.input`
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-
-    &:focus {
-        border-color: #007bff;
-        outline: none;
-    }
-`;
-
-const SubmitButton = styled.button`
-    background: #007bff;
-    color: white;
-    padding: 12px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:hover {
-        background-color: #0056b3;
-    }
+const SubtitleText = styled.p`
+    color: #555;
+    font-size: 1.2rem;
 `;
 
 const ErrorMessage = styled.p`
     color: #e74c3c;
     font-size: 0.9rem;
-    margin-bottom: 15px;
     text-align: center;
+    margin-bottom: 10px;
 `;
 
 export default LoginIES;
