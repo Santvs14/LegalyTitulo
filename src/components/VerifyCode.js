@@ -170,7 +170,7 @@ const ImageContainer = styled.div`
 
 
    @media (max-width: 768px) {
-        width: 90%;
+        width: 80%;
         height: 300px;
     }
 `;
@@ -193,7 +193,7 @@ const WelcomeText = styled.h3`
     margin-bottom: 30px;
     font-size: 1.3rem;
  @media (max-width: 768px) {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 `;
 const ErrorMessage = styled.p`
@@ -269,6 +269,10 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
+@media (max-width: 768px) {
+    width: 80%;
+
+    }
 `;
 
 const Input = styled.input`
