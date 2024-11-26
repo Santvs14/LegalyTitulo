@@ -17,6 +17,7 @@ const IESForm = () => {
   const [iesRecords, setIesRecords] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
+  // Fetch data on component mount
   useEffect(() => {
     const fetchRecords = async () => {
       try {
@@ -30,15 +31,18 @@ const IESForm = () => {
     fetchRecords();
   }, [apiUrl]);
 
+  // Handle form data change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // Handle file input change
   const handleFileChange = (e) => {
     setFiles(e.target.files);
   };
 
+  // Submit form data
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
@@ -72,7 +76,6 @@ const IESForm = () => {
 
   return (
     <Container>
-      {/* Banner superior */}
       <Banner>
         <Logo src={mesy} alt="Logo" />
       </Banner>
@@ -81,8 +84,8 @@ const IESForm = () => {
         <h2>Envio de datos egresado IES</h2>
         {message && <Message>{message}</Message>}
 
-        <Label>
-          Nombres:
+        <FormGroup>
+          <Label htmlFor="nombres">Nombres</Label>
           <Input
             type="text"
             name="nombres"
@@ -90,10 +93,10 @@ const IESForm = () => {
             onChange={handleInputChange}
             required
           />
-        </Label>
+        </FormGroup>
 
-        <Label>
-          Apellidos:
+        <FormGroup>
+          <Label htmlFor="apellidos">Apellidos</Label>
           <Input
             type="text"
             name="apellidos"
@@ -101,10 +104,10 @@ const IESForm = () => {
             onChange={handleInputChange}
             required
           />
-        </Label>
+        </FormGroup>
 
-        <Label>
-          Matrícula:
+        <FormGroup>
+          <Label htmlFor="matricula">Matrícula</Label>
           <Input
             type="text"
             name="matricula"
@@ -112,43 +115,49 @@ const IESForm = () => {
             onChange={handleInputChange}
             required
           />
-        </Label>
+        </FormGroup>
 
-        <Select
-          name="carrera"
-          onChange={handleInputChange}
-          value={formData.carrera}
-          required
-        >
-          <option value="">Selecciona la carrera que estudiaste</option>
-          <option value="Doctor en Odontologia">Doctor en Odontologia</option>
-          <option value="Doctor en Medicina">Doctor en Medicina</option>
-          <option value="Doctor en Leyes">Doctor en Leyes</option>
-          <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
-          <option value="Ingenieria Industrial">Ingenieria Industrial</option>
-        </Select>
+        <FormGroup>
+          <Label htmlFor="carrera">Carrera</Label>
+          <Select
+            name="carrera"
+            onChange={handleInputChange}
+            value={formData.carrera}
+            required
+          >
+            <option value="">Selecciona la carrera que estudiaste</option>
+            <option value="Doctor en Odontologia">Doctor en Odontologia</option>
+            <option value="Doctor en Medicina">Doctor en Medicina</option>
+            <option value="Doctor en Leyes">Doctor en Leyes</option>
+            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+            <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+          </Select>
+        </FormGroup>
 
-        <Select
-          name="universidad"
-          onChange={handleInputChange}
-          value={formData.universidad}
-          required
-        >
-          <option value="">Selecciona tu universidad</option>
-          <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
-          <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
-          <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
-          <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
-          <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
-          <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
-          <option value="Universidad APEC">Universidad APEC</option>
-          <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
-          <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
-          <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
-        </Select>
+        <FormGroup>
+          <Label htmlFor="universidad">Universidad</Label>
+          <Select
+            name="universidad"
+            onChange={handleInputChange}
+            value={formData.universidad}
+            required
+          >
+            <option value="">Selecciona tu universidad</option>
+            <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
+            <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
+            <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
+            <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
+            <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
+            <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
+            <option value="Universidad APEC">Universidad APEC</option>
+            <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
+            <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
+            <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
+          </Select>
+        </FormGroup>
 
-        <Label>
-          Documentos:
+        <FormGroup>
+          <Label htmlFor="documentos">Documentos</Label>
           <Input
             type="file"
             name="documentos"
@@ -157,7 +166,7 @@ const IESForm = () => {
             accept="image/*"
             required
           />
-        </Label>
+        </FormGroup>
 
         <SubmitButton type="submit" disabled={uploading}>
           {uploading ? 'Subiendo...' : 'Enviar'}
@@ -181,12 +190,7 @@ const IESForm = () => {
               <DocumentsContainer>
                 <strong>Documentos:</strong>
                 {record.documentos.map((doc, i) => (
-                  <img
-                    key={i}
-                    src={doc}
-                    alt={`Documento ${i + 1}`}
-                    style={{ maxWidth: '100px', maxHeight: '100px', margin: '0.5rem' }}
-                  />
+                  <DocumentPreview key={i} src={doc} alt={`Documento ${i + 1}`} />
                 ))}
               </DocumentsContainer>
             )}
@@ -197,96 +201,117 @@ const IESForm = () => {
   );
 };
 
+// Styled-components
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const Banner = styled.div`
-  background-color: #333;
-  padding: 1rem;
+  background-color: #f0f4f8;
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
 `;
 
 const Logo = styled.img`
   height: 93px;
+  width: auto;
 `;
 
 const Form = styled.form`
-  margin-top: 1rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
   border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  margin-bottom: 1rem;
 `;
 
 const Label = styled.label`
   font-weight: bold;
+  margin-bottom: 0.5rem;
 `;
 
 const Input = styled.input`
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
   border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const Select = styled.select`
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  padding: 0.75rem;
   border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-bottom: 1rem;
   width: 100%;
+  box-sizing: border-box;
 `;
 
 const SubmitButton = styled.button`
   padding: 0.75rem 1.5rem;
-  background-color: #28a745;
+  background-color: #007bff;
   color: white;
+  font-size: 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-  font-size: 1rem;
+  &:disabled {
+    background-color: #b0b0b0;
+  }
 `;
 
-const Message = styled.p`
-  color: green;
-  font-weight: bold;
-`;
-
-const Records = styled.div`
-  margin-top: 2rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-`;
-
-const RecordsHeader = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-const RecordCard = styled.div`
+const Message = styled.div`
   background-color: #f9f9f9;
+  color: #333;
   padding: 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
 `;
 
+const Records = styled.div`
+  margin-top: 2rem;
+`;
+
+const RecordsHeader = styled.div`
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+`;
+
+const RecordCard = styled.div`
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+`;
+
 const DocumentsContainer = styled.div`
   margin-top: 1rem;
+`;
+
+const DocumentPreview = styled.img`
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 `;
 
 export default IESForm;
