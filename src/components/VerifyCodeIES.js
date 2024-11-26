@@ -169,6 +169,10 @@ const ContentSection = styled.div`
     padding: 40px;
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+        width: 100%;
+        padding: 30px;
+    }
 `;
 const Form = styled.form`
     display: flex;
@@ -202,6 +206,10 @@ const StyledImage = styled.img`
     height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
+ @media (max-width: 768px) {
+        width: 150px;
+        height: 150px;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -212,11 +220,17 @@ const TitleText = styled.h3`
     color: #333;
     font-size: 2rem;
     margin-bottom: 10px;
+@media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 `;
 
 const SubtitleText = styled.p`
     color: #555;
     font-size: 1.2rem;
+@media (max-width: 768px) {
+        font-size: 1rem;
+    }
 `;
 
 const EnterButton = styled.button`

@@ -61,22 +61,22 @@ const ImageTop = styled.img`
   margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
-    width: 170px; // Ajustar el tamaño de la imagen en pantallas más pequeñas
+    width: 200px; // Ajustar el tamaño de la imagen en pantallas más pequeñas
   }
 
   @media (max-width: 480px) {
-    width: 140px; // Ajustar aún más en pantallas pequeñas
+    width: 180px; // Ajustar aún más en pantallas pequeñas
   }
 `;
 const Title = styled.h1`
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   color: #01254f;
 @media (max-width: 768px) {
     font-size: 1.8rem; // Reducir tamaño de fuente en pantallas más pequeñas
   }
 
   @media (max-width: 480px) {
-    font-size: 1.5rem; // Reducir aún más en pantallas pequeñas
+    font-size: 1.4rem; // Reducir aún más en pantallas pequeñas
   }
 `;
 
