@@ -167,10 +167,11 @@ const ImageContainer = styled.div`
     border-radius: 20px;
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
-@media (max-width: 768px) {
-        width: 100%;
-        height: 400px;
-        margin-bottom: 20px;
+
+
+   @media (max-width: 768px) {
+        width: 90%;
+        height: 300px;
     }
 `;
 
@@ -180,6 +181,9 @@ const StyledImage = styled.img`
     height: 250px;
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
+ @media (max-width: 768px) {
+        width: 60%;
+    }
 `;
 
 // Texto de bienvenida debajo de la imagen
@@ -188,8 +192,8 @@ const WelcomeText = styled.h3`
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.3rem;
-@media (max-width: 768px) {
-        font-size: 1rem;
+ @media (max-width: 768px) {
+        font-size: 1.2rem;
     }
 `;
 const ErrorMessage = styled.p`
