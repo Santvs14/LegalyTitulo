@@ -67,7 +67,7 @@ const Container = styled.div`
 const Sidebar = styled.div`
     width: 200px;
     padding: 10px;
-    background-color: #333;
+    background-color: #f0f4f8;
     display: flex;
     flex-direction: column;
     align-items: center;
