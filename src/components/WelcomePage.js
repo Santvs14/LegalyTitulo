@@ -59,7 +59,7 @@ const WelcomePage = () => {
 const Container = styled.div`
     display: flex;
     height: 100vh;
-    background-color: #1a1a1a;
+    background-color: #f0f4f8;
     color: #fff;
     font-family: Arial, sans-serif;
 `;
@@ -67,7 +67,7 @@ const Container = styled.div`
 const Sidebar = styled.div`
     width: 200px;
     padding: 10px;
-    background-color: #f0f4f8;
+    background-color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
