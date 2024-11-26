@@ -105,7 +105,7 @@ const VerifyCode = () => {
                     <Title>Verificar Ingreso al Sistema</Title>
                     
                     {step === 'login' && (
-                        <Form onSubmit={handleSubmit}>
+                        <Form>
                           
                             <Input
                                 type="email"
