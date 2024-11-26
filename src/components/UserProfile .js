@@ -35,7 +35,7 @@ const Modal = ({ isOpen, onClose, request }) => {
 
 const GlobalStyle = createGlobalStyle`
     body {
-        background-color: #1a1a1a;
+        background-color: #d8dddf;
         margin: 0;
         font-family: Arial, sans-serif;
         display: flex;
@@ -147,7 +147,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    background-color: #f0f4f8;
+    background-color: #eef1f3;
     color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -182,7 +182,7 @@ const BackButton = styled.button`
     align-self: flex-start;
     display: flex;
     align-items: center;
-    background-color: #1a1a1a;
+    background-color: #d8dddf;
     color: white;
     border: none;
     padding: 10px 20px;
