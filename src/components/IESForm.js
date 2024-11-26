@@ -15,6 +15,7 @@ const IESForm = () => {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState('');
   const [iesRecords, setIesRecords] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch data on component mount
@@ -74,129 +75,140 @@ const IESForm = () => {
     }
   };
 
+  // Handle modal open/close
+  const handleModalToggle = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <Container>
       <Banner>
         <Logo src={mesy} alt="Logo" />
       </Banner>
 
-      <Form onSubmit={handleSubmit}>
-        <h2>Envio de datos egresado IES</h2>
-        {message && <Message>{message}</Message>}
+      <FormWrapper>
+        <Form onSubmit={handleSubmit}>
+          <h2>Envío de datos egresado IES</h2>
+          {message && <Message>{message}</Message>}
 
-        <FormGroup>
-          <Label htmlFor="nombres">Nombres</Label>
-          <Input
-            type="text"
-            name="nombres"
-            value={formData.nombres}
-            onChange={handleInputChange}
-            required
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="nombres">Nombres</Label>
+            <Input
+              type="text"
+              name="nombres"
+              value={formData.nombres}
+              onChange={handleInputChange}
+              required
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="apellidos">Apellidos</Label>
-          <Input
-            type="text"
-            name="apellidos"
-            value={formData.apellidos}
-            onChange={handleInputChange}
-            required
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="apellidos">Apellidos</Label>
+            <Input
+              type="text"
+              name="apellidos"
+              value={formData.apellidos}
+              onChange={handleInputChange}
+              required
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="matricula">Matrícula</Label>
-          <Input
-            type="text"
-            name="matricula"
-            value={formData.matricula}
-            onChange={handleInputChange}
-            required
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="matricula">Matrícula</Label>
+            <Input
+              type="text"
+              name="matricula"
+              value={formData.matricula}
+              onChange={handleInputChange}
+              required
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="carrera">Carrera</Label>
-          <Select
-            name="carrera"
-            onChange={handleInputChange}
-            value={formData.carrera}
-            required
-          >
-            <option value="">Selecciona la carrera que estudiaste</option>
-            <option value="Doctor en Odontologia">Doctor en Odontologia</option>
-            <option value="Doctor en Medicina">Doctor en Medicina</option>
-            <option value="Doctor en Leyes">Doctor en Leyes</option>
-            <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
-            <option value="Ingenieria Industrial">Ingenieria Industrial</option>
-          </Select>
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="carrera">Carrera</Label>
+            <Select
+              name="carrera"
+              onChange={handleInputChange}
+              value={formData.carrera}
+              required
+            >
+              <option value="">Selecciona la carrera que estudiaste</option>
+              <option value="Doctor en Odontologia">Doctor en Odontologia</option>
+              <option value="Doctor en Medicina">Doctor en Medicina</option>
+              <option value="Doctor en Leyes">Doctor en Leyes</option>
+              <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+              <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+            </Select>
+          </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="universidad">Universidad</Label>
-          <Select
-            name="universidad"
-            onChange={handleInputChange}
-            value={formData.universidad}
-            required
-          >
-            <option value="">Selecciona tu universidad</option>
-            <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
-            <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
-            <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
-            <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
-            <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
-            <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
-            <option value="Universidad APEC">Universidad APEC</option>
-            <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
-            <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
-            <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
-          </Select>
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="universidad">Universidad</Label>
+            <Select
+              name="universidad"
+              onChange={handleInputChange}
+              value={formData.universidad}
+              required
+            >
+              <option value="">Selecciona tu universidad</option>
+              <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
+              <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
+              <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
+              <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
+              <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
+              <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
+              <option value="Universidad APEC">Universidad APEC</option>
+              <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
+              <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
+              <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
+            </Select>
+          </FormGroup>
 
-        <FormGroup>
-          <Label htmlFor="documentos">Documentos</Label>
-          <Input
-            type="file"
-            name="documentos"
-            multiple
-            onChange={handleFileChange}
-            accept="image/*"
-            required
-          />
-        </FormGroup>
+          <FormGroup>
+            <Label htmlFor="documentos">Documentos</Label>
+            <Input
+              type="file"
+              name="documentos"
+              multiple
+              onChange={handleFileChange}
+              accept="image/*"
+              required
+            />
+          </FormGroup>
 
-        <SubmitButton type="submit" disabled={uploading}>
-          {uploading ? 'Subiendo...' : 'Enviar'}
-        </SubmitButton>
-      </Form>
+          <SubmitButton type="submit" disabled={uploading}>
+            {uploading ? 'Subiendo...' : 'Enviar'}
+          </SubmitButton>
+        </Form>
+      </FormWrapper>
 
-      <Records>
-        <RecordsHeader>
-          <p>Registros IES ({iesRecords.length})</p>
-        </RecordsHeader>
+      <Button onClick={handleModalToggle}>Ver Registros Existentes</Button>
 
-        {iesRecords.map((record, index) => (
-          <RecordCard key={index}>
-            <p><strong>Nombres:</strong> {record.nombres}</p>
-            <p><strong>Apellidos:</strong> {record.apellidos}</p>
-            <p><strong>Carrera:</strong> {record.carrera}</p>
-            <p><strong>Matrícula:</strong> {record.matricula}</p>
-            <p><strong>Universidad:</strong> {record.universidad}</p>
+      {modalOpen && (
+        <Modal>
+          <ModalContent>
+            <CloseButton onClick={handleModalToggle}>X</CloseButton>
+            <h3>Registros IES ({iesRecords.length})</h3>
+            {iesRecords.map((record, index) => (
+              <RecordCard key={index}>
+                <p><strong>Nombres:</strong> {record.nombres}</p>
+                <p><strong>Apellidos:</strong> {record.apellidos}</p>
+                <p><strong>Carrera:</strong> {record.carrera}</p>
+                <p><strong>Matrícula:</strong> {record.matricula}</p>
+                <p><strong>Universidad:</strong> {record.universidad}</p>
 
-            {record.documentos && (
-              <DocumentsContainer>
-                <strong>Documentos:</strong>
-                {record.documentos.map((doc, i) => (
-                  <DocumentPreview key={i} src={doc} alt={`Documento ${i + 1}`} />
-                ))}
-              </DocumentsContainer>
-            )}
-          </RecordCard>
-        ))}
-      </Records>
+                {record.documentos && (
+                  <DocumentsContainer>
+                    <strong>Documentos:</strong>
+                    {record.documentos.map((doc, i) => (
+                      <DocumentPreview key={i} src={doc} alt={`Documento ${i + 1}`} />
+                    ))}
+                  </DocumentsContainer>
+                )}
+              </RecordCard>
+            ))}
+          </ModalContent>
+        </Modal>
+      )}
     </Container>
   );
 };
@@ -206,9 +218,8 @@ const IESForm = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   font-family: 'Roboto', sans-serif;
 `;
 
@@ -224,8 +235,16 @@ const Logo = styled.img`
   width: auto;
 `;
 
+const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+`;
+
 const Form = styled.form`
-  margin-top: 1.5rem;
+  width: 100%;
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 8px;
@@ -246,31 +265,25 @@ const Label = styled.label`
 
 const Input = styled.input`
   padding: 0.75rem;
-  border-radius: 5px;
-  border: 1px solid #ddd;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 `;
 
 const Select = styled.select`
   padding: 0.75rem;
-  border-radius: 5px;
-  border: 1px solid #ddd;
   font-size: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 `;
 
 const SubmitButton = styled.button`
-  padding: 0.75rem 1.5rem;
   background-color: #007bff;
   color: white;
   font-size: 1rem;
+  padding: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   width: 100%;
   &:disabled {
@@ -286,14 +299,48 @@ const Message = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Records = styled.div`
+const Button = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
   margin-top: 2rem;
 `;
 
-const RecordsHeader = styled.div`
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 5px;
+const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const ModalContent = styled.div`
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+`;
+
+const CloseButton = styled.button`
+  background-color: #ff0000;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
 
 const RecordCard = styled.div`
