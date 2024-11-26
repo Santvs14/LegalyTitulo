@@ -46,17 +46,10 @@ const LoginIES = () => {
 
     return (
         <PageContainer>
-            <ImageSection>
-                <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
-                <WelcomeText fontSize={33}>Universidades IES</WelcomeText>
-                <WelcomeText fontSize={23} marginBottom={133}>
-                    Bienvenidos al sistema automatizado de archivos de egresados
-                </WelcomeText>
-            </ImageSection>
-            <BackButton onClick={handleGoBack}>
-                <FaArrowLeft />
-            </BackButton>
             <FormSection>
+                <BackButton onClick={handleGoBack}>
+                    <FaArrowLeft />
+                </BackButton>
                 <LoginCard>
                     {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <Title>Iniciar Sesión</Title>
@@ -79,6 +72,13 @@ const LoginIES = () => {
                     </LoginForm>
                 </LoginCard>
             </FormSection>
+            <ImageSection>
+                <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
+                <WelcomeText fontSize={33}>Universidades IES</WelcomeText>
+                <WelcomeText fontSize={23} marginBottom={133}>
+                    Bienvenidos al sistema lotes de egresados
+                </WelcomeText>
+            </ImageSection>
         </PageContainer>
     );
 };
@@ -88,10 +88,17 @@ const LoginIES = () => {
 const PageContainer = styled.div`
     display: flex;
     height: 100vh;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: #f5f7fa;
-    position: relative;
+`;
+
+const FormSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
 `;
 
 const ImageSection = styled.div`
@@ -134,13 +141,6 @@ const BackButton = styled.button`
     &:hover {
         color: #0056b3;
     }
-`;
-
-const FormSection = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
 `;
 
 const LoginCard = styled.div`
