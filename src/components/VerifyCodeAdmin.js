@@ -158,6 +158,32 @@ const Title = styled.h1`
   color: #2c3e50;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para mejorar la visibilidad sobre el fondo */
 `;
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+const SubmitButton = styled.button`
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+`;
+
 
 const InputContainer = styled.div`
   margin-bottom: 20px;
