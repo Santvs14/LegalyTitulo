@@ -32,7 +32,7 @@ const LoginAdmin = () => {
       if (response.ok) {
         // Si las credenciales son correctas, guarda el token y redirige al dashboard
         localStorage.setItem("token", data.token);
-        navigate("/welcomeAdmin");
+        navigate("/verifyAdmin");
       } else {
         setErrorMessage(data.message || "Credenciales incorrectas");
       }
