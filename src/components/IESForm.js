@@ -227,17 +227,22 @@ const Container = styled.div`
     background-color: #f0f4f8;
 `;
 
-const Banner = styled.div`
 
-  padding: 1rem 0;
+const Banner = styled.div`
+  
+  padding: 0.5rem; /* Reducir el padding para estar más cerca */
   display: flex;
   justify-content: center;
+  margin-bottom: 0.5rem; /* Reducir el espacio debajo del logo */
 `;
 
 const Logo = styled.img`
   height: 93px;
-  width: auto;
+  /* Si es necesario, ajusta la altura del logo */
 `;
+
+
+
 const TitleContainer = styled.div`
   display: flex;
   justify-content: center; /* Centra horizontalmente */
@@ -249,10 +254,13 @@ const TitleContainer = styled.div`
 const FormWrapper = styled.div`
   width: 100%;
   max-width: 500px;
-  margin-top: 2rem;
+  margin-top: 1rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
+  flex-direction: column; /* Aseguramos que el formulario y el logo estén en columna */
+  align-items: center; /* Centra el contenido */
 `;
+
 
 const Form = styled.form`
   width: 100%;
@@ -302,12 +310,12 @@ const SubmitButton = styled.button`
   }
 `;
 
-const Message = styled.div`
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+const Message = styled.p`
+  color: green;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center; /* Centrar el texto */
+  margin-top: 1rem;
 `;
 
 const Button = styled.button`
