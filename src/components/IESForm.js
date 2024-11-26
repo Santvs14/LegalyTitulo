@@ -88,7 +88,10 @@ const IESForm = () => {
 
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
-          <h2 style={{alignItems:'center'}}>Envío de datos egresado IES</h2>
+        <TitleContainer>
+  <h2>Envío de datos egresado IES</h2>
+</TitleContainer>
+
           {message && <Message>{message}</Message>}
 
           <FormGroup>
@@ -235,6 +238,13 @@ const Logo = styled.img`
   height: 93px;
   width: auto;
 `;
+const TitleContainer = styled.div`
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100px; /* Asegura que tenga altura para centrar verticalmente */
+`;
+
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -341,7 +351,7 @@ const CloseButton = styled.button`
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 50px;
+  right: 70px;
 `;
 
 
