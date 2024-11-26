@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
+import styled from 'styled-components';
+
 const IESForm = () => {
   const [formData, setFormData] = useState({
     nombres: '',
@@ -51,7 +53,7 @@ const IESForm = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setMessage('Registro creado exitosamente');
-      setIesRecords((prev) => [...prev, response.data]); // Agregar el nuevo registro a la lista
+      setIesRecords((prev) => [...prev, response.data]);
       setFormData({
         nombres: '',
         apellidos: '',
@@ -69,221 +71,222 @@ const IESForm = () => {
   };
 
   return (
-    <div style={styles.container}>
-            {/* Banner superior */}
-            <div style={styles.banner}>
-        <img
-          src={mesy}// Cambia esta ruta al logo que quieras usar
-          alt="Logo"
-          style={styles.logo}
-        />
-      </div>
+    <Container>
+      {/* Banner superior */}
+      <Banner>
+        <Logo src={mesy} alt="Logo" />
+      </Banner>
 
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <Form onSubmit={handleSubmit}>
         <h2>Envio de datos egresado IES</h2>
-        {message && <p>{message}</p>}
-        <label style={styles.label}>
+        {message && <Message>{message}</Message>}
+
+        <Label>
           Nombres:
-          <input
+          <Input
             type="text"
             name="nombres"
             value={formData.nombres}
             onChange={handleInputChange}
             required
-            style={styles.input}
           />
-        </label>
-        <label style={styles.label}>
+        </Label>
+
+        <Label>
           Apellidos:
-          <input
+          <Input
             type="text"
             name="apellidos"
             value={formData.apellidos}
             onChange={handleInputChange}
             required
-            style={styles.input}
           />
-        </label>
-        
-        <label style={styles.label}>
+        </Label>
+
+        <Label>
           Matrícula:
-          <input
+          <Input
             type="text"
             name="matricula"
             value={formData.matricula}
             onChange={handleInputChange}
             required
-            style={styles.input}
           />
-        </label>
+        </Label>
 
-        
-                 <select
-                    name="carrera"
-                    onChange={handleInputChange}
-                    value={formData.carrera}
-                    required
-                    style={styles.input}
-                >
-                    <option value="">Selecciona la carrera que estudiaste</option>
-                    <option value="Doctor en Odontologia">Doctor en Odontologia</option>
-                    <option value="Doctor en Medicina">Doctor en Medicina</option>
-                    <option value="Doctor en Leyes">Doctor en Leyes</option>
-                    <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
-                    <option value="Ingenieria Industrial">Ingenieria Industrial</option>
-                </select>
-                <select
-                    name="universidad"
-                    onChange={handleInputChange}
-                    value={formData.universidad}
-                    required
-                    style={styles.input}
-                >
-                    <option value="">Selecciona tu universidad</option>
-                    <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
-                    <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
-                    <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
-                    <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
-                    <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
-                    <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
-                    <option value="Universidad APEC">Universidad APEC</option>
-                    <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
-                    <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
-                    <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
-                </select>
-        
+        <Select
+          name="carrera"
+          onChange={handleInputChange}
+          value={formData.carrera}
+          required
+        >
+          <option value="">Selecciona la carrera que estudiaste</option>
+          <option value="Doctor en Odontologia">Doctor en Odontologia</option>
+          <option value="Doctor en Medicina">Doctor en Medicina</option>
+          <option value="Doctor en Leyes">Doctor en Leyes</option>
+          <option value="Ingenieria en Sistemas">Ingenieria en Sistemas</option>
+          <option value="Ingenieria Industrial">Ingenieria Industrial</option>
+        </Select>
 
+        <Select
+          name="universidad"
+          onChange={handleInputChange}
+          value={formData.universidad}
+          required
+        >
+          <option value="">Selecciona tu universidad</option>
+          <option value="Universidad Nacioanal(UNPHU)">Universidad Nacioanal(UNPHU)</option>
+          <option value="Universidad Dominicana O&M">Universidad Dominicana O&M</option>
+          <option value="Universidad Católica Santo Domingo(UCSD)">Universidad Católica Santo Domingo(UCSD)</option>
+          <option value="Universidad Católica Madre y Maestra (PUCMM)">Universidad Católica Madre y Maestra (PUCMM)</option>
+          <option value="Universidad Autónoma de Santo Domingo(UASD)">Universidad Autónoma de Santo Domingo(UASD)</option>
+          <option value="Universidad Iberoamericana(UNIBE)">Universidad Iberoamericana(UNIBE)</option>
+          <option value="Universidad APEC">Universidad APEC</option>
+          <option value="Instituto Tecnológico de Santo Domingo(INTEC)">Instituto Tecnológico de Santo Domingo(INTEC)</option>
+          <option value="Universidad Tecnológica de Santiago(UTESA)">Universidad Tecnológica de Santiago(UTESA)</option>
+          <option value="Universidad del Caribe (UNICARIBE)">Universidad del Caribe (UNICARIBE)</option>
+        </Select>
 
-        <label style={styles.label}>
+        <Label>
           Documentos:
-          <input
+          <Input
             type="file"
             name="documentos"
             multiple
             onChange={handleFileChange}
             accept="image/*"
             required
-            style={styles.input}
           />
-        </label>
-        <button type="submit" disabled={uploading} style={styles.button}>
-          {uploading ? 'Subiendo...' : 'Enviar'}
-        </button>
-      </form>
+        </Label>
 
-      <div style={styles.records}>
-        
-        <div style={styles.solicitudesCounter}>
-                    <span style={{ color: '#000', fontWeight: 'bold' }}>
-                        Todos los registros: {iesRecords.length}
-                    </span>
-                    </div>
-        <h2>Registros IES</h2>
+        <SubmitButton type="submit" disabled={uploading}>
+          {uploading ? 'Subiendo...' : 'Enviar'}
+        </SubmitButton>
+      </Form>
+
+      <Records>
+        <RecordsHeader>
+          <p>Registros IES ({iesRecords.length})</p>
+        </RecordsHeader>
+
         {iesRecords.map((record, index) => (
-          <div key={index} style={styles.recordCard}>
+          <RecordCard key={index}>
             <p><strong>Nombres:</strong> {record.nombres}</p>
             <p><strong>Apellidos:</strong> {record.apellidos}</p>
             <p><strong>Carrera:</strong> {record.carrera}</p>
             <p><strong>Matrícula:</strong> {record.matricula}</p>
             <p><strong>Universidad:</strong> {record.universidad}</p>
-            
-            {record.documentos && (
-                <div style={styles.documentImageContainer}>
 
+            {record.documentos && (
+              <DocumentsContainer>
                 <strong>Documentos:</strong>
                 {record.documentos.map((doc, i) => (
                   <img
                     key={i}
                     src={doc}
                     alt={`Documento ${i + 1}`}
-                    style={styles.documentImage}
+                    style={{ maxWidth: '100px', maxHeight: '100px', margin: '0.5rem' }}
                   />
                 ))}
-              </div>
+              </DocumentsContainer>
             )}
-          </div>
+          </RecordCard>
         ))}
-      </div>
-    </div>
+      </Records>
+    </Container>
   );
 };
 
-// Estilos básicos
-const styles = {
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '1rem',
-  },
-  banner: {
-    backgroundColor: '#333',
-    padding: '1rem',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  logo: {
-    height: '93px',
-  },
-  form: {
-    flex: 1,
-    marginRight: '1rem',
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '0.5rem',
-  },
-  solicitudesCounter: {
-    position: 'absolute',
-    top: '20px',
-    right: '43px',
-},
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
 
-  input: {
-    width: '100%',
-    padding: '0.5rem',
-    marginTop: '0.25rem',
-    marginBottom: '1rem',
-    borderRadius: '3px',
-    border: '1px solid #ccc',
-  },
-  button: {
-    padding: '0.75rem 1.5rem',
-    border: 'none',
-    borderRadius: '3px',
-    backgroundColor: '#28a745',
-    color: '#fff',
-    cursor: 'pointer',
-  },
-  records: {
-    flex: 1,
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    maxHeight: '80vh',
-    overflowY: 'auto',
-  },
-  recordCard: {
-    marginBottom: '1rem',
-    padding: '1rem',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    
-  },
-  documentImage: {
-    maxWidth: '40px',
-    maxHeight: '40px',
-    marginRight: '10px', // Espaciado horizontal entre imágenes
-  },
-documentImageContainer: {
-    display: 'flex',
-    flexWrap: 'wrap', // Permite que las imágenes pasen a la siguiente fila si no caben
-    gap: '10px', // Espaciado entre filas y columnas
-    alignItems: 'center', // Centra las imágenes verticalmente
-},
+const Banner = styled.div`
+  background-color: #333;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+`;
 
-};
+const Logo = styled.img`
+  height: 93px;
+`;
+
+const Form = styled.form`
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+`;
+
+const Select = styled.select`
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+`;
+
+const SubmitButton = styled.button`
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+`;
+
+const Message = styled.p`
+  color: green;
+  font-weight: bold;
+`;
+
+const Records = styled.div`
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+`;
+
+const RecordsHeader = styled.div`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const RecordCard = styled.div`
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+`;
+
+const DocumentsContainer = styled.div`
+  margin-top: 1rem;
+`;
 
 export default IESForm;
