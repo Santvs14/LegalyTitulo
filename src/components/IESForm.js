@@ -225,7 +225,7 @@ const Container = styled.div`
   padding: 2rem;
   font-family: 'Roboto', sans-serif;
     background-color: #f0f4f8;
-      height: 80vh; /* Usar la altura de la ventana */
+      height: 93vh; /* Usar la altura de la ventana */
   overflow: hidden; /* Quitar el scroll */
 
 `;
