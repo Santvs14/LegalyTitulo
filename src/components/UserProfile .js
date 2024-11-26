@@ -182,7 +182,7 @@ const BackButton = styled.button`
     align-self: flex-start;
     display: flex;
     align-items: center;
-    background-color: #d8dddf;
+    background-color: #eef1f3;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -193,7 +193,7 @@ const BackButton = styled.button`
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: #2a8fb3;
+        background-color: #3331;
     }
 
     svg {
