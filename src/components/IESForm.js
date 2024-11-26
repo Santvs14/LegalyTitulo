@@ -225,7 +225,7 @@ const Container = styled.div`
   padding: 2rem;
   font-family: 'Roboto', sans-serif;
     background-color: #f0f4f8;
-      height: 100vh; /* Usar la altura de la ventana */
+      height: 80vh; /* Usar la altura de la ventana */
   overflow: hidden; /* Quitar el scroll */
 
 `;
@@ -262,8 +262,7 @@ const FormWrapper = styled.div`
   justify-content: center;
   flex-direction: column; /* Aseguramos que el formulario y el logo estén en columna */
   align-items: center; /* Centra el contenido */
-  height: calc(100vh - 100px); /* Ajusta para que no sobrepase la altura de la ventana */
-  overflow: hidden;
+  
 `;
 
 
