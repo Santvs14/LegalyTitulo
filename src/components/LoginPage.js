@@ -105,6 +105,11 @@ const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #f0f4f8;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 1rem;
+    }
 `;
 
 // Contenedor para la imagen a la izquierda
@@ -119,15 +124,23 @@ const ImageContainer = styled.div`
     border-radius: 20px;
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
+@media (max-width: 768px) {
+        height: 250px;
+        padding: 1rem;
+    }
 `;
-
 // Estilo de la imagen dentro del contenedor azul
 const StyledImage = styled.img`
     width: 250px;
     height: 250px;
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
+@media (max-width: 768px) {
+        width: 120px;
+        height: 120px;
+    }
 `;
+
 
 // Texto de bienvenida debajo de la imagen
 const WelcomeText = styled.h3`
@@ -135,6 +148,9 @@ const WelcomeText = styled.h3`
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.3rem;
+ @media (max-width: 768px) {
+        font-size: 1.1rem;
+    }
 `;
 const ErrorMessage = styled.p`
   color: #e74c3c;
@@ -181,6 +197,9 @@ const LoginCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+@media (max-width: 768px) {
+        padding: 20px;
+    }
 `;
 
 // Título de la tarjeta
@@ -188,8 +207,10 @@ const Title = styled.h2`
     font-size: 2rem;
     color: #007bff;
     margin-bottom: 20px;
+@media (max-width: 768px) {
+        font-size: 1.8rem;
+    }
 `;
-
 // Formulario estilizado
 const Form = styled.form`
     display: flex;
@@ -209,8 +230,11 @@ const Input = styled.input`
     &:focus {
         border-color: #007bff;
     }
+ @media (max-width: 768px) {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
 `;
-
 // Botón de envío estilizado
 const SubmitButton = styled.button`
     background-color: #007bff;
@@ -229,6 +253,10 @@ const SubmitButton = styled.button`
     &:focus {
         outline: none;
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+@media (max-width: 768px) {
+        padding: 10px;
+        font-size: 0.9rem;
     }
 `;
 
