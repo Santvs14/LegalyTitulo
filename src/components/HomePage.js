@@ -15,8 +15,19 @@ const Container = styled.div`
   position: relative;
   padding: 2rem;
     overflow: hidden;
+    
+    @media (max-width: 768px) {
+    padding: 1rem; // Reduce el padding en pantallas más pequeñas
+  }
 
-`;
+  @media (max-width: 480px) {
+    min-height: 100vh; // Asegura que el contenedor ocupe toda la altura en pantallas muy pequeñas
+  }
+
+    
+    
+    
+    `;
 
 // Caja contenedora central
 const ContentWrapper = styled.div`
@@ -30,8 +41,16 @@ const ContentWrapper = styled.div`
   max-width: 480px;
   text-align: center;
   margin-top: 2rem;
-`;
 
+  @media (max-width: 768px) {
+    padding: 2rem; // Reducir padding en pantallas más pequeñas
+    max-width: 90%; // Hacer que el contenido ocupe más espacio en pantallas pequeñas
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem; // Reducir aún más el padding
+  }
+`;
 // Título e imagen superior
 const TitleContainer = styled.div`
   margin-bottom: 1.5rem;
@@ -40,11 +59,24 @@ const TitleContainer = styled.div`
 const ImageTop = styled.img`
   width: 300px;
   margin-bottom: 1.5rem;
-`;
+@media (max-width: 768px) {
+    width: 150px; // Ajustar el tamaño de la imagen en pantallas más pequeñas
+  }
 
+  @media (max-width: 480px) {
+    width: 120px; // Ajustar aún más en pantallas pequeñas
+  }
+`;
 const Title = styled.h1`
   font-size: 2.2rem;
   color: #01254f;
+@media (max-width: 768px) {
+    font-size: 1.8rem; // Reducir tamaño de fuente en pantallas más pequeñas
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem; // Reducir aún más en pantallas pequeñas
+  }
 `;
 
 // Botones estilizados
@@ -68,8 +100,16 @@ const StyledButton = styled.button`
     outline: none;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
   }
-`;
+@media (max-width: 768px) {
+    padding: 0.7rem 1.8rem; // Reducir el tamaño del padding en pantallas pequeñas
+    font-size: 1rem; // Reducir tamaño de fuente
+  }
 
+  @media (max-width: 480px) {
+    padding: 0.6rem 1.5rem; // Reducir aún más en pantallas muy pequeñas
+    font-size: 0.9rem;
+  }
+`;
 // Imagen inferior izquierda
 const ImageBottomLeft = styled.img`
   position: absolute;
@@ -77,8 +117,14 @@ const ImageBottomLeft = styled.img`
   left: 20px;
   width: 60px;
   opacity: 0.8;
-`;
+@media (max-width: 768px) {
+    width: 50px; // Ajustar tamaño de la imagen en pantallas más pequeñas
+  }
 
+  @media (max-width: 480px) {
+    width: 40px; // Ajustar aún más en pantallas muy pequeñas
+  }
+`;
 const HomePage = () => {
   const navigate = useNavigate();
 
