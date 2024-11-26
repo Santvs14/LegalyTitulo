@@ -227,5 +227,30 @@ const ErrorMessage = styled.p`
     text-align: center;
     margin-bottom: 10px;
 `;
+// Media Queries para pantallas pequeñas
+const breakpoints = {
+    mobile: '480px',
+    tablet: '768px',
+};
+
+const ContainerResponsive = styled(Container)`
+    @media (max-width: ${breakpoints.tablet}) {
+        padding: 10px;
+    }
+`;
+
+const ContentSectionResponsive = styled(ContentSection)`
+    @media (max-width: ${breakpoints.tablet}) {
+        width: 100%;
+        padding: 20px;
+    }
+`;
+
+const StyledImageResponsive = styled(StyledImage)`
+    @media (max-width: ${breakpoints.mobile}) {
+        width: 120px;
+        height: 120px;
+    }
+`;
 
 export default LoginIES;
