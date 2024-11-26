@@ -149,6 +149,9 @@ const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #f0f4f8;
+@media (min-width: 768px) {
+        flex-direction: row;
+    }
 `;
 
 // Contenedor para la imagen a la izquierda
@@ -163,6 +166,13 @@ const ImageContainer = styled.div`
     border-radius: 20px;
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
+@media (min-width: 768px) {
+        width: 40%;
+        height: 530px;
+        margin-right: 3px;
+        margin-left: 53px;
+        margin-bottom: 0;
+    }
 `;
 
 // Estilo de la imagen dentro del contenedor azul
@@ -171,6 +181,10 @@ const StyledImage = styled.img`
     height: 250px;
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
+ @media (max-width: 767px) {
+        width: 150px;
+        height: 150px;
+    }
 `;
 
 // Texto de bienvenida debajo de la imagen
@@ -179,6 +193,9 @@ const WelcomeText = styled.h3`
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.3rem;
+ @media (max-width: 767px) {
+        font-size: 1rem;
+    }
 `;
 const ErrorMessage = styled.p`
   color: #e74c3c;
@@ -211,6 +228,9 @@ const LoginContainer = styled.div`
     align-items: center;
     width: 50%;
     
+@media (min-width: 768px) {
+        width: 50%;
+    }
 `;
 
 // Tarjeta de inicio de sesión
