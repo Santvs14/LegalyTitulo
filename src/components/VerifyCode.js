@@ -265,7 +265,7 @@ const LoginCard = styled.div`
 
 // Título de la tarjeta
 const Title = styled.h2`
-    font-size: 2rem;
+    font-size: 1.7rem;
     color: #007bff;
     margin-bottom: 20px;
 `;
