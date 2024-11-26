@@ -243,7 +243,7 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        backgroundColor: '#1a1a1a',
+        backgroundColor: '#f0f4f8',
         padding: '20px',
     },
     checkIcon: {

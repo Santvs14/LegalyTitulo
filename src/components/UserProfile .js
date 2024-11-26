@@ -147,7 +147,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 40px;
-    background-color: #d8dddf;
+    background-color: #f0f4f8;
     color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -173,7 +173,7 @@ const ProfileInfo = styled.div`
 
 const InfoItem = styled.p`
     margin: 8px 0;
-    color: #f0f0f0;
+    color: #333;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     padding-bottom: 8px;
 `;

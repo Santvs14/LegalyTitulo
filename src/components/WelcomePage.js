@@ -174,7 +174,7 @@ const ProfileMenu = styled.div`
 const ProfileMenuButton = styled.button`
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #333;
+    background-color: #d8dddf;
     color: #fff;
     border: none;
     border-radius: 5px;
