@@ -13,6 +13,7 @@ const LoginIES = () => {
 
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState('');
+    const [showLogin, setShowLogin] = useState(false); // Estado para mostrar/ocultar el inicio de sesión
 
     // Handlers
     const handleChange = (e) => {
@@ -54,35 +55,40 @@ const LoginIES = () => {
                         Bienvenidos al sistema lotes de egresados
                     </SubtitleText>
                 </TextContainer>
+                <EnterButton onClick={() => setShowLogin(true)}>
+                    Ingresar
+                </EnterButton>
             </ContentSection>
-            <LoginSection>
-                <BackButton onClick={handleGoBack}>
-                    <FaArrowLeft />
-                </BackButton>
-                <LoginCard>
-                    <Title>Iniciar Sesión</Title>
-                    {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                    <LoginForm onSubmit={handleSubmit}>
-                        <Input
-                            type="text"
-                            name="cedula"
-                            placeholder="Cédula"
-                            value={formData.cedula}
-                            onChange={handleChange}
-                            required
-                        />
-                        <Input
-                            type="password"
-                            name="contraseña"
-                            placeholder="Contraseña"
-                            value={formData.contraseña}
-                            onChange={handleChange}
-                            required
-                        />
-                        <SubmitButton type="submit">Ingresar</SubmitButton>
-                    </LoginForm>
-                </LoginCard>
-            </LoginSection>
+            {showLogin && (
+                <LoginSection>
+                    <BackButton onClick={handleGoBack}>
+                        <FaArrowLeft />
+                    </BackButton>
+                    <LoginCard>
+                        <Title>Iniciar Sesión</Title>
+                        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+                        <LoginForm onSubmit={handleSubmit}>
+                            <Input
+                                type="text"
+                                name="cedula"
+                                placeholder="Cédula"
+                                value={formData.cedula}
+                                onChange={handleChange}
+                                required
+                            />
+                            <Input
+                                type="password"
+                                name="contraseña"
+                                placeholder="Contraseña"
+                                value={formData.contraseña}
+                                onChange={handleChange}
+                                required
+                            />
+                            <SubmitButton type="submit">Ingresar</SubmitButton>
+                        </LoginForm>
+                    </LoginCard>
+                </LoginSection>
+            )}
         </Container>
     );
 };
@@ -133,8 +139,25 @@ const SubtitleText = styled.p`
     font-size: 1.2rem;
 `;
 
+const EnterButton = styled.button`
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+`;
+
 const LoginSection = styled.div`
-    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 const BackButton = styled.button`
@@ -156,8 +179,8 @@ const LoginCard = styled.div`
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 40px;
-    width: 100%;
+    padding: 20px;
+    width: 50%;
 `;
 
 const Title = styled.h2`
@@ -173,7 +196,7 @@ const LoginForm = styled.form`
 `;
 
 const Input = styled.input`
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
@@ -185,7 +208,7 @@ const Input = styled.input`
 `;
 
 const SubmitButton = styled.button`
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-radius: 8px;
     background-color: #007bff;
