@@ -19,6 +19,8 @@ import DocumentosIES  from './components/DocumentosIES'; // Página de bienvenid
 import VerifyCode  from './components/VerifyCode'; // Página de bienvenida para administradores
 import VerifyCodeAdmin  from './components/VerifyCodeAdmin'; // Página de bienvenida para administradores
 import LoginIES  from './components/LoginIES'; // Página de bienvenida para administradores
+import VerifyCodeIES  from './components/VerifyCodeIES'; // Página de bienvenida para administradores
+
 
 
 
@@ -46,6 +48,7 @@ root.render(
 
           <Route path="/verify" element={<VerifyCode />} />
           <Route path="/verifyAdmin" element={<VerifyCodeAdmin />} />
+          <Route path="/verifyIES" element={<VerifyCodeIES />} />
           <Route path="/Ies" element={<IESForm />} />
           <Route path="/DocumentosIES" element={<DocumentosIES/>} />
           <Route path="/legalization" element={<LegalizationPage />} />

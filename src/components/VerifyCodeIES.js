@@ -6,7 +6,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import imagenLogin from '../image/mesy.png';
 
 // Componente principal
-const LoginIES = () => {
+const VerifyCodeIES = () => {
     const { login } = useContext(UserContext);
     const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -14,6 +14,10 @@ const LoginIES = () => {
     const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
     const [errorMessage, setErrorMessage] = useState('');
     const [showLogin, setShowLogin] = useState(false); // Estado para mostrar/ocultar el inicio de sesión
+    const [email, setEmail] = useState(''); // Declara el estado para el email
+
+    const [step, setStep] = useState('login'); // 'login', 'verify'
+    const [verificationCode, setVerificationCode] = useState('');
 
     // Handlers
     const handleChange = (e) => {
@@ -21,29 +25,70 @@ const LoginIES = () => {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSendCode = async () => {
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setErrorMessage("Por favor, introduce un correo electrónico válido.");
+            return;
+        }
+    
         try {
-            const response = await fetch(`${apiUrl}/api/users/login`, {
+            const response = await fetch(`${apiUrl}/send-code`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
             });
-
-            const data = await response.json();
-            if (response.ok) {
-                login(data.user);
-                localStorage.setItem('token', data.token);
-                navigate('/verifyIES');
+    
+            if (!response.ok) {
+                const data = await response.json();
+                setErrorMessage(data.message || "Error desconocido");
+                console.error('Error al enviar el código:', data.message);
             } else {
-                setErrorMessage(data.message || 'Credenciales incorrectas');
+                const data = await response.json();
+                console.log('Código de verificación enviado:', data);
+                setStep('verify');  // Cambia el paso al formulario de verificación
+                setErrorMessage('');
             }
         } catch (error) {
-            setErrorMessage('Error de conexión con el servidor');
+            setErrorMessage("Error de conexión con el servidor");
+            console.error('Error de red o conexión:', error);
         }
     };
+    
+    
+    const handleVerifyCode = async () => {
+        if (!verificationCode || verificationCode.length !== 6) {
+            setErrorMessage("El código de verificación debe tener 6 dígitos.");
+            return;
+        }
+    
+        try {
+            const response = await fetch(`${apiUrl}/verify-code`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, verificationCode }),
+                
+            });
+            console.log({ email, verificationCode });
 
-    const handleGoBack = () => navigate('/');
+            const data = await response.json();
+            
+            if (response.ok) {
+                setStep('login');
+                setErrorMessage('');
+                navigate('/Ies'); // Redirige a la página de bienvenida
+
+            } else {
+                setErrorMessage(data.message || "Código incorrecto o expirado");
+            }
+        } catch (error) {
+            setErrorMessage("Error de conexión con el servidor");
+            console.error(error);
+        }
+    };
 
     return (
         <Container>
@@ -55,34 +100,45 @@ const LoginIES = () => {
                         Bienvenidos al sistema lotes de egresados
                     </SubtitleText>
                 </TextContainer>
-                <EnterButton onClick={() => setShowLogin(true)}>
-                    Ingresar
-                </EnterButton>
+
             </ContentSection>
             {showLogin && (
                 <LoginSection>
 
                     <LoginCard>
-                        <Title>Iniciar Sesión</Title>
+                        <Title>Verificar Inicio de Sesión</Title>
                         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                        <LoginForm onSubmit={handleSubmit}>
+                        <LoginForm >
+                        {step === 'login' && (
+                        <Form>
+                          
+                            <Input
+                                type="email"
+                                placeholder="Correo Electrónico"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)} // Usa setEmail para actualizar el estado
+                                required
+                            />
+                            <SubmitButton type="button" onClick={handleSendCode}>
+                                Enviar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
+
+                    {step === 'verify' && (
+                        <Form>
                             <Input
                                 type="text"
-                                name="cedula"
-                                placeholder="Cédula"
-                                value={formData.cedula}
-                                onChange={handleChange}
+                                placeholder="Código de Verificación"
+                                value={verificationCode}
+                                onChange={(e) => setVerificationCode(e.target.value)}
                                 required
                             />
-                            <Input
-                                type="password"
-                                name="contraseña"
-                                placeholder="Contraseña"
-                                value={formData.contraseña}
-                                onChange={handleChange}
-                                required
-                            />
-                            <SubmitButton type="submit">Ingresar</SubmitButton>
+                            <SubmitButton type="button" onClick={handleVerifyCode}>
+                                Verificar Código
+                            </SubmitButton>
+                        </Form>
+                    )}
                         </LoginForm>
                     </LoginCard>
                 </LoginSection>
@@ -114,6 +170,32 @@ const ContentSection = styled.div`
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 `;
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
+const SubmitButton = styled.button`
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+`;
+
 
 const StyledImage = styled.img`
     width: 200px;
@@ -207,19 +289,7 @@ const Input = styled.input`
     }
 `;
 
-const SubmitButton = styled.button`
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
 
-    &:hover {
-        background-color: #0056b3;
-    }
-`;
 
 const ErrorMessage = styled.p`
     color: #e74c3c;
@@ -228,4 +298,4 @@ const ErrorMessage = styled.p`
     margin-bottom: 10px;
 `;
 
-export default LoginIES;
+export default VerifyCodeIES;
