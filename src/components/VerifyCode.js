@@ -10,7 +10,7 @@ const VerifyCode = () => {
     const { login } = useContext(UserContext);
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const [formData, setFormData] = useState({ cedula: '', contraseña: '' });
+
     const [errorMessage, setErrorMessage] = useState("");
     const [email, setEmail] = useState(''); // Declara el estado para el email
 
@@ -18,46 +18,7 @@ const VerifyCode = () => {
     const [verificationCode, setVerificationCode] = useState('');
 
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            //const response = await fetch('http://localhost:5000/api/users/login', {
-                const response = await fetch(`${apiUrl}/api/users/login`, {
-
-
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-
-
-                body: JSON.stringify(formData),
-            });
-
-            const data = await response.json();
-        
-            if (response.ok) {
-                console.log('Autenticación exitosa:', data);
-                login(data.user);
-            // Si las credenciales son correctas, guarda el token y redirige al dashboard
-
-                localStorage.setItem("token", data.token);
-                navigate('/welcome');
-            } else {
-                setErrorMessage(data.message || "Credenciales incorrectas");
-                console.error('Error de autenticación:', data.message);
-            }
-        } catch (error) {
-            setErrorMessage("Error de conexión con el servidor");
-            console.error('Error:', error);
-        }
-    };
 
     const handleGoBack = () => {
         navigate('/'); // Redirige a la página de bienvenida
@@ -113,9 +74,12 @@ const VerifyCode = () => {
             console.log({ email, verificationCode });
 
             const data = await response.json();
+            
             if (response.ok) {
                 setStep('login');
                 setErrorMessage('');
+                navigate('/welcome'); // Redirige a la página de bienvenida
+
             } else {
                 setErrorMessage(data.message || "Código incorrecto o expirado");
             }
@@ -138,7 +102,7 @@ const VerifyCode = () => {
             <LoginContainer>
                 <LoginCard>
                 {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                    <Title>Verificación para poder iniciar</Title>
+                    <Title>Verificar Ingreso al Sistema</Title>
                     
                     {step === 'login' && (
                         <Form onSubmit={handleSubmit}>
