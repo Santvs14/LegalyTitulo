@@ -113,6 +113,10 @@ const ContentSection = styled.div`
     padding: 40px;
     margin-bottom: 30px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+        width: 100%;
+        padding: 20px;
+    }
 `;
 
 const StyledImage = styled.img`
@@ -120,6 +124,10 @@ const StyledImage = styled.img`
     height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
+ @media (max-width: 768px) {
+        width: 120px;
+        height: 120px;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -130,11 +138,17 @@ const TitleText = styled.h3`
     color: #333;
     font-size: 2rem;
     margin-bottom: 10px;
+@media (max-width: 768px) {
+        font-size: 1.6rem;
+    }
 `;
 
 const SubtitleText = styled.p`
     color: #555;
     font-size: 1.2rem;
+@media (max-width: 768px) {
+        font-size: 1rem;
+    }
 `;
 
 const EnterButton = styled.button`
@@ -148,6 +162,10 @@ const EnterButton = styled.button`
 
     &:hover {
         background-color: #0056b3;
+    }
+ @media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
 `;
 
@@ -181,6 +199,9 @@ const LoginCard = styled.div`
     width: 23%;
     margin: 0 auto; /* Centrado */
 
+ @media (max-width: 768px) {
+        width: 90%;
+    }
 `;
 
 const Title = styled.h2`
@@ -205,6 +226,9 @@ const Input = styled.input`
         outline: none;
         border-color: #007bff;
     }
+ @media (max-width: 768px) {
+        font-size: 0.9rem;
+    }
 `;
 
 const SubmitButton = styled.button`
@@ -219,6 +243,10 @@ const SubmitButton = styled.button`
     &:hover {
         background-color: #0056b3;
     }
+@media (max-width: 768px) {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
 `;
 
 const ErrorMessage = styled.p`
@@ -227,30 +255,6 @@ const ErrorMessage = styled.p`
     text-align: center;
     margin-bottom: 10px;
 `;
-// Media Queries para pantallas pequeñas
-const breakpoints = {
-    mobile: '480px',
-    tablet: '768px',
-};
 
-const ContainerResponsive = styled(Container)`
-    @media (max-width: ${breakpoints.tablet}) {
-        padding: 10px;
-    }
-`;
-
-const ContentSectionResponsive = styled(ContentSection)`
-    @media (max-width: ${breakpoints.tablet}) {
-        width: 100%;
-        padding: 20px;
-    }
-`;
-
-const StyledImageResponsive = styled(StyledImage)`
-    @media (max-width: ${breakpoints.mobile}) {
-        width: 120px;
-        height: 120px;
-    }
-`;
 
 export default LoginIES;
