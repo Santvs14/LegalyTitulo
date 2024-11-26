@@ -262,6 +262,8 @@ const FormWrapper = styled.div`
   justify-content: center;
   flex-direction: column; /* Aseguramos que el formulario y el logo estén en columna */
   align-items: center; /* Centra el contenido */
+  height: calc(100vh - 100px); /* Ajusta para que no sobrepase la altura de la ventana */
+  overflow: hidden;
 `;
 
 
