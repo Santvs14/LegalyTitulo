@@ -171,7 +171,7 @@ const ContentSection = styled.div`
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 @media (max-width: 768px) {
         width: 100%;
-        padding: 30px;
+        padding: 20px;
     }
 `;
 const Form = styled.form`
@@ -207,8 +207,8 @@ const StyledImage = styled.img`
     border-radius: 50%;
     margin-bottom: 20px;
  @media (max-width: 768px) {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 `;
 
@@ -221,7 +221,7 @@ const TitleText = styled.h3`
     font-size: 2rem;
     margin-bottom: 10px;
 @media (max-width: 768px) {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 `;
 
@@ -277,6 +277,9 @@ const LoginCard = styled.div`
     width: 23%;
     margin: 0 auto; /* Centrado */
 
+@media (max-width: 768px) {
+        width: 90%;
+    }
 `;
 
 const Title = styled.h2`
@@ -300,6 +303,9 @@ const Input = styled.input`
     &:focus {
         outline: none;
         border-color: #007bff;
+    }
+@media (max-width: 768px) {
+        font-size: 0.9rem;
     }
 `;
 
