@@ -88,7 +88,7 @@ const IESForm = () => {
 
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
-          <h2>Envío de datos egresado IES</h2>
+          <h2 style={{alignItems:'center'}}>Envío de datos egresado IES</h2>
           {message && <Message>{message}</Message>}
 
           <FormGroup>
@@ -221,10 +221,11 @@ const Container = styled.div`
   align-items: center;
   padding: 2rem;
   font-family: 'Roboto', sans-serif;
+    background-color: #f0f4f8;
 `;
 
 const Banner = styled.div`
-  background-color: #f0f4f8;
+
   padding: 1rem 0;
   display: flex;
   justify-content: center;
@@ -331,8 +332,8 @@ const ModalContent = styled.div`
 `;
 
 const CloseButton = styled.button`
-  background-color: #ff0000;
-  color: white;
+  
+  color: #ff0000;
   font-size: 1.5rem;
   padding: 0.5rem;
   border: none;
