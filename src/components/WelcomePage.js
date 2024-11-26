@@ -58,26 +58,24 @@ const WelcomePage = () => {
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
     height: 100vh;
     background-color: #f0f4f8;
-    color: #333;
-
-    @media (min-width: 768px) {
+    color: #fff;
+    font-family: Arial, sans-serif;
+@media (min-width: 768px) {
         flex-direction: row;
     }
-`;
+`;  
 
 const Sidebar = styled.div`
-    width: 100%;
+    width: 200px;
     padding: 10px;
     background-color: #d8dddf;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: width 0.3s;
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
         width: 200px;
     }
 `;
@@ -86,12 +84,14 @@ const MenuButton = styled.button`
     background: transparent;
     border: none;
     cursor: pointer;
+    outline: none;
     display: flex;
     align-items: center;
 `;
 
 const MenuText = styled.span`
     margin-left: 10px;
+    color: #fff;
     font-size: 14px;
 `;
 
@@ -100,42 +100,40 @@ const MainContent = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    @media (min-width: 768px) {
+    align-items: flex-start;
+    justify-content: center;
+    transition: margin-left 0.3s;
+    ${({ expanded }) => expanded && `margin-left: 200px;`}
+@media (min-width: 768px) {
         align-items: flex-start;
         text-align: left;
     }
 `;
 
 const Logo = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 193px;
+    height: 193px;
     margin-bottom: 20px;
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
         width: 193px;
         height: 193px;
     }
 `;
 
 const Title = styled.h1`
-    font-size: 24px;
+    font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
         font-size: 36px;
     }
 `;
 
 const Subtitle = styled.h2`
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 20px;
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
         font-size: 24px;
     }
 `;
@@ -155,19 +153,19 @@ const ServiceButton = styled.button`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
     &:hover {
         background-color: #555;
     }
 `;
 
 const ProfileContainer = styled.div`
-    margin-top: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
     display: flex;
-    flex-direction: column;
     align-items: center;
-
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
         position: absolute;
         top: 10px;
         right: 10px;
@@ -175,10 +173,10 @@ const ProfileContainer = styled.div`
 `;
 
 const ProfileName = styled.span`
+    margin-right: 10px;
     font-size: 18px;
-    margin-bottom: 10px;
-
-    @media (min-width: 768px) {
+    color: #fff;
+ @media (min-width: 768px) {
         margin-right: 10px;
     }
 `;
@@ -188,19 +186,37 @@ const ProfileButton = styled.button`
     border: none;
     cursor: pointer;
     font-size: 16px;
+    color: #fff;
 `;
 
 const ProfileMenu = styled.div`
-    margin-top: 10px;
+    position: absolute;
+    top: 100%;
+    right: 0;
     background-color: #d8dddf;
     border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-
-    @media (min-width: 768px) {
+    padding: 10px 0;
+    z-index: 1000;
+@media (min-width: 768px) {
         position: absolute;
         top: 100%;
         right: 0;
+    }
+`;
+
+const ProfileMenuButton = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #d8dddf;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    &:hover {
+        background-color: #444;
+        color: #fff
     }
 `;
 
