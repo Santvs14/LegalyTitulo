@@ -149,6 +149,10 @@ const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #f0f4f8;
+@media (max-width: 768px) {
+        flex-direction: column;
+        padding: 10px;
+    }
 `;
 
 // Contenedor para la imagen a la izquierda
@@ -163,6 +167,11 @@ const ImageContainer = styled.div`
     border-radius: 20px;
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
+@media (max-width: 768px) {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 20px;
+    }
 `;
 
 // Estilo de la imagen dentro del contenedor azul
@@ -179,6 +188,9 @@ const WelcomeText = styled.h3`
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.3rem;
+@media (max-width: 768px) {
+        font-size: 1rem;
+    }
 `;
 const ErrorMessage = styled.p`
   color: #e74c3c;
@@ -202,6 +214,10 @@ const BackButton = styled.button`
     &:hover {
         color: #0056b3;
     }
+@media (max-width: 768px) {
+        top: 10px;
+        left: 10px;
+    }
 `;
 
 // Contenedor del formulario de inicio de sesión a la derecha
@@ -211,6 +227,10 @@ const LoginContainer = styled.div`
     align-items: center;
     width: 50%;
     
+@media (max-width: 768px) {
+        width: 100%;
+        margin-top: 20px;
+    }
 `;
 
 // Tarjeta de inicio de sesión
@@ -225,6 +245,9 @@ const LoginCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+@media (max-width: 768px) {
+        padding: 20px;
+    }
 `;
 
 // Título de la tarjeta
@@ -232,6 +255,9 @@ const Title = styled.h2`
     font-size: 1.7rem;
     color: #007bff;
     margin-bottom: 20px;
+@media (max-width: 768px) {
+        font-size: 1.4rem;
+    }
 `;
 
 // Formulario estilizado
