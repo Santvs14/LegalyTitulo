@@ -263,7 +263,7 @@ const TitleContainer = styled.div`
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 470px;
+  max-width: 480px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
@@ -279,7 +279,7 @@ const FormWrapper = styled.div`
 
 
 const Form = styled.form`
-  width: 100%;
+  width: 105%;
   padding: 0.5rem;
   background-color: #ffffff;
   border-radius: 8px;
@@ -370,7 +370,7 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   @media (min-width: 768px) {
    padding: 1rem;
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 33px;
+  height: 33px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
