@@ -216,9 +216,6 @@ const IESForm = () => {
   );
 };
 
-
-// Styled-components
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -391,4 +388,5 @@ const DocumentPreview = styled.img`
   height: auto;
   border-radius: 4px;
 `;
+
 export default IESForm;
