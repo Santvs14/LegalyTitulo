@@ -93,7 +93,7 @@ const VerifyCode = () => {
         <PageContainer>
             <ImageContainer>
                 <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
-                <WelcomeText style={{fontSize:27}}>Egresados</WelcomeText>
+                <WelcomeText style={{fontSize:25}}>Egresados</WelcomeText>
                 <WelcomeText style={{fontSize:16,marginBottom:130}}>Bienvenidos al sistema automatizado de legalización de documentos</WelcomeText>
             </ImageContainer>
             <BackButton onClick={handleGoBack}>
@@ -174,10 +174,10 @@ const StyledImage = styled.img`
     width: 150px; /* Reducimos el tamaño del logo */
     height: 150px; /* Manteniendo la proporción */
     border-radius: 50%; /* Borde circular */
-    margin-bottom: -5px; /* Espacio entre la imagen y el texto */
+    margin-bottom: -7px; /* Espacio entre la imagen y el texto */
     @media (max-width: 768px) {
-        width: 100px; /* Hacemos el logo aún más pequeño en pantallas pequeñas */
-        height: 100px;
+        width: 123px; /* Hacemos el logo aún más pequeño en pantallas pequeñas */
+        height: 123px;
     }
 `;
 
