@@ -237,8 +237,8 @@ const Banner = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 80px;
-  margin-top: -2rem; 
+  height: 70px;
+  margin-top: -1.5rem; 
 `;
 
 const TitleContainer = styled.div`
@@ -250,9 +250,9 @@ const TitleContainer = styled.div`
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 450px; /* Reducción del tamaño */
+  max-width: 380px; /* Reducción adicional del tamaño */
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.8rem;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -261,7 +261,7 @@ const FormWrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.7rem;
 `;
 
 const FormGroup = styled.div`
@@ -276,14 +276,14 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.6rem;
+  padding: 0.5rem;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const Select = styled.select`
-  padding: 0.6rem;
+  padding: 0.5rem;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -292,8 +292,8 @@ const Select = styled.select`
 const SubmitButton = styled.button`
   background-color: #5e76e1;
   color: white;
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 0.7rem;
+  font-size: 0.9rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -307,7 +307,7 @@ const SubmitButton = styled.button`
 const Button = styled.button`
   background-color: #0069d9;
   color: white;
-  padding: 0.8rem;
+  padding: 0.7rem;
   font-size: 1rem;
   border: none;
   border-radius: 4px;
@@ -334,9 +334,9 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
   background-color: white;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 8px;
-  max-width: 80%;
+  max-width: 90%;
   overflow-y: auto;
   max-height: 80%;
 `;
@@ -370,6 +370,5 @@ const DocumentPreview = styled.img`
   max-height: 150px;
   object-fit: cover;
 `;
-
 
 export default IESForm;
