@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 14px;
+          font-size: 12px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -310,15 +310,20 @@ const Select = styled.select`
 const SubmitButton = styled.button`
   background-color: #007bff;
   color: white;
-  font-size: 1rem;
+  font-size: 0.7rem;
   padding: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
+  width: 90%;
   &:disabled {
     background-color: #b0b0b0;
   }
+    
+ @media (min-width: 768px) {
+  width: 100%;
+    font-size: 1rem;
+    }
 `;
 
 const Message = styled.p`
@@ -332,11 +337,15 @@ const Message = styled.p`
 const Button = styled.button`
   background-color: #007bff;
   color: white;
-  padding: 1rem;
+  padding: 0.8rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 2rem;
+
+  @media (min-width: 768px) {
+   padding: 1rem;
+
 `;
 
 
