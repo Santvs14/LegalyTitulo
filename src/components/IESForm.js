@@ -325,23 +325,16 @@ const Message = styled.p`
   margin-top: 1rem;
 `;
 
-
-
 const Button = styled.button`
-  background-color: #0069d9;
-
+  background-color: #007bff;
   color: white;
-  padding: 0.4rem 0.6rem; /* Reducir el padding */
-  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  padding: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.5rem; /* Reducir el margen superior */
-  transition: background-color 0.3s;
-  &:hover {
-    background-color: #0056b3;
-  }
+  margin-top: 2rem;
 `;
+
 
 
 const Modal = styled.div`
