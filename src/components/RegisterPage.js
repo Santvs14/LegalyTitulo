@@ -182,13 +182,23 @@ const Container = styled.div`
     justify-content: center;
     height: 100vh;
     background-color: #f0f4f8;
+    padding: 20px;
+
+    @media (max-width: 1024px) {
+        padding: 10px;
+    }
 `;
+
 const ImageTopRight = styled.img`
     position: absolute;
     top: 20px;
     right: 20px;
     width: 123px;
     opacity: 0.8;
+
+    @media (max-width: 1024px) {
+        width: 100px;
+    }
 `;
 
 const BackButton = styled.button`
@@ -205,12 +215,20 @@ const BackButton = styled.button`
     &:hover {
         color: #0056b3;
     }
+
+    @media (max-width: 600px) {
+        font-size: 1.2rem;
+    }
 `;
 
 const Title = styled.h2`
     font-size: 2.5rem;
     color: #007bff;
     margin-bottom: 30px;
+
+    @media (max-width: 600px) {
+        font-size: 2rem;
+    }
 `;
 
 const Form = styled.form`
@@ -222,6 +240,11 @@ const Form = styled.form`
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 600px) {
+        max-width: 90%;
+        padding: 20px;
+    }
 `;
 
 const Input = styled.input`
@@ -236,10 +259,12 @@ const Input = styled.input`
     &:focus {
         border-color: #007bff;
     }
+
+    @media (max-width: 600px) {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 `;
-
-
-
 
 const Select = styled.select`
     padding: 12px 15px;
@@ -253,9 +278,12 @@ const Select = styled.select`
     &:focus {
         border-color: #007bff;
     }
+
+    @media (max-width: 600px) {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 `;
-
-
 
 const SubmitButton = styled.button`
     background-color: #007bff;
@@ -275,6 +303,9 @@ const SubmitButton = styled.button`
         outline: none;
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     }
-`;
 
+    @media (max-width: 600px) {
+        font-size: 0.9rem;
+    }
+`;
 export default RegisterPage;
