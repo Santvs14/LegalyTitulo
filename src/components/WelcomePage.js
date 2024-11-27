@@ -128,7 +128,7 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
@@ -186,7 +186,7 @@ const ProfileContainer = styled.div`
 
 const ProfileName = styled.span`
     margin-right: 10px;
-    font-size: 14px;
+    font-size: 12px;
     
     @media (min-width: 768px) {
         font-size: 20px;
