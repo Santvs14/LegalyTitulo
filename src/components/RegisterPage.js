@@ -180,7 +180,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f0f4f8;
     padding: 20px;
 
@@ -221,13 +221,36 @@ const BackButton = styled.button`
     }
 `;
 
+const TitleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+`;
+
 const Title = styled.h2`
     font-size: 2.5rem;
     color: #007bff;
-    margin-bottom: 30px;
+    margin-right: 15px;
 
     @media (max-width: 600px) {
         font-size: 2rem;
+        margin-right: 0;
+    }
+`;
+
+const Logo = styled.img`
+    width: 50px;
+    opacity: 0.8;
+    margin-top: 10px;
+
+    @media (max-width: 600px) {
+        width: 40px;
     }
 `;
 
@@ -262,7 +285,6 @@ const Input = styled.input`
 
     @media (max-width: 600px) {
         font-size: 0.9rem;
-        padding: 10px;
     }
 `;
 
@@ -308,4 +330,5 @@ const SubmitButton = styled.button`
         font-size: 0.9rem;
     }
 `;
+
 export default RegisterPage;
