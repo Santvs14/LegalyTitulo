@@ -179,7 +179,7 @@ const ProfileContainer = styled.div`
 
     @media (max-width: 768px) {
         /* Para pantallas móviles, mantendrá el mismo posicionamiento en la esquina superior derecha */
-        top: 23px;
+        top: 27px;
         right: 10px;
     }
 
