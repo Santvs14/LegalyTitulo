@@ -169,20 +169,27 @@ const ServiceButton = styled.button`
 `;
 
 const ProfileContainer = styled.div`
-    position: relative;
+    position: fixed; /* Cambié de "relative" a "fixed" para posicionarlo en la parte superior de la pantalla */
     top: 10px;
     right: 10px;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
+
+    @media (max-width: 768px) {
+        /* Para pantallas móviles, mantendrá el mismo posicionamiento en la esquina superior derecha */
+        top: 10px;
+        right: 10px;
+    }
+
     @media (min-width: 768px) {
-        position: absolute;
+        /* En pantallas más grandes, el perfil seguirá en la esquina superior derecha */
         top: 10px;
         right: 10px;
     }
 `;
+
 
 const ProfileName = styled.span`
     margin-right: 10px;
