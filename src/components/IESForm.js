@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 12.4px;
+          font-size: 12.5px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -262,7 +262,7 @@ const TitleContainer = styled.div`
 
 
 const FormWrapper = styled.div`
-  width: 95%;
+  width: 97%;
   max-width: 450px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.71rem;
+  padding: 0.70rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -342,7 +342,7 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 95%;
+  width: 100%;
   &:disabled {
     background-color: #b0b0b0;
   }
@@ -370,11 +370,11 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1.7rem;
+  margin-top: 1.5rem;
 
   @media (min-width: 768px) {
    padding: 1rem;
-     margin-top: 1.7rem;
+     margin-top: 1.5rem;
 
 
 `;
