@@ -348,7 +348,7 @@ const styles = {
     loadingText: {
         marginTop: '10px',
         fontSize: '1.5rem',
-        color: '#1093ea'
+        color: '#ffff'
     },
     message: {
         color: 'red',
