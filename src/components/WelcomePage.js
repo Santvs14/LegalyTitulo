@@ -128,13 +128,13 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-    font-size: 28px;
+    font-size: 33px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
     
     @media (min-width: 768px) {
-        font-size: 18px;
+        font-size: 14px;
     }
 `;
 
@@ -189,7 +189,7 @@ const ProfileName = styled.span`
     font-size: 16px;
     
     @media (min-width: 768px) {
-        font-size: 16px;
+        font-size: 14px;
     }
 `;
 
