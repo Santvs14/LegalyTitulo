@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
