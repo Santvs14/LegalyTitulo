@@ -141,7 +141,7 @@ const ImageContainer = styled.div`
     width: 80%;
     padding: 2rem;
     border-radius: 20px;
-    margin-bottom: 3rem;
+    margin-bottom: -3rem;
     @media (max-width: 768px) {
         width: 90%;
         padding: 1rem;
