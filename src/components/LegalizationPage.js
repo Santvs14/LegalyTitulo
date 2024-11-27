@@ -242,36 +242,105 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        height: '100vh',
         width: '100%',
-        padding: '20px',
         boxSizing: 'border-box',
+
+        backgroundColor: '#f0f4f8',
+        padding: '20px',
     },
-    backButton: {
+    checkIcon: {
+        color: 'green',
+        width: '40px',
+        height: '40px',
+        marginRight: '10px', // Espacio entre el ícono y el texto
+    },
+    modalContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        padding: '30px',
+        borderRadius: '8px',
+        textAlign: 'center',
+    },
+
+    loadingContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '20px',
+    },
+    loader: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #39a4cb',
+        borderRadius: '50%',
+        width: '50px',
+        height: '50px',
+        animation: 'spin 2s linear infinite',
+    },
+    loadingText: {
+        marginTop: '10px',
+        color: '#fff',
+        fontSize: '23px',
+    },
+
+    title: {
         marginBottom: '20px',
-        backgroundColor: '#007BFF',
-        color: 'white',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
+        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
         maxWidth: '600px',
-        backgroundColor: '#fff',
+
         padding: '30px',
-        borderRadius: '8px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+
+        backgroundColor: '#fff',
+        borderRadius: '10px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
         gap: '20px',
+
     },
+    
     input: {
-        padding: '12px',
         marginBottom: '12px',
-        border: '1px solid #ddd',
-        borderRadius: '4px',
-        width: '100%',
+        padding: '12px',
+        fontSize: '16px',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        outline: 'none',
+    },
+    button: {
+        padding: '10px',
+        fontSize: '16px',
+        backgroundColor: '#39a4cb', // Rojo (color de la bandera dominicana)
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
+    },
+    backButton: {
+        padding: '10px 20px',
+
+        backgroundColor: '#39a4cb',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        marginBottom: '20px',
+        //alignSelf: 'flex-start',  // Esto moverá el botón al extremo izquierdo
+    },
+    message: {
+        color: '#d9534f',
+        margin: '10px 0',
+        textAlign: 'center',
     },
     radioContainer: {
         display: 'flex',
@@ -288,60 +357,19 @@ const styles = {
         borderRadius: '4px',
         marginBottom: '12px',
     },
-    submitButton: {
-        backgroundColor: '#28a745',
-        color: 'white',
-        padding: '10px 20px',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-    },
-    message: {
-        color: 'red',
+    label: {
+        fontWeight: 'bold',
         marginBottom: '10px',
     },
-    modalContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    },
-    modalContent: {
-        backgroundColor: 'white',
-        padding: '30px',
-        borderRadius: '8px',
-        textAlign: 'center',
-    },
-    checkIcon: {
-        color: 'green',
-        width: '40px',
-        height: '40px',
-        marginBottom: '20px',
-    },
-    loadingContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '20px',
-    },
-    loader: {
-        border: '4px solid #f3f3f3',
-        borderTop: '4px solid #3498db',
-        borderRadius: '50%',
-        width: '50px',
-        height: '50px',
-        animation: 'spin 2s linear infinite',
-    },
-    loadingText: {
-        marginTop: '10px',
-        fontSize: '16px',
+    paymentInfo: {
+        marginBottom: '15px',
     },
     link: {
-        color: '#007BFF',
+        color: '#0056b3',
         textDecoration: 'underline',
     },
 };
+
 
 export default LegalizationPage;
 
