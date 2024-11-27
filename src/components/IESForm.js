@@ -279,14 +279,15 @@ const FormWrapper = styled.div`
 
 
 const Form = styled.form`
-  width: 85%;
+  width: 87%;
   padding: 1.8rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      height: 93vh; /* Usar la altura de la ventana */
-  @media (min-width: 768px) {
+      height: 90vh; /* Usar la altura de la ventana */
+  
+      @media (min-width: 768px) {
   width: 90%;
     padding: 2rem;
 
@@ -320,10 +321,11 @@ const Input = styled.input`
 
 const Select = styled.select`
   padding: 0.73rem;
-  font-size: 0.8rem;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-@media (min-width: 768px) {
+
+  @media (min-width: 768px) {
   padding: 0.75rem;
     font-size: 1rem;
 
