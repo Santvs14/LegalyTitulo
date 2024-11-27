@@ -240,7 +240,7 @@ const Banner = styled.div`
 `;
 
 const Logo = styled.img`
-  height: 123px;
+  height: 108px;
     z-index: 10; /* Asegúrate de que el logo esté al frente */
 
   /* Si es necesario, ajusta la altura del logo */
