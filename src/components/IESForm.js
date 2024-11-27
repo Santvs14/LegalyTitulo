@@ -373,7 +373,7 @@ const Button = styled.button`
   margin-top: 0.2rem;
 
   @media (min-width: 768px) {
-   padding: 0.8rem;
+   padding: 0.7rem;
      margin-top: 1rem;
 
 
