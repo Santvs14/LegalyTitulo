@@ -443,7 +443,7 @@ useEffect(() => {
 
                 {/* Contador de solicitudes */}
                 <div style={styles.solicitudesCounter}>
-                    <span style={{ color: '#fff', fontWeight: 'bold' }}>
+                    <span style={{ color: '#333', fontWeight: 'bold' }}>
                         Todas las solicitudes: {solicitudes.length}
                     </span>
                 </div>
@@ -746,7 +746,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#f0f4f8',
+        backgroundColor: '#bcceda',
         padding: '10px 20px',
         color: '#FFF',
         position: 'absolute',
@@ -762,6 +762,7 @@ const styles = {
     title: {
         fontSize: '24px',
         margin: 0,
+        color: '#333'
     },
 
     solicitudFecha: {

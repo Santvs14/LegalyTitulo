@@ -218,7 +218,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#f0f4f8',
+        backgroundColor: '#bcceda',
         padding: '10px 20px',
         color: '#FFF',
         position: 'absolute',
@@ -234,6 +234,7 @@ const styles = {
     title: {
         fontSize: '24px',
         margin: 0,
+        color: '#333'
     },
     solicitudFecha: {
         position: 'absolute',
