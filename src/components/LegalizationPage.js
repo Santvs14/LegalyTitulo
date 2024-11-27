@@ -179,7 +179,6 @@ const LegalizationPage = () => {
 
             )}
 <br></br>
-<br></br>
 
 
            <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
@@ -247,12 +246,13 @@ const styles = {
         height: '100vh',
         backgroundColor: '#1a1a1a',
         padding: '20px',
+        boxSizing: 'border-box', // Asegura que el padding no rompa el diseño
     },
     checkIcon: {
         color: 'green',
         width: '40px',
         height: '40px',
-        marginRight: '10px',
+        marginRight: '10px', // Espacio entre el ícono y el texto
     },
     modalContainer: {
         position: 'fixed',
@@ -267,11 +267,9 @@ const styles = {
     },
     modalContent: {
         backgroundColor: 'white',
-        padding: '20px',
+        padding: '30px',
         borderRadius: '8px',
         textAlign: 'center',
-        width: '90%',  // Ajustado para pantallas más pequeñas
-        maxWidth: '500px',
     },
 
     loadingContainer: {
@@ -297,57 +295,56 @@ const styles = {
     loadingText: {
         marginTop: '10px',
         color: '#fff',
-        fontSize: '18px',  // Reducido para pantallas pequeñas
+        fontSize: '23px',
     },
 
     title: {
         marginBottom: '20px',
-        color: '#39a4cb',
-        fontSize: '1.8rem',  // Fuente más grande en pantallas grandes
+        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
+        fontSize: '24px',  // Título pequeño
+        textAlign: 'center',
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        maxWidth: '800px',
+        maxWidth: '800px', // Máximo de ancho para pantallas grandes
         padding: '20px',
         backgroundColor: '#fff',
         borderRadius: '10px',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        marginBottom: '20px',  // Ajustado para más espacio en pantallas grandes
+        marginBottom: '123px',
     },
-
+    
     input: {
         marginBottom: '15px',
-        padding: '12px',
+        padding: '10px',
         fontSize: '16px',
         border: '1px solid #ccc',
         borderRadius: '5px',
         outline: 'none',
-        width: '100%',  // Los campos de entrada ocuparán el 100% del ancho
     },
     button: {
-        padding: '12px',
+        padding: '10px',
         fontSize: '16px',
-        backgroundColor: '#39a4cb',
+        backgroundColor: '#39a4cb', // Azul bandera dominicana
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
-        width: '100%',  // El botón ocupará el 100% del ancho
     },
     backButton: {
-        padding: '12px',
+        padding: '10px',
         fontSize: '16px',
         backgroundColor: '#39a4cb',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        marginBottom: '20px', // Separación para que el botón no quede pegado
-        alignSelf: 'flex-start',  // Esto mueve el botón al extremo izquierdo
-        width: 'auto',  // Evitar que ocupe todo el ancho
+        marginBottom: '3px',
+        alignSelf: 'center',  // Mover el botón al centro
+        marginTop: '20px', // Espaciado arriba
     },
     message: {
         color: '#d9534f',
@@ -356,13 +353,11 @@ const styles = {
     },
     radioContainer: {
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         margin: '10px 0',
-        flexWrap: 'wrap',  // Permite que las opciones de radio se acomoden mejor en pantallas pequeñas
     },
     radioLabel: {
         margin: '0 10px',
-        fontSize: '14px',  // Fuente más pequeña para pantallas pequeñas
     },
     fileInput: {
         marginBottom: '15px',
@@ -378,59 +373,35 @@ const styles = {
         color: '#0056b3',
         textDecoration: 'underline',
     },
-
-    // Media Queries para pantallas más pequeñas
-    '@media (max-width: 768px)': {
-        title: {
-            fontSize: '1.4rem',  // Reduce el tamaño del título en pantallas pequeñas
-        },
-        form: {
-            padding: '15px',
-        },
-        input: {
-            fontSize: '14px',  // Reducir tamaño de fuente de los inputs
-            padding: '10px',
-        },
-        button: {
-            fontSize: '14px',  // Reduce el tamaño de la fuente del botón
-        },
-        backButton: {
-            fontSize: '14px',
-        },
-        loadingText: {
-            fontSize: '16px',
-        },
-        radioContainer: {
-            justifyContent: 'space-around',  // Acomoda mejor los radios en pantallas pequeñas
-        },
-        modalContent: {
-            width: '90%',  // Ajusta el tamaño del modal para pantallas pequeñas
-        },
-    },
-
-    // Para pantallas muy pequeñas (móviles)
-    '@media (max-width: 480px)': {
-        title: {
-            fontSize: '1.2rem',  // Aumenta el ajuste del tamaño de título en móviles
-        },
-        form: {
-            padding: '10px',
-        },
-        input: {
-            fontSize: '14px',
-        },
-        button: {
-            fontSize: '14px',
-        },
-        backButton: {
-            fontSize: '14px',
-        },
-        radioLabel: {
-            fontSize: '12px',  // Fuente más pequeña en pantallas muy pequeñas
-        },
-    },
 };
 
-export default LegalizationPage;
+// Media Queries para hacerlo responsive
+const responsiveStyles = {
+    container: {
+        ...styles.container,
+        padding: '10px', // Menos padding en pantallas pequeñas
+    },
+    title: {
+        ...styles.title,
+        fontSize: '18px',  // Título más pequeño en pantallas pequeñas
+    },
+    form: {
+        ...styles.form,
+        padding: '10px', // Menos padding en pantallas pequeñas
+    },
+    backButton: {
+        ...styles.backButton,
+        padding: '8px', // Ajuste de padding en pantallas más pequeñas
+        fontSize: '14px', // Reducir tamaño de texto
+        marginTop: '20px', // Espaciado adecuado
+    },
+    // Otros estilos pueden ir aquí según necesidad
+};
 
+// Uso del estilo responsive
+const currentStyles = window.innerWidth <= 768 ? responsiveStyles : styles;
+
+
+
+export default LegalizationPage;
 
