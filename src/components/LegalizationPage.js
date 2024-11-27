@@ -180,6 +180,8 @@ const LegalizationPage = () => {
             )}
 <br></br>
 <br></br>
+
+
            <button onClick={handleGoBack} style={styles.backButton}>Regresar</button>
 
             <h2 style={styles.title}>Formulario de Legalización</h2>
@@ -243,37 +245,46 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'center',
         height: '100vh',
-        width: '100%',
-        boxSizing: 'border-box',
-
-        backgroundColor: '#f0f4f8',
+        backgroundColor: '#1a1a1a',
         padding: '20px',
     },
     checkIcon: {
         color: 'green',
         width: '40px',
         height: '40px',
-        marginRight: '10px', // Espacio entre el ícono y el texto
+        marginRight: '10px',
     },
     modalContainer: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     modalContent: {
         backgroundColor: 'white',
-        padding: '30px',
+        padding: '20px',
         borderRadius: '8px',
         textAlign: 'center',
+        width: '90%',  // Ajustado para pantallas más pequeñas
+        maxWidth: '500px',
     },
 
     loadingContainer: {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
-        flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '20px',
+        flexDirection: 'column',
     },
     loader: {
         border: '8px solid #f3f3f3',
@@ -286,56 +297,57 @@ const styles = {
     loadingText: {
         marginTop: '10px',
         color: '#fff',
-        fontSize: '23px',
+        fontSize: '18px',  // Reducido para pantallas pequeñas
     },
 
     title: {
         marginBottom: '20px',
-        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
+        color: '#39a4cb',
+        fontSize: '1.8rem',  // Fuente más grande en pantallas grandes
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        maxWidth: '600px',
-
-        padding: '30px',
-
+        maxWidth: '800px',
+        padding: '20px',
         backgroundColor: '#fff',
         borderRadius: '10px',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        gap: '20px',
-
+        marginBottom: '20px',  // Ajustado para más espacio en pantallas grandes
     },
-    
+
     input: {
-        marginBottom: '12px',
+        marginBottom: '15px',
         padding: '12px',
         fontSize: '16px',
         border: '1px solid #ccc',
         borderRadius: '5px',
         outline: 'none',
+        width: '100%',  // Los campos de entrada ocuparán el 100% del ancho
     },
     button: {
-        padding: '10px',
+        padding: '12px',
         fontSize: '16px',
-        backgroundColor: '#39a4cb', // Rojo (color de la bandera dominicana)
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-    },
-    backButton: {
-        padding: '10px 20px',
-
         backgroundColor: '#39a4cb',
         color: '#fff',
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        marginBottom: '20px',
-        //alignSelf: 'flex-start',  // Esto moverá el botón al extremo izquierdo
+        transition: 'background-color 0.3s ease',
+        width: '100%',  // El botón ocupará el 100% del ancho
+    },
+    backButton: {
+        padding: '12px',
+        fontSize: '16px',
+        backgroundColor: '#39a4cb',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        marginBottom: '20px', // Separación para que el botón no quede pegado
+        alignSelf: 'flex-start',  // Esto mueve el botón al extremo izquierdo
+        width: 'auto',  // Evitar que ocupe todo el ancho
     },
     message: {
         color: '#d9534f',
@@ -344,18 +356,16 @@ const styles = {
     },
     radioContainer: {
         display: 'flex',
-        gap: '10px',
-        marginBottom: '12px',
+        justifyContent: 'space-between',
+        margin: '10px 0',
+        flexWrap: 'wrap',  // Permite que las opciones de radio se acomoden mejor en pantallas pequeñas
     },
     radioLabel: {
-        display: 'flex',
-        alignItems: 'center',
+        margin: '0 10px',
+        fontSize: '14px',  // Fuente más pequeña para pantallas pequeñas
     },
     fileInput: {
-        padding: '10px',
-        border: '1px solid #ddd',
-        borderRadius: '4px',
-        marginBottom: '12px',
+        marginBottom: '15px',
     },
     label: {
         fontWeight: 'bold',
@@ -368,8 +378,59 @@ const styles = {
         color: '#0056b3',
         textDecoration: 'underline',
     },
+
+    // Media Queries para pantallas más pequeñas
+    '@media (max-width: 768px)': {
+        title: {
+            fontSize: '1.4rem',  // Reduce el tamaño del título en pantallas pequeñas
+        },
+        form: {
+            padding: '15px',
+        },
+        input: {
+            fontSize: '14px',  // Reducir tamaño de fuente de los inputs
+            padding: '10px',
+        },
+        button: {
+            fontSize: '14px',  // Reduce el tamaño de la fuente del botón
+        },
+        backButton: {
+            fontSize: '14px',
+        },
+        loadingText: {
+            fontSize: '16px',
+        },
+        radioContainer: {
+            justifyContent: 'space-around',  // Acomoda mejor los radios en pantallas pequeñas
+        },
+        modalContent: {
+            width: '90%',  // Ajusta el tamaño del modal para pantallas pequeñas
+        },
+    },
+
+    // Para pantallas muy pequeñas (móviles)
+    '@media (max-width: 480px)': {
+        title: {
+            fontSize: '1.2rem',  // Aumenta el ajuste del tamaño de título en móviles
+        },
+        form: {
+            padding: '10px',
+        },
+        input: {
+            fontSize: '14px',
+        },
+        button: {
+            fontSize: '14px',
+        },
+        backButton: {
+            fontSize: '14px',
+        },
+        radioLabel: {
+            fontSize: '12px',  // Fuente más pequeña en pantallas muy pequeñas
+        },
+    },
 };
 
-
 export default LegalizationPage;
+
 
