@@ -101,65 +101,14 @@ const LoginPage = () => {
 
 const PageContainer = styled.div`
     display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f4f8;
-
-    
-`;
-
-// Contenedor para la imagen a la izquierda
-const ImageContainer = styled.div`
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #96d5ec;
-    width: 80%;
-    height: 530px;
-    border-radius: 20px;
-    margin-right: 3px; /* Espacio entre la imagen y el formulario */
-    margin-left: 53px;
-@media (max-width: 768px) {
-        width: 90%;
-        margin-right: 0;
-        padding: 1rem;
-        height: auto;
-    }
-`;
-// Estilo de la imagen dentro del contenedor azul
-const StyledImage = styled.img`
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* Borde circular */
-    margin-bottom: 20px; /* Eleva la imagen */
-
-  @media (max-width: 768px) {
-        width: 100px;
-        height: 100px;
-    }
+    height: 100vh;
+    background-color: #f0f4f8;
+    padding: 1rem;
 `;
 
-
-// Texto de bienvenida debajo de la imagen
-const WelcomeText = styled.h3`
-    color: #333;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.3rem;
- @media (max-width: 768px) {
-        font-size: 1rem;
-        margin-bottom: 10px;
-    }
-`;
-const ErrorMessage = styled.p`
-  color: #e74c3c;
-  font-size: 16px;
-  margin-bottom: 15px;
-`;
-
-// Botón de regresar con un icono moderno
 const BackButton = styled.button`
     position: absolute;
     top: 20px;
@@ -168,30 +117,71 @@ const BackButton = styled.button`
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
     color: #007bff;
     
     &:hover {
         color: #0056b3;
     }
- @media (max-width: 768px) {
-        font-size: 1.2rem;
+`;
+
+const LoginContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;  // Para limitar el ancho en pantallas grandes
+    margin-top: 3rem;
+    flex-wrap: wrap;
+`;
+
+const ImageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #96d5ec;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    
+    @media (max-width: 768px) {
+        width: 90%;
+        margin-bottom: 1rem;
     }
 `;
 
-// Contenedor del formulario de inicio de sesión a la derecha
-const LoginContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    
- @media (max-width: 768px) {
-        width: 100%;
+const StyledImage = styled.img`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        width: 100px;
+        height: 100px;
     }
 `;
-// Tarjeta de inicio de sesión
+
+const WelcomeText = styled.h3`
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.3rem;
+    
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+`;
+
+const ErrorMessage = styled.p`
+  color: #e74c3c;
+  font-size: 16px;
+  margin-bottom: 15px;
+`;
+
 const LoginCard = styled.div`
     background-color: white;
     padding: 40px;
@@ -199,26 +189,26 @@ const LoginCard = styled.div`
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
         padding: 20px;
         width: 90%;
     }
 `;
 
-// Título de la tarjeta
 const Title = styled.h2`
     font-size: 2rem;
     color: #007bff;
     margin-bottom: 20px;
-@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
         font-size: 1.6rem;
     }
 `;
-// Formulario estilizado
+
 const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -237,12 +227,13 @@ const Input = styled.input`
     &:focus {
         border-color: #007bff;
     }
-  @media (max-width: 768px) {
+
+    @media (max-width: 768px) {
         padding: 10px;
         font-size: 0.9rem;
     }
 `;
-// Botón de envío estilizado
+
 const SubmitButton = styled.button`
     background-color: #007bff;
     color: white;
@@ -261,11 +252,13 @@ const SubmitButton = styled.button`
         outline: none;
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     }
- @media (max-width: 768px) {
+
+    @media (max-width: 768px) {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
 `;
+
 
 export default LoginPage;
 
