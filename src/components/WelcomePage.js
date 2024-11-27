@@ -134,7 +134,7 @@ const Title = styled.h1`
     color: #39a4cb;
     
     @media (min-width: 768px) {
-        font-size: 23px;
+        font-size: 18px;
     }
 `;
 
@@ -143,7 +143,7 @@ const Subtitle = styled.h2`
     margin-bottom: 20px;
     
     @media (min-width: 768px) {
-        font-size: 24px;
+        font-size: 20px;
     }
 `;
 
@@ -189,7 +189,7 @@ const ProfileName = styled.span`
     font-size: 16px;
     
     @media (min-width: 768px) {
-        font-size: 18px;
+        font-size: 16px;
     }
 `;
 
