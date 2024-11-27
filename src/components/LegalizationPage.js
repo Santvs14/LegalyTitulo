@@ -246,7 +246,7 @@ const styles = {
         height: '100vh',
         backgroundColor: '#1a1a1a',
         padding: '20px',
-        boxSizing: 'border-box', // Para que el padding no afecte el tamaño del contenedor
+        boxSizing: 'border-box', // Asegura que el padding no afecte el tamaño
     },
     checkIcon: {
         color: 'green',
@@ -307,12 +307,12 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         width: '100%',
-        maxWidth: '800px', // Máximo de ancho para pantallas grandes
-        padding: '20px',
+        maxWidth: '100%', // Usar el 100% del ancho disponible
+        padding: '15px',
         backgroundColor: '#fff',
         borderRadius: '10px',
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        marginBottom: '123px',
+        marginBottom: '50px', // Ajustar margen inferior
     },
 
     input: {
@@ -322,6 +322,7 @@ const styles = {
         border: '1px solid #ccc',
         borderRadius: '5px',
         outline: 'none',
+        width: '100%', // Asegura que los inputs ocupen todo el ancho disponible
     },
     button: {
         padding: '10px',
@@ -341,7 +342,7 @@ const styles = {
         border: 'none',
         borderRadius: '5px',
         cursor: 'pointer',
-        marginBottom: '3px',
+        marginBottom: '10px', // Mejor espaciado para el botón
         alignSelf: 'center', // Centrar el botón
         marginTop: '20px', // Añadir espacio arriba
     },
@@ -374,30 +375,28 @@ const styles = {
     },
 
     // Estilos Responsivos
-    '@media (max-width: 768px)': { // Para dispositivos móviles
+    '@media (max-width: 768px)': { // Para dispositivos móviles y tablets
         container: {
-            padding: '10px', // Menos padding en pantallas pequeñas
+            padding: '10px', // Reducir padding en pantallas pequeñas
         },
         title: {
-            fontSize: '20px', // Título más pequeño
+            fontSize: '20px', // Título más pequeño en pantallas pequeñas
         },
         form: {
-            padding: '15px', // Menos padding en pantallas pequeñas
-            marginBottom: '50px', // Ajustar el margen inferior
+            padding: '15px', // Menos padding en el formulario
+            marginBottom: '30px', // Ajuste de margen inferior
         },
         input: {
             fontSize: '14px', // Reducir tamaño de fuente en inputs
+            padding: '8px', // Reducir padding
         },
         button: {
             fontSize: '14px', // Reducir tamaño de fuente del botón
-            padding: '8px', // Reducir padding en botones
-        },
-        backButton: {
-            fontSize: '14px', // Reducir tamaño de fuente del botón de regresar
             padding: '8px', // Reducir padding
         },
-        message: {
-            fontSize: '14px', // Reducir tamaño de mensaje
+        backButton: {
+            fontSize: '14px', // Reducir tamaño del botón de regreso
+            padding: '8px', // Reducir padding
         },
         loader: {
             width: '40px', // Reducir tamaño del loader
@@ -408,18 +407,21 @@ const styles = {
         },
     },
 
-    '@media (max-width: 480px)': { // Para pantallas más pequeñas (como smartphones)
+    '@media (max-width: 480px)': { // Para pantallas más pequeñas (como smartphones pequeños)
         title: {
-            fontSize: '18px', // Título aún más pequeño
+            fontSize: '18px', // Título más pequeño
         },
         form: {
             padding: '10px', // Ajustar padding en pantallas muy pequeñas
+            marginBottom: '20px', // Ajustar margen inferior
         },
         input: {
-            fontSize: '12px', // Reducir aún más el tamaño de fuente de los inputs
+            fontSize: '12px', // Reducir tamaño de fuente de los inputs
+            padding: '8px', // Reducir padding
         },
         button: {
-            fontSize: '12px', // Reducir aún más el tamaño de fuente del botón
+            fontSize: '12px', // Reducir tamaño de fuente del botón
+            padding: '8px', // Reducir padding
         },
         backButton: {
             fontSize: '12px', // Reducir tamaño del botón
