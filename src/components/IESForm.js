@@ -280,7 +280,7 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 105%;
-  padding: 0.5rem;
+  padding: 0.3rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.60rem;
+  padding: 0.57rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -370,11 +370,11 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 
   @media (min-width: 768px) {
    padding: 0.8rem;
-     margin-top: 1.2rem;
+     margin-top: 1rem;
 
 
 `;
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
