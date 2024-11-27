@@ -107,6 +107,11 @@ const PageContainer = styled.div`
     height: 100vh;
     background-color: #f0f4f8;
     padding: 1rem;
+
+    @media (max-width: 768px) {
+        height: auto;
+        padding: 0.5rem;
+    }
 `;
 
 const BackButton = styled.button`
@@ -118,21 +123,13 @@ const BackButton = styled.button`
     font-size: 1.5rem;
     cursor: pointer;
     color: #007bff;
-    
     &:hover {
         color: #0056b3;
     }
-`;
 
-const LoginContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;  // Para limitar el ancho en pantallas grandes
-    margin-top: 3rem;
-    flex-wrap: wrap;
+    @media (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -141,45 +138,52 @@ const ImageContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #96d5ec;
-    width: 100%;
+    width: 80%;
     padding: 2rem;
     border-radius: 20px;
-    margin-bottom: 2rem;
-    
+    margin-bottom: 3rem;
     @media (max-width: 768px) {
         width: 90%;
-        margin-bottom: 1rem;
+        padding: 1rem;
     }
 `;
 
 const StyledImage = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     margin-bottom: 20px;
-
+    
     @media (max-width: 768px) {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 `;
 
 const WelcomeText = styled.h3`
     color: #333;
     text-align: center;
-    margin-bottom: 30px;
     font-size: 1.3rem;
-    
+    margin-bottom: 10px;
     @media (max-width: 768px) {
         font-size: 1rem;
-        margin-bottom: 10px;
     }
 `;
 
 const ErrorMessage = styled.p`
-  color: #e74c3c;
-  font-size: 16px;
-  margin-bottom: 15px;
+    color: #e74c3c;
+    font-size: 16px;
+    margin-bottom: 15px;
+`;
+
+const LoginContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 const LoginCard = styled.div`
@@ -203,7 +207,6 @@ const Title = styled.h2`
     font-size: 2rem;
     color: #007bff;
     margin-bottom: 20px;
-
     @media (max-width: 768px) {
         font-size: 1.6rem;
     }
@@ -258,7 +261,6 @@ const SubmitButton = styled.button`
         padding: 8px 16px;
     }
 `;
-
 
 export default LoginPage;
 
