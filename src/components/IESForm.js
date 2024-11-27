@@ -280,17 +280,17 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 93%;
-  padding: 1.8rem;
+  padding: 1.5rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: 80vh; /* Usar la altura de la ventana */
+            height: 83vh; /* Usar la altura de la ventana */
 
       @media (min-width: 768px) {
   width: 90%;
     padding: 2rem;
-          height: 90vh; /* Usar la altura de la ventana */
+          height: 80vh; /* Usar la altura de la ventana */
 
 
     }
