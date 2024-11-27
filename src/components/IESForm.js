@@ -184,7 +184,7 @@ const IESForm = () => {
         </Form>
       </FormWrapper>
 
-      <Button onClick={handleModalToggle}>Ver Registros Existentes</Button>
+      <Button onClick={handleModalToggle}>Registros Existentes</Button>
 
       {modalOpen && (
         <Modal>
