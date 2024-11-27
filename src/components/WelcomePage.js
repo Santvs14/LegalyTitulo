@@ -107,7 +107,7 @@ const MainContent = styled.div`
     justify-content: center;
     transition: margin-left 0.3s;
     
-    ${({ expanded }) => expanded && `margin-left: 200px;`}
+    ${({ expanded }) => expanded && `margin-left: 100px;`}
     
     @media (min-width: 768px) {
         align-items: flex-start;
@@ -128,18 +128,18 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-    font-size: 33px;
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
     
     @media (min-width: 768px) {
-        font-size: 14px;
+        font-size: 33px;
     }
 `;
 
 const Subtitle = styled.h2`
-    font-size: 18px;
+    font-size: 15px;
     margin-bottom: 20px;
     
     @media (min-width: 768px) {
