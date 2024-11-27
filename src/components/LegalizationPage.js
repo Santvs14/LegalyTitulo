@@ -242,26 +242,70 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#f0f4f8',
+        width: '100%',
         padding: '20px',
+        boxSizing: 'border-box',
     },
-    checkIcon: {
-        color: 'green',
-        width: '40px',
-        height: '40px',
-        marginRight: '10px', // Espacio entre el ícono y el texto
+    backButton: {
+        marginBottom: '20px',
+        backgroundColor: '#007BFF',
+        color: 'white',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        maxWidth: '600px',
+        backgroundColor: '#fff',
+        padding: '30px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        gap: '20px',
+    },
+    input: {
+        padding: '12px',
+        marginBottom: '12px',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        width: '100%',
+    },
+    radioContainer: {
+        display: 'flex',
+        gap: '10px',
+        marginBottom: '12px',
+    },
+    radioLabel: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    fileInput: {
+        padding: '10px',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        marginBottom: '12px',
+    },
+    submitButton: {
+        backgroundColor: '#28a745',
+        color: 'white',
+        padding: '10px 20px',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+    },
+    message: {
+        color: 'red',
+        marginBottom: '10px',
     },
     modalContainer: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     modalContent: {
         backgroundColor: 'white',
@@ -269,22 +313,21 @@ const styles = {
         borderRadius: '8px',
         textAlign: 'center',
     },
-
+    checkIcon: {
+        color: 'green',
+        width: '40px',
+        height: '40px',
+        marginBottom: '20px',
+    },
     loadingContainer: {
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         flexDirection: 'column',
+        alignItems: 'center',
+        marginTop: '20px',
     },
     loader: {
-        border: '8px solid #f3f3f3',
-        borderTop: '8px solid #39a4cb',
+        border: '4px solid #f3f3f3',
+        borderTop: '4px solid #3498db',
         borderRadius: '50%',
         width: '50px',
         height: '50px',
@@ -292,84 +335,13 @@ const styles = {
     },
     loadingText: {
         marginTop: '10px',
-        color: '#fff',
-        fontSize: '23px',
-    },
-
-    title: {
-        marginBottom: '20px',
-        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        maxWidth: '800px', // Máximo de ancho para pantallas grandes
-        padding: '20px',
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        marginBottom: '123px',
-    },
-    
-    input: {
-        marginBottom: '15px',
-        padding: '10px',
         fontSize: '16px',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        outline: 'none',
-    },
-    button: {
-        padding: '10px',
-        fontSize: '16px',
-        backgroundColor: '#39a4cb', // Rojo (color de la bandera dominicana)
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-    },
-    backButton: {
-        padding: '10px',
-        fontSize: '16px',
-        backgroundColor: '#39a4cb',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        marginBottom: '3px',
-        alignSelf: 'flex-start',  // Esto moverá el botón al extremo izquierdo
-    },
-    message: {
-        color: '#d9534f',
-        margin: '10px 0',
-        textAlign: 'center',
-    },
-    radioContainer: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        margin: '10px 0',
-    },
-    radioLabel: {
-        margin: '0 10px',
-    },
-    fileInput: {
-        marginBottom: '15px',
-    },
-    label: {
-        fontWeight: 'bold',
-        marginBottom: '10px',
-    },
-    paymentInfo: {
-        marginBottom: '15px',
     },
     link: {
-        color: '#0056b3',
+        color: '#007BFF',
         textDecoration: 'underline',
     },
 };
-
 
 export default LegalizationPage;
 
