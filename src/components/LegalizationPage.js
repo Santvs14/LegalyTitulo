@@ -242,51 +242,65 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundColor: '#1a1a1a',
-        padding: '20px',
-        boxSizing: 'border-box', // Asegura que el padding no afecte el tamaño
+        margin: '20px',
     },
-    checkIcon: {
-        color: 'green',
-        width: '40px',
-        height: '40px',
-        marginRight: '10px', // Espacio entre el ícono y el texto
+    title: {
+        fontSize: '1.5rem',
+        marginBottom: '20px',
     },
-    modalContainer: {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    form: {
+        width: '80%',
+        maxWidth: '600px',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        flexDirection: 'column',
+        gap: '10px',
     },
-    modalContent: {
-        backgroundColor: 'white',
-        padding: '30px',
-        borderRadius: '8px',
-        textAlign: 'center',
+    input: {
+        padding: '10px',
+        fontSize: '1rem',
+        margin: '5px 0',
+        borderRadius: '4px',
+        border: '1px solid #ccc',
     },
-
+    radioContainer: {
+        display: 'flex',
+        gap: '20px',
+    },
+    radioLabel: {
+        fontSize: '1rem',
+    },
+    fileInput: {
+        padding: '10px',
+        fontSize: '1rem',
+        margin: '5px 0',
+    },
+    submitButton: {
+        padding: '10px 20px',
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        fontSize: '1.2rem',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
+    backButton: {
+        marginBottom: '20px',
+        backgroundColor: '#f0f0f0',
+        padding: '10px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+    },
     loadingContainer: {
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        right: '0',
-        bottom: '0',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
+        marginTop: '20px',
     },
     loader: {
-        border: '8px solid #f3f3f3',
-        borderTop: '8px solid #39a4cb',
+        border: '6px solid #f3f3f3',
+        borderTop: '6px solid #3498db',
         borderRadius: '50%',
         width: '50px',
         height: '50px',
@@ -294,143 +308,39 @@ const styles = {
     },
     loadingText: {
         marginTop: '10px',
-        color: '#fff',
-        fontSize: '23px',
-    },
-
-    title: {
-        marginBottom: '20px',
-        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
-        fontSize: '24px', // Tamaño del título en pantallas grandes
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        maxWidth: '100%', // Usar el 100% del ancho disponible
-        padding: '15px',
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        marginBottom: '50px', // Ajustar margen inferior
-    },
-
-    input: {
-        marginBottom: '15px',
-        padding: '10px',
-        fontSize: '16px',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        outline: 'none',
-        width: '100%', // Asegura que los inputs ocupen todo el ancho disponible
-    },
-    button: {
-        padding: '10px',
-        fontSize: '16px',
-        backgroundColor: '#39a4cb', // Azul bandera dominicana
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-    },
-    backButton: {
-        padding: '10px',
-        fontSize: '16px',
-        backgroundColor: '#39a4cb',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        marginBottom: '10px', // Mejor espaciado para el botón
-        alignSelf: 'center', // Centrar el botón
-        marginTop: '20px', // Añadir espacio arriba
+        fontSize: '1rem',
     },
     message: {
-        color: '#d9534f',
-        margin: '10px 0',
+        color: 'red',
+    },
+    modalContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        padding: '20px',
+        borderRadius: '10px',
         textAlign: 'center',
     },
-    radioContainer: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        margin: '10px 0',
-    },
-    radioLabel: {
-        margin: '0 10px',
-    },
-    fileInput: {
-        marginBottom: '15px',
-    },
-    label: {
-        fontWeight: 'bold',
-        marginBottom: '10px',
+    checkIcon: {
+        color: 'green',
+        width: '50px',
+        height: '50px',
     },
     paymentInfo: {
-        marginBottom: '15px',
+        marginTop: '20px',
+        fontSize: '1rem',
+        color: '#555',
     },
-    link: {
-        color: '#0056b3',
-        textDecoration: 'underline',
-    },
-
-    // Estilos Responsivos
-    '@media (max-width: 768px)': { // Para dispositivos móviles y tablets
-        container: {
-            padding: '10px', // Reducir padding en pantallas pequeñas
-        },
-        title: {
-            fontSize: '20px', // Título más pequeño en pantallas pequeñas
-        },
-        form: {
-            padding: '15px', // Menos padding en el formulario
-            marginBottom: '30px', // Ajuste de margen inferior
-        },
-        input: {
-            fontSize: '14px', // Reducir tamaño de fuente en inputs
-            padding: '8px', // Reducir padding
-        },
-        button: {
-            fontSize: '14px', // Reducir tamaño de fuente del botón
-            padding: '8px', // Reducir padding
-        },
-        backButton: {
-            fontSize: '14px', // Reducir tamaño del botón de regreso
-            padding: '8px', // Reducir padding
-        },
-        loader: {
-            width: '40px', // Reducir tamaño del loader
-            height: '40px',
-        },
-        loadingText: {
-            fontSize: '18px', // Reducir tamaño de texto de carga
-        },
-    },
-
-    '@media (max-width: 480px)': { // Para pantallas más pequeñas (como smartphones pequeños)
-        title: {
-            fontSize: '18px', // Título más pequeño
-        },
-        form: {
-            padding: '10px', // Ajustar padding en pantallas muy pequeñas
-            marginBottom: '20px', // Ajustar margen inferior
-        },
-        input: {
-            fontSize: '12px', // Reducir tamaño de fuente de los inputs
-            padding: '8px', // Reducir padding
-        },
-        button: {
-            fontSize: '12px', // Reducir tamaño de fuente del botón
-            padding: '8px', // Reducir padding
-        },
-        backButton: {
-            fontSize: '12px', // Reducir tamaño del botón
-            padding: '6px', // Reducir padding
-        },
+    paymentLink: {
+        color: '#007BFF',
+        textDecoration: 'none',
     },
 };
-
-
 
 export default LegalizationPage;
 
