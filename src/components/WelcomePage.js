@@ -134,7 +134,7 @@ const Title = styled.h1`
     color: #39a4cb;
     
     @media (min-width: 768px) {
-        font-size: 36px;
+        font-size: 23px;
     }
 `;
 
@@ -169,29 +169,20 @@ const ServiceButton = styled.button`
 `;
 
 const ProfileContainer = styled.div`
-    position: fixed; /* Lo mantenemos fijo para que esté siempre visible en la pantalla */
-    top: 20px; /* Ajustamos el valor de top para que esté sobre el logo */
-    left: 50%; /* Centrado horizontal */
-    transform: translateX(-50%); /* Para asegurar que se mantenga centrado */
-    z-index: 1000; /* Aseguramos que esté sobre el logo */
+    position: relative;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    @media (max-width: 768px) {
-        top: 20px; /* Ajustamos la distancia desde la parte superior para móviles */
-        left: 50%; /* Centrado horizontal */
-        transform: translateX(-50%);
-    }
-
+    justify-content: flex-end;
+    
     @media (min-width: 768px) {
-        top: 20px; /* Para pantallas grandes también se mantiene sobre el logo */
-        left: 50%;
-        transform: translateX(-50%);
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 `;
-
-
 
 const ProfileName = styled.span`
     margin-right: 10px;
