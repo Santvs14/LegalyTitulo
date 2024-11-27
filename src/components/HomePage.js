@@ -10,18 +10,18 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 93vh;
+  min-height: 100vh;
   background-color: #f0f2f5;
   position: relative;
   padding: 2rem;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 1rem; // Reduce el padding en pantallas más pequeñas
+    padding: 1.5rem; // Reduce el padding en pantallas más pequeñas
   }
 
   @media (max-width: 480px) {
-    min-height: 100vh; // Asegura que el contenedor ocupe toda la altura en pantallas muy pequeñas
+    padding: 1rem; // Reduce aún más el padding en pantallas muy pequeñas
   }
 `;
 
@@ -45,6 +45,7 @@ const ContentWrapper = styled.div`
 
   @media (max-width: 480px) {
     padding: 1.5rem; // Reducir aún más el padding
+    max-width: 90%; // Aseguramos que no se quede muy pequeño en pantallas móviles
   }
 `;
 
@@ -54,7 +55,7 @@ const TitleContainer = styled.div`
 `;
 
 const ImageTop = styled.img`
-  width: 300px;
+  width: 250px;
   margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
@@ -67,15 +68,16 @@ const ImageTop = styled.img`
 `;
 
 const Title = styled.h1`
-  font-size: 2.1rem;
+  font-size: 2rem;
   color: #01254f;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem; // Reducir tamaño de fuente en pantallas más pequeñas
+    font-size: 1.6rem; // Reducir tamaño de fuente en pantallas más pequeñas
   }
 
   @media (max-width: 480px) {
-    font-size: 1.4rem; // Reducir aún más en pantallas pequeñas
+    font-size: 1.3rem; // Reducir aún más en pantallas pequeñas
   }
 `;
 
