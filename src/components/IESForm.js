@@ -88,9 +88,9 @@ const IESForm = () => {
 
       <FormWrapper>
         <Form onSubmit={handleSubmit}>
-        <TitleContainer>
-  <h2>Envío de datos egresado IES</h2>
-</TitleContainer>
+          <TitleContainer>
+            <h2>Envío de datos egresado IES</h2>
+          </TitleContainer>
 
           {message && <Message>{message}</Message>}
 
@@ -216,6 +216,8 @@ const IESForm = () => {
   );
 };
 
+// Styled-components
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -245,13 +247,12 @@ const TitleContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100px;
-    font-size: 2rem;
-
+  margin-bottom: 0.5rem;
 `;
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 360px; /* Reducción del tamaño máximo del formulario */
   margin-top: -2rem;
   display: flex;
   justify-content: center;
@@ -262,39 +263,33 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
   background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.5rem;
-    height: 100px;
-
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 `;
 
 const Label = styled.label`
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Título de los campos más pequeño */
   margin-bottom: 0.5rem;
 `;
 
 const Input = styled.input`
   padding: 0.6rem;
-  font-size: 1rem;
+  font-size: 0.85rem; /* Input más pequeño */
   border-radius: 4px;
   border: 1px solid #ccc;
 `;
 
 const Select = styled.select`
   padding: 0.6rem;
-  font-size: 1rem;
+  font-size: 0.85rem; /* Select más pequeño */
   border-radius: 4px;
   border: 1px solid #ccc;
 `;
@@ -302,8 +297,8 @@ const Select = styled.select`
 const SubmitButton = styled.button`
   background-color: #0069d9;
   color: white;
-  padding: 0.7rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.9rem; /* Botón más pequeño */
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -335,7 +330,7 @@ const Button = styled.button`
 
 const Message = styled.p`
   color: green;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Mensaje más pequeño */
 `;
 
 const Modal = styled.div`
