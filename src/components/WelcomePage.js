@@ -128,7 +128,7 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-    font-size: 23px;
+    font-size: 21px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
@@ -139,7 +139,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
     
     @media (min-width: 768px) {
