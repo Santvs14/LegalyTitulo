@@ -218,7 +218,7 @@ const styles = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#1a1a1a',
+        backgroundColor: '#f0f4f8',
         padding: '10px 20px',
         color: '#FFF',
         position: 'absolute',
