@@ -246,7 +246,7 @@ const styles = {
         height: '100vh',
         backgroundColor: '#1a1a1a',
         padding: '20px',
-        boxSizing: 'border-box', // Asegura que el padding no rompa el diseño
+        boxSizing: 'border-box', // Para que el padding no afecte el tamaño del contenedor
     },
     checkIcon: {
         color: 'green',
@@ -301,8 +301,7 @@ const styles = {
     title: {
         marginBottom: '20px',
         color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
-        fontSize: '24px',  // Título pequeño
-        textAlign: 'center',
+        fontSize: '24px', // Tamaño del título en pantallas grandes
     },
     form: {
         display: 'flex',
@@ -315,7 +314,7 @@ const styles = {
         boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
         marginBottom: '123px',
     },
-    
+
     input: {
         marginBottom: '15px',
         padding: '10px',
@@ -343,8 +342,8 @@ const styles = {
         borderRadius: '5px',
         cursor: 'pointer',
         marginBottom: '3px',
-        alignSelf: 'center',  // Mover el botón al centro
-        marginTop: '20px', // Espaciado arriba
+        alignSelf: 'center', // Centrar el botón
+        marginTop: '20px', // Añadir espacio arriba
     },
     message: {
         color: '#d9534f',
@@ -373,33 +372,61 @@ const styles = {
         color: '#0056b3',
         textDecoration: 'underline',
     },
-};
 
-// Media Queries para hacerlo responsive
-const responsiveStyles = {
-    container: {
-        ...styles.container,
-        padding: '10px', // Menos padding en pantallas pequeñas
+    // Estilos Responsivos
+    '@media (max-width: 768px)': { // Para dispositivos móviles
+        container: {
+            padding: '10px', // Menos padding en pantallas pequeñas
+        },
+        title: {
+            fontSize: '20px', // Título más pequeño
+        },
+        form: {
+            padding: '15px', // Menos padding en pantallas pequeñas
+            marginBottom: '50px', // Ajustar el margen inferior
+        },
+        input: {
+            fontSize: '14px', // Reducir tamaño de fuente en inputs
+        },
+        button: {
+            fontSize: '14px', // Reducir tamaño de fuente del botón
+            padding: '8px', // Reducir padding en botones
+        },
+        backButton: {
+            fontSize: '14px', // Reducir tamaño de fuente del botón de regresar
+            padding: '8px', // Reducir padding
+        },
+        message: {
+            fontSize: '14px', // Reducir tamaño de mensaje
+        },
+        loader: {
+            width: '40px', // Reducir tamaño del loader
+            height: '40px',
+        },
+        loadingText: {
+            fontSize: '18px', // Reducir tamaño de texto de carga
+        },
     },
-    title: {
-        ...styles.title,
-        fontSize: '18px',  // Título más pequeño en pantallas pequeñas
-    },
-    form: {
-        ...styles.form,
-        padding: '10px', // Menos padding en pantallas pequeñas
-    },
-    backButton: {
-        ...styles.backButton,
-        padding: '8px', // Ajuste de padding en pantallas más pequeñas
-        fontSize: '14px', // Reducir tamaño de texto
-        marginTop: '20px', // Espaciado adecuado
-    },
-    // Otros estilos pueden ir aquí según necesidad
-};
 
-// Uso del estilo responsive
-const currentStyles = window.innerWidth <= 768 ? responsiveStyles : styles;
+    '@media (max-width: 480px)': { // Para pantallas más pequeñas (como smartphones)
+        title: {
+            fontSize: '18px', // Título aún más pequeño
+        },
+        form: {
+            padding: '10px', // Ajustar padding en pantallas muy pequeñas
+        },
+        input: {
+            fontSize: '12px', // Reducir aún más el tamaño de fuente de los inputs
+        },
+        button: {
+            fontSize: '12px', // Reducir aún más el tamaño de fuente del botón
+        },
+        backButton: {
+            fontSize: '12px', // Reducir tamaño del botón
+            padding: '6px', // Reducir padding
+        },
+    },
+};
 
 
 
