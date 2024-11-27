@@ -165,8 +165,8 @@ const ImageContainer = styled.div`
     margin-bottom: 30px;  // Añadimos espacio debajo de la imagen
 
     @media (max-width: 768px) {
-        height: 300px; // Ajustamos la altura en pantallas pequeñas
-        width: 100%;
+        height: 150px; // Ajustamos la altura en pantallas pequeñas
+        width: 90%;
     }
 `;
 
@@ -233,7 +233,7 @@ const LoginCard = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     color: #007bff;
     margin-bottom: 20px;
 `;
