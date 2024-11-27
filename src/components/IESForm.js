@@ -254,8 +254,9 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
+          font-size: 14px;
  @media (min-width: 768px) {
-        font-size: 14px;
+        font-size: 18px;
     }
 `;
 
