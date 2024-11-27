@@ -370,7 +370,7 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 
   @media (min-width: 768px) {
    padding: 0.8rem;
