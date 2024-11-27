@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 12px;
+          font-size: 12.3px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -263,14 +263,19 @@ const TitleContainer = styled.div`
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 490px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
   flex-direction: column; /* Aseguramos que el formulario y el logo estén en columna */
   align-items: center; /* Centra el contenido */
   
+@media (min-width: 768px) {
+  width: 100%;
+  max-width: 500px;
+    }
 `;
+
 
 
 const Form = styled.form`
@@ -298,7 +303,13 @@ const Input = styled.input`
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+
+  @media (min-width: 768px) {
+  padding: 0.73rem;
+
+    }
 `;
+
 
 const Select = styled.select`
   padding: 0.75rem;
@@ -311,11 +322,11 @@ const SubmitButton = styled.button`
   background-color: #007bff;
   color: white;
   font-size: 0.7rem;
-  padding: 1rem;
+  padding: 0.8rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 90%;
+  width: 80%;
   &:disabled {
     background-color: #b0b0b0;
   }
@@ -323,7 +334,9 @@ const SubmitButton = styled.button`
  @media (min-width: 768px) {
   width: 100%;
     font-size: 1rem;
+      padding: 1rem;
     }
+
 `;
 
 const Message = styled.p`
@@ -337,7 +350,7 @@ const Message = styled.p`
 const Button = styled.button`
   background-color: #007bff;
   color: white;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
