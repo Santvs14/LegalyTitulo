@@ -122,8 +122,10 @@ const ImageContainer = styled.div`
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
 @media (max-width: 768px) {
-        height: 250px;
+        width: 90%;
+        margin-right: 0;
         padding: 1rem;
+        height: auto;
     }
 `;
 // Estilo de la imagen dentro del contenedor azul
@@ -133,9 +135,9 @@ const StyledImage = styled.img`
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
 
-   @media (max-width: 768px) {
-        width: 120px;
-        height: 120px;
+  @media (max-width: 768px) {
+        width: 100px;
+        height: 100px;
     }
 `;
 
@@ -147,7 +149,8 @@ const WelcomeText = styled.h3`
     margin-bottom: 30px;
     font-size: 1.3rem;
  @media (max-width: 768px) {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        margin-bottom: 10px;
     }
 `;
 const ErrorMessage = styled.p`
@@ -172,6 +175,9 @@ const BackButton = styled.button`
     &:hover {
         color: #0056b3;
     }
+ @media (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 `;
 
 // Contenedor del formulario de inicio de sesión a la derecha
@@ -181,8 +187,10 @@ const LoginContainer = styled.div`
     align-items: center;
     width: 50%;
     
+ @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
-
 // Tarjeta de inicio de sesión
 const LoginCard = styled.div`
     background-color: white;
@@ -196,6 +204,7 @@ const LoginCard = styled.div`
     flex-direction: column;
     align-items: center;
 @media (max-width: 768px) {
+        padding: 20px;
         width: 90%;
     }
 `;
@@ -228,7 +237,7 @@ const Input = styled.input`
     &:focus {
         border-color: #007bff;
     }
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
         padding: 10px;
         font-size: 0.9rem;
     }
@@ -252,7 +261,7 @@ const SubmitButton = styled.button`
         outline: none;
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     }
-@media (max-width: 768px) {
+ @media (max-width: 768px) {
         font-size: 0.9rem;
         padding: 8px 16px;
     }
