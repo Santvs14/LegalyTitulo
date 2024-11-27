@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 12.5px;
+          font-size: 12.7px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -262,7 +262,7 @@ const TitleContainer = styled.div`
 
 
 const FormWrapper = styled.div`
-  width: 97%;
+  width: 100%;
   max-width: 450px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
@@ -280,12 +280,12 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.5rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: 85vh; /* Usar la altura de la ventana */
+            height: 86vh; /* Usar la altura de la ventana */
 
       @media (min-width: 768px) {
   width: 90%;
@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.70rem;
+  padding: 0.67rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -370,11 +370,11 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
 
   @media (min-width: 768px) {
    padding: 1rem;
-     margin-top: 1.5rem;
+     margin-top: 1.3rem;
 
 
 `;
@@ -429,9 +429,14 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+ 
+  @media (min-width: 768px) {
   width: 50px;
   height: 50px;
-  margin-right: 10px;
+    }
 `;
 
 export default IESForm;
