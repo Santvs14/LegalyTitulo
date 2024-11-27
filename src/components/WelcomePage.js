@@ -169,26 +169,28 @@ const ServiceButton = styled.button`
 `;
 
 const ProfileContainer = styled.div`
-    position: fixed; /* Cambié de "relative" a "fixed" para posicionarlo en la parte superior de la pantalla */
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
+    position: fixed; /* Lo mantenemos fijo para que esté siempre visible en la pantalla */
+    top: 20px; /* Ajustamos el valor de top para que esté sobre el logo */
+    left: 50%; /* Centrado horizontal */
+    transform: translateX(-50%); /* Para asegurar que se mantenga centrado */
+    z-index: 1000; /* Aseguramos que esté sobre el logo */
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 
     @media (max-width: 768px) {
-        /* Para pantallas móviles, mantendrá el mismo posicionamiento en la esquina superior derecha */
-        top: 27px;
-        right: 10px;
+        top: 20px; /* Ajustamos la distancia desde la parte superior para móviles */
+        left: 50%; /* Centrado horizontal */
+        transform: translateX(-50%);
     }
 
     @media (min-width: 768px) {
-        /* En pantallas más grandes, el perfil seguirá en la esquina superior derecha */
-        top: 10px;
-        right: 10px;
+        top: 20px; /* Para pantallas grandes también se mantiene sobre el logo */
+        left: 50%;
+        transform: translateX(-50%);
     }
 `;
+
 
 
 const ProfileName = styled.span`
