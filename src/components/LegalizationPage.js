@@ -172,12 +172,13 @@ const LegalizationPage = () => {
     return (
         <div style={styles.container}>
             {!loading && (
-                <div style={styles.loadingContainer}>
+        <div style={styles.loadingOverlay}>
+            <div style={styles.loadingContainer}>
                 <div style={styles.loader}></div>
                 <p style={styles.loadingText}>Enviando formulario...</p>
             </div>
-
-            )}
+        </div>
+    )}
 <br></br>
 
 
@@ -244,6 +245,8 @@ const styles = {
         alignItems: 'center',
         margin: '20px',
         backgroundColor: '#f0f0f0',
+        position: 'relative', // Permite que el loader esté en un contenedor posicionado
+        minHeight: '100vh', // Asegura que el contenedor ocupe toda la altura de la pantalla
     },
     title: {
         fontSize: '1.5rem',
@@ -305,6 +308,27 @@ const styles = {
         borderRadius: '5px',
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
+    },
+    loadingOverlay: {
+        position: 'fixed', // Fija el overlay en la pantalla
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo semitransparente
+        display: 'flex',
+        justifyContent: 'center', // Centra el loader horizontalmente
+        alignItems: 'center', // Centra el loader verticalmente
+        zIndex: 1000, // Asegura que el loader esté por encima de otros elementos
+    },
+    // Animación de giro
+    '@keyframes spin': {
+        '0%': {
+            transform: 'rotate(0deg)',
+        },
+        '100%': {
+            transform: 'rotate(360deg)',
+        },
     },
     loadingContainer: {
         display: 'flex',
