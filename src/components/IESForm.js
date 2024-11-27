@@ -280,7 +280,7 @@ const FormWrapper = styled.div`
 
 const Form = styled.form`
   width: 105%;
-  padding: 0.3rem;
+  padding: 0.1rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.57rem;
+  padding: 0.53rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
