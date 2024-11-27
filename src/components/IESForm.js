@@ -263,7 +263,7 @@ const TitleContainer = styled.div`
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 550px;
+  max-width: 553px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
