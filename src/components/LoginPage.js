@@ -106,10 +106,7 @@ const PageContainer = styled.div`
     align-items: center;
     background-color: #f0f4f8;
 
-    @media (max-width: 768px) {
-        flex-direction: column;
-        padding: 1rem;
-    }
+    
 `;
 
 // Contenedor para la imagen a la izquierda
@@ -136,10 +133,9 @@ const StyledImage = styled.img`
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
 
-    @media (max-width: 768px) {
-        top:5px;
-        width: 123px;
-        height: 123px;
+   @media (max-width: 768px) {
+        width: 120px;
+        height: 120px;
     }
 `;
 
@@ -200,7 +196,7 @@ const LoginCard = styled.div`
     flex-direction: column;
     align-items: center;
 @media (max-width: 768px) {
-        padding: 20px;
+        width: 90%;
     }
 `;
 
@@ -210,7 +206,7 @@ const Title = styled.h2`
     color: #007bff;
     margin-bottom: 20px;
 @media (max-width: 768px) {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 `;
 // Formulario estilizado
@@ -257,8 +253,8 @@ const SubmitButton = styled.button`
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     }
 @media (max-width: 768px) {
-        padding: 10px;
         font-size: 0.9rem;
+        padding: 8px 16px;
     }
 `;
 
