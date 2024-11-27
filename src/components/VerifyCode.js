@@ -171,12 +171,13 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-    width: 200px;
-    height: 200px;
+    width: 150px; /* Reducimos el tamaño del logo */
+    height: 150px; /* Manteniendo la proporción */
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Espacio entre la imagen y el texto */
     @media (max-width: 768px) {
-        width: 60%;
+        width: 100px; /* Hacemos el logo aún más pequeño en pantallas pequeñas */
+        height: 100px;
     }
 `;
 
@@ -233,7 +234,7 @@ const LoginCard = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #007bff;
     margin-bottom: 20px;
 `;
