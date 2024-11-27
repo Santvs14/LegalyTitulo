@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.63rem;
+  padding: 0.60rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -366,14 +366,14 @@ const Message = styled.p`
 const Button = styled.button`
   background-color: #007bff;
   color: white;
-  padding: 0.7rem;
+  padding: 0.5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
 
   @media (min-width: 768px) {
-   padding: 1rem;
+   padding: 0.8rem;
      margin-top: 1.2rem;
 
 
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
