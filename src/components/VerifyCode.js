@@ -149,7 +149,7 @@ const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #f0f4f8;
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
         flex-direction: column;
         padding: 10px;
     }
@@ -163,13 +163,12 @@ const ImageContainer = styled.div`
     align-items: center;
     background-color: #96d5ec;
     width: 80%;
-    height: 530px;
+    height: 450px;
     border-radius: 20px;
     margin-right: 3px; /* Espacio entre la imagen y el formulario */
     margin-left: 53px;
 
-
-   @media (max-width: 768px) {
+    @media (max-width: 768px) {
         width: 80%;
         height: 300px;
     }
@@ -177,11 +176,11 @@ const ImageContainer = styled.div`
 
 // Estilo de la imagen dentro del contenedor azul
 const StyledImage = styled.img`
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%; /* Borde circular */
     margin-bottom: 20px; /* Eleva la imagen */
- @media (max-width: 768px) {
+    @media (max-width: 768px) {
         width: 60%;
     }
 `;
@@ -192,10 +191,11 @@ const WelcomeText = styled.h3`
     text-align: center;
     margin-bottom: 30px;
     font-size: 1.3rem;
- @media (max-width: 768px) {
+    @media (max-width: 768px) {
         font-size: 1rem;
     }
 `;
+
 const ErrorMessage = styled.p`
   color: #e74c3c;
   font-size: 16px;
@@ -218,7 +218,7 @@ const BackButton = styled.button`
     &:hover {
         color: #0056b3;
     }
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
         top: 10px;
         left: 10px;
     }
@@ -231,7 +231,7 @@ const LoginContainer = styled.div`
     align-items: center;
     width: 50%;
     
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
         width: 100%;
         margin-top: 20px;
     }
@@ -249,7 +249,7 @@ const LoginCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
         padding: 20px;
     }
 `;
@@ -259,7 +259,7 @@ const Title = styled.h2`
     font-size: 1.7rem;
     color: #007bff;
     margin-bottom: 20px;
-@media (max-width: 768px) {
+    @media (max-width: 768px) {
         font-size: 1.4rem;
     }
 `;
@@ -269,9 +269,8 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
-@media (max-width: 768px) {
-    width: 80%;
-
+    @media (max-width: 768px) {
+        width: 80%;
     }
 `;
 
@@ -294,19 +293,14 @@ const SubmitButton = styled.button`
     background-color: #007bff;
     color: white;
     padding: 12px;
-    font-size: 1rem;
     border: none;
     border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
         background-color: #0056b3;
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     }
 `;
 
