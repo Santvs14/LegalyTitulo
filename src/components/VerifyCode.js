@@ -174,7 +174,7 @@ const StyledImage = styled.img`
     width: 150px; /* Reducimos el tamaño del logo */
     height: 150px; /* Manteniendo la proporción */
     border-radius: 50%; /* Borde circular */
-    margin-bottom: 20px; /* Espacio entre la imagen y el texto */
+    margin-bottom: -3px; /* Espacio entre la imagen y el texto */
     @media (max-width: 768px) {
         width: 100px; /* Hacemos el logo aún más pequeño en pantallas pequeñas */
         height: 100px;
