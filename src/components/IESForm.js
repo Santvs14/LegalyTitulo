@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 12.7px;
+          font-size: 14px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -263,7 +263,7 @@ const TitleContainer = styled.div`
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 450px;
+  max-width: 470px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
@@ -285,7 +285,7 @@ const Form = styled.form`
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: 86vh; /* Usar la altura de la ventana */
+            height: 86.2vh; /* Usar la altura de la ventana */
 
       @media (min-width: 768px) {
   width: 90%;
@@ -309,7 +309,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  padding: 0.67rem;
+  padding: 0.63rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -370,11 +370,11 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 
   @media (min-width: 768px) {
    padding: 1rem;
-     margin-top: 1.3rem;
+     margin-top: 1.2rem;
 
 
 `;
@@ -429,8 +429,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
