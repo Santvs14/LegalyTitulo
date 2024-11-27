@@ -171,7 +171,7 @@ const LegalizationPage = () => {
 
     return (
         <div style={styles.container}>
-            {loading && (
+            {!loading && (
                 <div style={styles.loadingContainer}>
                 <div style={styles.loader}></div>
                 <p style={styles.loadingText}>Enviando formulario...</p>
