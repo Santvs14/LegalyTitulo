@@ -139,11 +139,11 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 20px;
     
     @media (min-width: 768px) {
-        font-size: 18px;
+        font-size: 24px;
     }
 `;
 
@@ -189,7 +189,7 @@ const ProfileName = styled.span`
     font-size: 14px;
     
     @media (min-width: 768px) {
-        font-size: 18px;
+        font-size: 20px;
     }
 `;
 
