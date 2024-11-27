@@ -162,11 +162,11 @@ const ImageContainer = styled.div`
     width: 90%;
     height: 450px; // Ajustamos la altura del contenedor para que no corte la imagen
     border-radius: 20px;
-    margin-bottom: 30px;  // Añadimos espacio debajo de la imagen
+    margin-bottom: 10px;  // Añadimos espacio debajo de la imagen
 
     @media (max-width: 768px) {
-        height: 150px; // Ajustamos la altura en pantallas pequeñas
-        width: 90%;
+        height: 300px; // Ajustamos la altura en pantallas pequeñas
+        width: 100%;
     }
 `;
 
