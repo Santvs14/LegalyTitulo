@@ -254,7 +254,7 @@ const TitleContainer = styled.div`
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
   height: 100px; /* Asegura que tenga altura para centrar verticalmente */
-          font-size: 12.3px;
+          font-size: 12.4px;
  @media (min-width: 768px) {
         font-size: 18px;
     }
@@ -262,8 +262,8 @@ const TitleContainer = styled.div`
 
 
 const FormWrapper = styled.div`
-  width: 100%;
-  max-width: 490px;
+  width: 90%;
+  max-width: 450px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
   justify-content: center;
@@ -279,13 +279,20 @@ const FormWrapper = styled.div`
 
 
 const Form = styled.form`
-  width: 90%;
-  padding: 2rem;
+  width: 80%;
+  padding: 1.8rem;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: 768px) {
+  width: 90%;
+    padding: 2rem;
+
+    }
 `;
+
 
 const FormGroup = styled.div`
   display: flex;
@@ -322,11 +329,11 @@ const SubmitButton = styled.button`
   background-color: #007bff;
   color: white;
   font-size: 0.7rem;
-  padding: 0.8rem;
+  padding: 0.5rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 80%;
+  width: 90%;
   &:disabled {
     background-color: #b0b0b0;
   }
