@@ -222,160 +222,142 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   font-family: 'Roboto', sans-serif;
-    background-color: #f0f4f8;
-      height: 93vh; /* Usar la altura de la ventana */
+  background-color: #f0f4f8;
+  height: 93vh; /* Usar la altura de la ventana */
   overflow: hidden; /* Quitar el scroll */
-
 `;
 
-
 const Banner = styled.div`
-  
-  padding: 0.5rem; /* Reducir el padding para estar más cerca */
+  padding: 0.5rem; 
   display: flex;
   justify-content: center;
-  margin-bottom: 0.5rem; /* Reducir el espacio debajo del logo */
+  margin-bottom: 0.5rem; 
 `;
 
 const Logo = styled.img`
-  height: 108px;
-    z-index: 10; /* Asegúrate de que el logo esté al frente */
-  margin-top: -3rem; /* Reducir el margen superior */
-
-  /* Si es necesario, ajusta la altura del logo */
+  height: 80px;
+  margin-top: -2rem; 
 `;
-
-
 
 const TitleContainer = styled.div`
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  height: 100px; /* Asegura que tenga altura para centrar verticalmente */
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 `;
-
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 500px;
-  margin-top: -2rem; /* Reducir el margen superior */
-  display: flex;
-  justify-content: center;
-  flex-direction: column; /* Aseguramos que el formulario y el logo estén en columna */
-  align-items: center; /* Centra el contenido */
-  
+  max-width: 450px; /* Reducción del tamaño */
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-
 const Form = styled.form`
-  width: 100%;
-  padding: 2rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 `;
 
 const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
 `;
 
 const Label = styled.label`
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.2rem;
 `;
 
 const Input = styled.input`
-  padding: 0.75rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const Select = styled.select`
-  padding: 0.75rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const SubmitButton = styled.button`
-  background-color: #007bff;
+  background-color: #5e76e1;
   color: white;
+  padding: 0.8rem;
   font-size: 1rem;
-  padding: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
-  &:disabled {
-    background-color: #b0b0b0;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #4a62b2;
   }
 `;
 
-const Message = styled.p`
-  color: green;
-  font-weight: bold;
-  font-size: 1.3rem;
-  text-align: center; /* Centrar el texto */
-  margin-top: 1rem;
-`;
-
 const Button = styled.button`
-  background-color: #007bff;
+  background-color: #0069d9;
   color: white;
-  padding: 1rem;
+  padding: 0.8rem;
+  font-size: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 1rem;
+`;
+
+const Message = styled.p`
+  color: #28a745;
+  font-size: 1rem;
 `;
 
 const Modal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalContent = styled.div`
   background-color: white;
   padding: 2rem;
   border-radius: 8px;
-  width: 80%;
-  max-height: 80%;
+  max-width: 80%;
   overflow-y: auto;
+  max-height: 80%;
 `;
 
 const CloseButton = styled.button`
-  background-color: transparent; /* Fondo transparente */
-  color: #ff0000; /* Color del texto */
-  font-size: 1.5rem;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 70px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
 `;
 
-
 const RecordCard = styled.div`
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  padding: 1rem;
   margin-bottom: 1rem;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #f9f9f9;
 `;
 
 const DocumentsContainer = styled.div`
@@ -383,9 +365,11 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+  max-width: 200px;
+  margin-top: 0.5rem;
+  max-height: 150px;
+  object-fit: cover;
 `;
+
 
 export default IESForm;
