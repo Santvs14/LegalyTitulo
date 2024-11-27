@@ -93,8 +93,8 @@ const VerifyCode = () => {
         <PageContainer>
             <ImageContainer>
                 <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
-                <WelcomeText style={{fontSize:33}}>Egresados</WelcomeText>
-                <WelcomeText style={{fontSize:23,marginBottom:133}}>Bienvenidos al sistema automatizado de legalización de documentos</WelcomeText>
+                <WelcomeText style={{fontSize:27}}>Egresados</WelcomeText>
+                <WelcomeText style={{fontSize:16,marginBottom:130}}>Bienvenidos al sistema automatizado de legalización de documentos</WelcomeText>
             </ImageContainer>
             <BackButton onClick={handleGoBack}>
                 <FaArrowLeft /> {/* Icono moderno de regresar */}
@@ -185,7 +185,7 @@ const WelcomeText = styled.h3`
     color: #333;
     text-align: center;
     margin-bottom: 30px;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     @media (max-width: 768px) {
         font-size: 1rem;
     }
@@ -234,7 +234,7 @@ const LoginCard = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #007bff;
     margin-bottom: 20px;
 `;
