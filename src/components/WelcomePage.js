@@ -128,13 +128,13 @@ const Logo = styled.img`
 `;
 
 const Title = styled.h1`
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 20px;
     color: #39a4cb;
     
     @media (min-width: 768px) {
-        font-size: 33px;
+        font-size: 53px;
     }
 `;
 
