@@ -243,10 +243,13 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         margin: '20px',
+        backgroundColor: '#f0f0f0',
     },
     title: {
         fontSize: '1.5rem',
         marginBottom: '20px',
+        color: '#39a4cb', // Azul oscuro (color de la bandera dominicana)
+ 
     },
     form: {
         width: '80%',
@@ -285,11 +288,23 @@ const styles = {
     },
     backButton: {
         marginBottom: '20px',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#39a4cb',
+        color: '#fff',
+ 
         padding: '10px',
         border: 'none',
         borderRadius: '4px',
         cursor: 'pointer',
+    },
+    button: {
+        padding: '10px',
+        fontSize: '16px',
+        backgroundColor: '#39a4cb', // Rojo (color de la bandera dominicana)
+        color: '#fff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s ease',
     },
     loadingContainer: {
         display: 'flex',
