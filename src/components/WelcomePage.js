@@ -139,7 +139,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-    font-size: 15px;
+    font-size: 24px;
     margin-bottom: 20px;
     
     @media (min-width: 768px) {
@@ -186,10 +186,10 @@ const ProfileContainer = styled.div`
 
 const ProfileName = styled.span`
     margin-right: 10px;
-    font-size: 16px;
+    font-size: 14px;
     
     @media (min-width: 768px) {
-        font-size: 14px;
+        font-size: 18px;
     }
 `;
 
