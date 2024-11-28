@@ -16,6 +16,7 @@ const IESForm = () => {
   const [message, setMessage] = useState('');
   const [iesRecords, setIesRecords] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const { user, logout } = useContext(UserContext);
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch data on component mount
@@ -453,8 +454,8 @@ const DocumentsContainer = styled.div`
 `;
 
 const DocumentPreview = styled.img`
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   margin-right: 10px;
  
   @media (min-width: 768px) {
