@@ -35,10 +35,10 @@ const RegisterPage = () => {
 //Validar contraseña
 
 const validatePassword = (password) => {
-    const regex = /^(?=.*[!@#$%^&*])(?=.*\d).{8,}$/;
+    const regex = /^(?=.*[!@#$%^&*])(?=.*\d).{5,}$/;
     if (!regex.test(password)) {
         setPasswordError(
-            'La contraseña debe tener al menos 8 caracteres, un número y un carácter especial.'
+            'La contraseña debe tener al menos 5 caracteres, un número y un carácter especial.'
         );
     } else {
         setPasswordError('');
@@ -47,12 +47,12 @@ const validatePassword = (password) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setAttemptSubmit(true);
+        setAttemptSubmit(true); // Se establece que se intentó enviar
 
         const passwordErrorMsg = validatePassword(formData.contraseña);
-        setPasswordError(passwordErrorMsg);
-        if (passwordErrorMsg) return;
+    setPasswordError(passwordErrorMsg); // Establecer el mensaje de error si lo hay
 
+    if (passwordErrorMsg) return; // No continuar si hay error
         console.log("Datos del formulario:", formData);
         console.log("Formulario enviado",passwordErrorMsg);
 
@@ -181,7 +181,8 @@ const validatePassword = (password) => {
                     required 
                 />
                  {/* Mostrar el error justo debajo del campo de contraseña */}
-    {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
+                 {attemptSubmit && passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
+
                 <Input 
                     type="password" 
                     name="confirmarContraseña" 
