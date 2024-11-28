@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext, } from 'react';
 import axios from 'axios';
 import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
 import styled from 'styled-components';
+import { UserContext } from '../context/UserContext';
 
 const IESForm = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +17,8 @@ const IESForm = () => {
   const [message, setMessage] = useState('');
   const [iesRecords, setIesRecords] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const { user, logout } = useContext();
+  const { user, logout } = useContext(UserContext);
+  
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch data on component mount
