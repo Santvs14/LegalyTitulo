@@ -37,24 +37,23 @@ const RegisterPage = () => {
 const validatePassword = (password) => {
     const regex = /^(?=.*[!@#$%^&*])(?=.*\d).{5,}$/;
     if (!regex.test(password)) {
-        setPasswordError(
-            'La contraseña debe tener al menos 5 caracteres, un número y un carácter especial.'
-        );
-    } else {
-        setPasswordError('');
+        return 'La contraseña debe tener al menos 5 caracteres, un número y un carácter especial.';
     }
+    return ''; // No hay error
 };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setAttemptSubmit(true); // Se establece que se intentó enviar
 
-        const passwordErrorMsg = validatePassword(formData.contraseña);
-    setPasswordError(passwordErrorMsg); // Establecer el mensaje de error si lo hay
+       // Validar contraseña al enviar
+    const passwordErrorMsg = validatePassword(formData.contraseña);
+    setPasswordError(passwordErrorMsg);
 
-    if (passwordErrorMsg) return; // No continuar si hay error
+    if (passwordErrorMsg) return; // Si hay error, detener el envío
         console.log("Datos del formulario:", formData);
-        console.log("Formulario enviado",passwordErrorMsg);
+        console.log("Validacion contraseña:",passwordErrorMsg);
 
 
         try {
