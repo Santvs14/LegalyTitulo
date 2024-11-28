@@ -80,10 +80,18 @@ const IESForm = () => {
     setModalOpen(!modalOpen);
   };
 
+//Cerrar Sesión
+  const handleLogout = () => {
+    logout();
+    window.location.href = '/login';
+};
+
+
   return (
     <Container>
       <Banner>
         <Logo src={mesy} alt="Logo" />
+        <ProfileMenuButton onClick={handleLogout}>Cerrar Sesión</ProfileMenuButton>
       </Banner>
 
       <FormWrapper>
@@ -229,6 +237,22 @@ const Container = styled.div`
   overflow: hidden; /* Quitar el scroll */
 
 `;
+const ProfileMenuButton = styled.button`
+    padding: 8px ;
+    font-size: 12px;
+    background-color: #d8dddf;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    
+    &:hover {
+        background-color: #444;
+        color: #fff;
+    }
+`;
 
 
 const Banner = styled.div`
@@ -366,11 +390,11 @@ const Message = styled.p`
 const Button = styled.button`
   background-color: #007bff;
   color: white;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
 
   @media (min-width: 768px) {
    padding: 0.7rem;
