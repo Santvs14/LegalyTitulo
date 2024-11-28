@@ -54,7 +54,7 @@ const validatePassword = (password) => {
         if (passwordErrorMsg) return;
 
         console.log("Datos del formulario:", formData);
-        console.log("Formulario enviado");
+        console.log("Formulario enviado",passwordErrorMsg);
 
 
         try {
@@ -99,7 +99,7 @@ const validatePassword = (password) => {
                 <FaArrowLeft /> {/* Icono de regresar */}
             </BackButton>
             <Title>Registro</Title>
-            {attemptSubmit && passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
+
 
             <Form onSubmit={handleSubmit}>
                 <Input 
@@ -180,6 +180,8 @@ const validatePassword = (password) => {
                     onChange={handleChange} 
                     required 
                 />
+                 {/* Mostrar el error justo debajo del campo de contraseña */}
+    {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
                 <Input 
                     type="password" 
                     name="confirmarContraseña" 
