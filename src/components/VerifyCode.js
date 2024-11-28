@@ -106,7 +106,8 @@ const VerifyCode = () => {
                     
                     {step === 'login' && (
                         <Form>
-                          
+                                  {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
                             <Input
                                 type="email"
                                 placeholder="Correo Electrónico"
