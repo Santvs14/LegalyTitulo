@@ -28,7 +28,8 @@ const LegalizationPage = () => {
     const [mensaje, setMensaje] = useState(''); // Para mostrar mensajes de éxito o error
     const [loading, setLoading] = useState(false); // Para mostrar el loading
     const [formEnviado, setFormEnviado] = useState(false); // Estado para mostrar página de éxito
-
+    const [file1, setFile1] = useState(null);
+    const [file2, setFile2] = useState(null);
 
 
     // Efecto para cargar la información del usuario
@@ -57,10 +58,14 @@ const LegalizationPage = () => {
     };
 
     const handleFileChange = (e) => {
+        setFile1(e.target.files[0]);
+
         setFormData({ ...formData, archivos: e.target.files });
     };
 
     const handleDocumentChange = (e) => {
+        setFile2(e.target.files[0]);
+
         setFormData({ ...formData, documentos: e.target.files });
     };
 
@@ -78,11 +83,17 @@ const LegalizationPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!file1 || !file2) {
+            setMensaje('Por favor, adjunta los documentos y archivo antes de enviar.');
+            return;
+          }
+
         setLoading(true); // Inicia el loading
 
 
     // Validación: Verifica si los archivos o documentos han sido adjuntados
     if ((!formData.archivos || formData.archivos.length === 0) && 
+    
         (!formData.documentos || formData.documentos.length === 0)) {
         setMensaje('Por favor, adjunta el comprobante de pago(archivo) y los documentos.');
         console.log('adjunta documentos y archivos')

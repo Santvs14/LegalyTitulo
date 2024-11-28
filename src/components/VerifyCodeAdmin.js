@@ -93,6 +93,7 @@ const handleVerifyCode = async () => {
       <LoginForm>
         <Title>Validar Inicio de Sesión</Title>
         <img style={{ width: 400, height: 230 }} src={gob} alt="Logo" />
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
         {step === 'login' && (
                         <Form>
