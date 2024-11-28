@@ -16,7 +16,7 @@ const IESForm = () => {
   const [message, setMessage] = useState('');
   const [iesRecords, setIesRecords] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const { user, logout } = useContext(UserContext);
+  const { user, logout } = useContext();
   const apiUrl = process.env.REACT_APP_API_URL;
 
   // Fetch data on component mount
