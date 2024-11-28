@@ -9,6 +9,7 @@ const RegisterPage = () => {
 
     const navigate = useNavigate(); // Inicializar useNavigate
     const [passwordError, setPasswordError] = useState('');
+    const [attemptSubmit, setAttemptSubmit] = useState(false);
 
     const [formData, setFormData] = useState({
         nombre: '',
@@ -46,7 +47,11 @@ const validatePassword = (password) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (passwordError) return;
+        setAttemptSubmit(true);
+
+        const passwordErrorMsg = validatePassword(formData.contraseña);
+        setPasswordError(passwordErrorMsg);
+        if (passwordErrorMsg) return;
 
         console.log("Datos del formulario:", formData);
         console.log("Formulario enviado");
@@ -94,7 +99,7 @@ const validatePassword = (password) => {
                 <FaArrowLeft /> {/* Icono de regresar */}
             </BackButton>
             <Title>Registro</Title>
-            {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
+            {attemptSubmit && passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
 
             <Form onSubmit={handleSubmit}>
                 <Input 
