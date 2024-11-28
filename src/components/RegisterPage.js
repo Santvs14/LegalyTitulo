@@ -8,6 +8,8 @@ const RegisterPage = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const navigate = useNavigate(); // Inicializar useNavigate
+    const [passwordError, setPasswordError] = useState('');
+
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
@@ -24,12 +26,31 @@ const RegisterPage = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        if (name === 'contraseña') {
+            validatePassword(value);
+        }
     };
+
+//Validar contraseña
+
+const validatePassword = (password) => {
+    const regex = /^(?=.*[!@#$%^&*])(?=.*\d).{8,}$/;
+    if (!regex.test(password)) {
+        setPasswordError(
+            'La contraseña debe tener al menos 8 caracteres, un número y un carácter especial.'
+        );
+    } else {
+        setPasswordError('');
+    }
+};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Formulario enviado");
+        if (passwordError) return;
+
         console.log("Datos del formulario:", formData);
+        console.log("Formulario enviado");
+
 
         try {
             //const response = await fetch('http://localhost:5000/api/users/register', {
@@ -73,6 +94,8 @@ const RegisterPage = () => {
                 <FaArrowLeft /> {/* Icono de regresar */}
             </BackButton>
             <Title>Registro</Title>
+            {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
+
             <Form onSubmit={handleSubmit}>
                 <Input 
                     type="text" 
@@ -188,7 +211,11 @@ const Container = styled.div`
         padding: 10px;
     }
 `;
-
+const ErrorMessage = styled.p`
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+`;
 const ImageTopRight = styled.img`
     position: absolute;
     top: 20px;
