@@ -86,7 +86,7 @@ const IESForm = () => {
 //Cerrar Sesión
   const handleLogout = () => {
     logout();
-    window.location.href = '/login';
+    window.location.href = '/loginIES';
 };
 
 
@@ -241,22 +241,22 @@ const Container = styled.div`
 
 `;
 const ProfileMenuButton = styled.button`
-    padding: 8px ;
-    font-size: 12px;
-    background-color: #d8dddf;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    
-    &:hover {
-        background-color: #444;
-        color: #fff;
-    }
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #d8dddf;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #444;
+    color: white;
+  }
 `;
-
 
 const Banner = styled.div`
   
@@ -268,7 +268,7 @@ const Banner = styled.div`
 
 const Logo = styled.img`
   height: 108px;
-    z-index: 10; /* Asegúrate de que el logo esté al frente */
+    z-index: 1; /* Asegúrate de que el logo esté al frente */
   margin-top: -3rem; /* Reducir el margen superior */
 
   /* Si es necesario, ajusta la altura del logo */
