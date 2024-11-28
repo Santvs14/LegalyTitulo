@@ -262,7 +262,7 @@ const TitleContainer = styled.div`
 
 
 const FormWrapper = styled.div`
-  width: 100%;
+  width: 105%;
   max-width: 573px;
   margin-top: -2rem; /* Reducir el margen superior */
   display: flex;
@@ -279,7 +279,7 @@ const FormWrapper = styled.div`
 
 
 const Form = styled.form`
-  width: 110%;
+  width: 105%;
   padding: 0.1rem;
   background-color: #ffffff;
   border-radius: 8px;
