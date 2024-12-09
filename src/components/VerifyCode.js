@@ -101,7 +101,7 @@ const VerifyCode = () => {
             </BackButton>
             <LoginContainer>
                 <LoginCard>
-                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
                     <Title>Verificar Ingreso al Sistema</Title>
                     
                     {step === 'login' && (
