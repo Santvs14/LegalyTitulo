@@ -10,6 +10,8 @@ const RegisterPage = () => {
     const navigate = useNavigate(); // Inicializar useNavigate
     const [passwordError, setPasswordError] = useState('');
     const [attemptSubmit, setAttemptSubmit] = useState(false);
+    const [cedulaError, setCedulaError] = useState('');
+
 
     const [formData, setFormData] = useState({
         nombre: '',
@@ -41,7 +43,15 @@ const validatePassword = (password) => {
     }
     return ''; // No hay error
 };
-
+//Validar formato cedula
+const validateCedula = (cedula) => {
+    const regex = /^\d{3}-\d{8}-\d{1}$/; // Formato 402-23456578-1
+    if (!regex.test(cedula)) {
+        setCedulaError('La cédula no es válida. Debe estar en el formato 402-23456578-1.');
+    } else {
+        setCedulaError('');
+    }
+};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,6 +60,8 @@ const validatePassword = (password) => {
        // Validar contraseña al enviar
     const passwordErrorMsg = validatePassword(formData.contraseña);
     setPasswordError(passwordErrorMsg);
+    validateCedula(formData.cedula);
+
 
     if (passwordErrorMsg) return; // Si hay error, detener el envío
         console.log("Datos del formulario:", formData);
@@ -123,7 +135,7 @@ const validatePassword = (password) => {
                 <Input 
                     type="text" 
                     name="cedula" 
-                    placeholder="Cédula" 
+                    placeholder="Cédula _Formato: 402-23456578-1"
                     onChange={handleChange} 
                     required 
                 />
