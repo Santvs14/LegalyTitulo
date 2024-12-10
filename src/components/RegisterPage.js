@@ -78,7 +78,12 @@ const validatePassword = (password) => {
                 // Redirigir o mostrar un mensaje de éxito
                 navigate('/login')
             } else {
-                console.error('Error en los datos del registro:', data.message);
+                // Manejar errores específicos como duplicados
+                if (data.message.includes('duplicado')) {
+                    alert('El registro ya existe. Verifica los datos ingresados.');
+                } else {
+                    alert(`Error en el registro: ${data.message}`);
+                }
             }
         } catch (error) {
             console.error('Error:', error);
