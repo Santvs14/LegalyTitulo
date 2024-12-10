@@ -49,7 +49,7 @@ const validatePassword = (password) => {
   const validateCedula = (cedula) => {
     const regex = /^\d{3}-\d{7}-\d{1}$/; // Formato 402-1234567-1
     if (!regex.test(cedula)) {
-        setCedulaError('La cédula no es válida. Debe estar en el formato 402-1234567-1.');
+        setCedulaError('Cédula no es válida. Debe estar en el formato 402-1234567-1.');
         return false;
     } else {
         setCedulaError('');
