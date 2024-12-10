@@ -45,13 +45,14 @@ const validatePassword = (password) => {
 };
 //Validar formato cedula
 const validateCedula = (cedula) => {
-    const regex = /^\d{3}-\d{8}-\d{1}$/; // Formato 402-23456578-1
-    if (!regex.test(cedula)) {
-        setCedulaError('La cédula no es válida. Debe estar en el formato 402-23456578-1.');
-    } else {
-        setCedulaError('');
-    }
+    const regex = /^\d{3}-\d{8}-\d{1}$/;
+    const errorMsg = !regex.test(cedula)
+        ? 'La cédula no es válida. Debe estar en el formato 402-23456578-1.'
+        : '';
+    setCedulaError(errorMsg);
+    return errorMsg;
 };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,10 +61,14 @@ const validateCedula = (cedula) => {
        // Validar contraseña al enviar
     const passwordErrorMsg = validatePassword(formData.contraseña);
     setPasswordError(passwordErrorMsg);
-    validateCedula(formData.cedula);
+   // validateCedula(formData.cedula);
+   
+    const cedulaErrorMsg = validateCedula(formData.cedula);
 
 
-    if (passwordErrorMsg) return; // Si hay error, detener el envío
+
+    if (passwordErrorMsg || cedulaErrorMsg) return;
+
         console.log("Datos del formulario:", formData);
         console.log("Validacion contraseña:",passwordErrorMsg);
 
@@ -137,7 +142,8 @@ const validateCedula = (cedula) => {
                 <Input 
                     type="text" 
                     name="cedula" 
-                    placeholder="Cédula _Formato: 402-23456578-1"
+                    placeholder="Cédula (Formato: 402-23456578-1)"
+
                     onChange={handleChange} 
                     required 
                 />
