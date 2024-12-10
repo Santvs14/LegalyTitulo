@@ -132,6 +132,8 @@ const validateCedula = (cedula) => {
                     onChange={handleChange} 
                     required 
                 />
+                                {attemptSubmit && cedulaError && <ErrorMessage>{cedulaError}</ErrorMessage>}
+
                 <Input 
                     type="text" 
                     name="cedula" 
