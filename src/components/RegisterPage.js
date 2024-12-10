@@ -47,9 +47,9 @@ const validatePassword = (password) => {
 
   // Validar formato de cédula (3 dígitos, 8 dígitos, 1 dígito)
   const validateCedula = (cedula) => {
-    const regex = /^\d{3}-\d{8}-\d{1}$/; // Formato 123-12345678-1
+    const regex = /^\d{3}-\d{7}-\d{1}$/; // Formato 402-1234567-1
     if (!regex.test(cedula)) {
-        setCedulaError('La cédula no es válida. Debe estar en el formato 123-12345678-1.');
+        setCedulaError('La cédula no es válida. Debe estar en el formato 402-1234567-1.');
         return false;
     } else {
         setCedulaError('');
@@ -149,7 +149,7 @@ const validatePassword = (password) => {
                 <Input 
                     type="text" 
                     name="cedula" 
-                    placeholder="Cédula (Formato: 402-23456578-1)"
+                    placeholder="Cédula (Formato: 402-2345658-1)"
 
                     onChange={handleChange} 
                     required 
