@@ -39,7 +39,7 @@ const WelcomePage = () => {
             </Sidebar>
             <MainContent expanded={showServices}>
                 <Logo src={mesy} alt="Logo" />
-                <Title>Sistema De Automatización Para La Legalización De Documentos</Title>
+                <Title>Sistema automatizado de legalización de titulos universitarios</Title>
                 <Subtitle>Bienvenido, {user.nombre} {user.apellido}</Subtitle>
                 <ProfileContainer>
                     <ProfileName>{user.nombre} {user.apellido}</ProfileName>

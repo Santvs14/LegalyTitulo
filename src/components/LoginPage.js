@@ -64,7 +64,7 @@ const LoginPage = () => {
             <ImageContainer>
                 <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
                 <WelcomeText style={{fontSize:33}}>Egresados</WelcomeText>
-                <WelcomeText style={{fontSize:23,marginBottom:133}}>Bienvenidos al sistema automatizado de legalización de documentos</WelcomeText>
+                <WelcomeText style={{fontSize:23,marginBottom:133}}>Bienvenidos al sistema automatizado de legalización de titulos universitarios</WelcomeText>
             </ImageContainer>
             <BackButton onClick={handleGoBack}>
                 <FaArrowLeft /> {/* Icono moderno de regresar */}
