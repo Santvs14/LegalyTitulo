@@ -27,11 +27,13 @@ export const UserProvider = ({ children }) => {
     const login = (userData) => {
         if (!userData || !userData.adminId) {
             console.error("El userData que intentas guardar no tiene adminId:", userData);
+        } else {
+            console.log("Guardando en localStorage:", userData);
         }
         setUser(userData);
         localStorage.setItem('user', JSON.stringify(userData));
     };
-    console.log('disponibilidad user 1:', user)
+    
 
     // Función para cerrar sesión
     const logout = () => {
