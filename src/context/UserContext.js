@@ -7,7 +7,7 @@ export const UserContext = createContext();
 // Proveedor del contexto
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-
+    
     // Cargar usuario desde localStorage al inicio
     useEffect(() => {
         const savedUser = localStorage.getItem('user');

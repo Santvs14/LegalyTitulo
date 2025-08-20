@@ -149,7 +149,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
               
               firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
-              adminId: user._adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
+              adminId: user?.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
             });
       
             if (response.status === 201) {
