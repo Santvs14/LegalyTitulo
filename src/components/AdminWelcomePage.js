@@ -137,12 +137,14 @@ const apiUrl = process.env.REACT_APP_API_URL;
           const dataUrl = signaturePadRef.current.getTrimmedCanvas().toDataURL();
           setSignature(dataUrl);
           setIsSigning(false);
+          console.log("Usuario en saveSignature:", user);
+
       
           try {
             //const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
                 const response = await axios.post(`${apiUrl}/api/legalization/save-signature`,{
 
-
+              
               firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
               adminId: user.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
