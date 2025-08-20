@@ -144,6 +144,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
       
           try {
 
+            const token = localStorage.getItem("token"); // 👈 lo traes de localStorage
 
 
             console.log("Admin ID:", user.adminId);
@@ -151,7 +152,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
             //const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
                 const response = await axios.post(`${apiUrl}/api/legalization/save-signature`,{
 
-              
+              token,
 
               firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
