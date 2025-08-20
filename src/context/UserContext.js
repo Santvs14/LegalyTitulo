@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 // Proveedor del contexto
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('admin');
 
     
     // Cargar usuario desde localStorage al inicio
