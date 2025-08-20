@@ -27,7 +27,7 @@ import unicariLogo from '../image/unicaribe.png';
 const AdminWelcomePage = () => {
     const { user } = useContext(UserContext); // Obtén el usuario del contexto
     const navigate = useNavigate();
-console.log('disponibilidad user:', user)
+console.log('disponibilidad user 2:', user)
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -115,7 +115,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
          }
      }
         // Aquí debes cargar la firma de la solicitud
-        setSignature(solicitud.firma); // Cargar la firma existente
+      //  setSignature(solicitud.firma); // Cargar la firma existente
     };
     
 
@@ -137,6 +137,8 @@ const apiUrl = process.env.REACT_APP_API_URL;
           const dataUrl = signaturePadRef.current.getTrimmedCanvas().toDataURL();
           setSignature(dataUrl);
           setIsSigning(false);
+          console.log('disponibilidad user 3:', user)
+
           console.log("Usuario en saveSignature:", user);
 
       
@@ -147,7 +149,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
               
               firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
-              adminId: user.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
+              adminId: user._adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
             });
       
             if (response.status === 201) {

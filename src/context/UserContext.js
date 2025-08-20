@@ -15,17 +15,19 @@ export const UserProvider = ({ children }) => {
             setUser(JSON.parse(savedUser));
         }
     }, []);
+    console.log('Cargar user:', user)
 
     // Función para iniciar sesión
     const login = (userData) => {
         setUser(userData);
         localStorage.setItem('user', JSON.stringify(userData)); // Guarda el usuario en localStorage
     };
+    console.log('disponibilidad user 1:', user)
 
     // Función para cerrar sesión
     const logout = () => {
         setUser(null);
-       // localStorage.removeItem('user'); // Elimina el usuario de localStorage
+        localStorage.removeItem('user'); // Elimina el usuario de localStorage
     };
 
     return (
