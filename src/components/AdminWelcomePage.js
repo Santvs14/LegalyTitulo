@@ -139,17 +139,29 @@ const apiUrl = process.env.REACT_APP_API_URL;
           setIsSigning(false);
           console.log('disponibilidad user 3:', user)
 
-          console.log("Usuario en saveSignature:", user);
+          console.log("Usuario en saveSignature 1:", user);
 
       
           try {
+
+
+
+            if (!user || !user.adminId) {
+                console.error("Usuario no cargado en contexto");
+                return;
+              }
+              console.log('disponibilidad user 4:', user)
+
+              console.log("Usuario en saveSignature 2:", user);
+
             //const response = await axios.post('http://localhost:5000/api/legalization/save-signature', {
                 const response = await axios.post(`${apiUrl}/api/legalization/save-signature`,{
 
               
+
               firmaDataUrl: dataUrl,
               solicitudId: selectedSolicitud._id,
-              adminId: user?.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
+              adminId: user.adminId, // Asegúrate de que el ID del admin esté disponible en el contexto del usuario
             });
       
             if (response.status === 201) {
