@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import mesy from '../image/gob.png';
+import gob from '../image/gob.png';
 
 const WelcomeAdmin = () => {
   
@@ -33,7 +34,7 @@ const WelcomeAdmin = () => {
 
   return (
     <Container>
-      <Logo src={mesy} alt="Logo del sistema" />
+      <Logo src={gob} alt="Logo del sistema" />
 
       {/* Menú del usuario */}
       <UserMenu onClick={toggleMenu}>

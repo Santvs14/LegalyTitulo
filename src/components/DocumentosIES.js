@@ -12,6 +12,8 @@ import inteLogo from '../image/INTEC.png';
 import utesaLogo from '../image/UTESA.png';
 import unicariLogo from '../image/unicaribe.png';
 import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
+import gob from '../image/gob.png';
+
 const logos = {
   "Universidad Nacioanal(UNPHU)": unphuLogo,
   "Universidad Dominicana O&M": oymLogo,
@@ -107,7 +109,7 @@ const DocumentosIES = () => {
   return (
     <div style={styles.container}>
                     <header style={styles.banner}>
-            <img src={mesy} alt="Logo" style={styles.logo}/>
+            <img src={gob} alt="Logo" style={styles.logo}/>
                 <h1 style={styles.title}>Documentos de las IES</h1>
             </header>
 

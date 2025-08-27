@@ -4,6 +4,7 @@ import { UserContext } from '../context/UserContext';
 import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa'; // Importa el icono de una flecha moderna
 import imagenLogin from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
+import gob from '../image/gob.png';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -62,7 +63,7 @@ const LoginPage = () => {
     return (
         <PageContainer>
             <ImageContainer>
-                <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
+                <StyledImage src={gob} alt="Imagen de Inicio" />
                 <WelcomeText style={{fontSize:33}}>Egresados</WelcomeText>
                 <WelcomeText style={{fontSize:23,marginBottom:133}}>Bienvenidos al sistema automatizado de legalización de titulos universitarios</WelcomeText>
             </ImageContainer>

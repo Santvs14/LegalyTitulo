@@ -4,6 +4,7 @@ import { UserContext } from '../context/UserContext';
 import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa';
 import imagenLogin from '../image/mesy.png';
+import gob from '../image/gob.png';
 
 // Componente principal
 const VerifyCodeIES = () => {
@@ -93,7 +94,7 @@ const VerifyCodeIES = () => {
     return (
         <Container>
             <ContentSection>
-                <StyledImage src={imagenLogin} alt="Imagen de inicio" />
+                <StyledImage src={gob} alt="Imagen de inicio" />
                 <TextContainer>
                     <TitleText>Universidades IES</TitleText>
                     <SubtitleText>

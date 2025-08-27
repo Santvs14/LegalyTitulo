@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 // Proveedor del contexto
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState('admin');
+    const [user, setUser] = useState(null);
 
     
     // Cargar usuario desde localStorage al inicio
@@ -24,16 +24,16 @@ export const UserProvider = ({ children }) => {
     console.log('Cargar user:', user)
 
     // Función para iniciar sesión
-    const login = (userData) => {
-        if (!userData || !userData.adminId) {
-            console.error("El userData que intentas guardar no tiene adminId:", userData);
-        } else {
-            console.log("Guardando en localStorage:", userData);
-        }
-        setUser(userData);
-        localStorage.setItem('user', JSON.stringify(userData));
-    };
-    
+   const login = (userData) => {
+    if (!userData || !userData.adminId) {
+        console.error("El userData que intentas guardar no tiene adminId:", userData);
+    } else {
+        console.log("Guardando en localStorage:", userData);
+    }
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+};
+
 
     // Función para cerrar sesión
     const logout = () => {

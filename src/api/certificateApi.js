@@ -3,7 +3,7 @@
 
 export const generarCertificadoApi = async (solicitudId) => {
     try {
-        const API_BASE_URL = 'http://localhost:5000';  // Base URL de la API
+       // const API_BASE_URL = 'http://localhost:5000';  // Base URL de la API
         console.log("Solicitud ID a enviar:", solicitudId);  // Verifica el ID que se envía
         const apiUrl = process.env.REACT_APP_API_URL;
 

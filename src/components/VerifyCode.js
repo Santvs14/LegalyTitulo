@@ -4,6 +4,7 @@ import { UserContext } from '../context/UserContext';
 import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa'; // Importa el icono de una flecha moderna
 import imagenLogin from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
+import gob from '../image/gob.png';
 
 const VerifyCode = () => {
     const navigate = useNavigate();
@@ -92,7 +93,7 @@ const VerifyCode = () => {
     return (
         <PageContainer>
             <ImageContainer>
-                <StyledImage src={imagenLogin} alt="Imagen de Inicio" />
+                <StyledImage src={gob} alt="Imagen de Inicio" />
                 <WelcomeText style={{fontSize:25}}>Egresados</WelcomeText>
                 <WelcomeText style={{fontSize:16,marginBottom:130}}>Bienvenidos al sistema automatizado de legalización de documentos</WelcomeText>
             </ImageContainer>

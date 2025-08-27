@@ -7,6 +7,7 @@ import axios from 'axios';
 import { UserContext } from '../context/UserContext'; // Asegúrate de tener el contexto de usuario
 import { useNavigate } from 'react-router-dom';
 import { generarCertificadoApi } from '../api/certificateApi';
+import gob from '../image/gob.png';
 
 import unphuLogo from '../image/UNPHU.png';
 import oymLogo from '../image/oym.jpg';
@@ -447,7 +448,7 @@ useEffect(() => {
     return (
         <div style={styles.container}>
             <header style={styles.banner}>
-            <img src={mesy} alt="Logo" style={styles.logo}/>
+            <img src={gob} alt="Logo" style={styles.logo}/>
                 <h1 style={styles.title}>Recepción de solicitudes</h1>
             </header>
 

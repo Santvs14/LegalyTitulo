@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa';
 import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 import mesy from '../image/mesy.png';
+import gob from '../image/gob.png';
 
 const WelcomePage = () => {
     const { user, logout } = useContext(UserContext);
@@ -38,7 +39,7 @@ const WelcomePage = () => {
                 )}
             </Sidebar>
             <MainContent expanded={showServices}>
-                <Logo src={mesy} alt="Logo" />
+                <Logo src={gob} alt="Logo" />
                 <Title>Sistema automatizado de legalización de titulos universitarios</Title>
                 <Subtitle>Bienvenido, {user.nombre} {user.apellido}</Subtitle>
                 <ProfileContainer>

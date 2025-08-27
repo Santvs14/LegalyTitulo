@@ -3,6 +3,7 @@ import axios from 'axios';
 import mesy from '../image/mesy.png'; // Ajusta la ruta según tu estructura de carpetas
 import styled from 'styled-components';
 import { UserContext } from '../context/UserContext';
+import gob from '../image/gob.png';
 
 const IESForm = () => {
   const [formData, setFormData] = useState({
@@ -93,7 +94,7 @@ const IESForm = () => {
   return (
     <Container>
       <Banner>
-        <Logo src={mesy} alt="Logo" />
+        <Logo src={gob} alt="Logo" />
         <ProfileMenuButton onClick={handleLogout}>Cerrar Sesión</ProfileMenuButton>
       </Banner>
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import styled from 'styled-components';
 import { FaArrowLeft } from 'react-icons/fa'; // Icono moderno para regresar
 import mesy from '../image/mesy.png'; // Asegúrate de colocar la ruta correcta de la imagen
+import gob from '../image/gob.png';
 
 const RegisterPage = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -120,7 +121,7 @@ const validatePassword = (password) => {
 
     return (
         <Container>
-                        <ImageTopRight src={mesy} alt="Logo Mesy" />
+                        <ImageTopRight src={gob} alt="Logo Mesy" />
 
             <BackButton onClick={handleGoBack}>
                 <FaArrowLeft /> {/* Icono de regresar */}
