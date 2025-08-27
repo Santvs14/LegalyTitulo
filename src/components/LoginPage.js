@@ -150,7 +150,7 @@ const ImageContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-    width: 283px;
+    width: 323px;
     height: 250px;
     border-radius: 50%;
     margin-bottom: 20px;
