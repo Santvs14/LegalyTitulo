@@ -122,7 +122,7 @@ const ContentSection = styled.div`
 `;
 
 const StyledImage = styled.img`
-    width: 200px;
+    width: 300px;
     height: 200px;
     border-radius: 50%;
     margin-bottom: 20px;
